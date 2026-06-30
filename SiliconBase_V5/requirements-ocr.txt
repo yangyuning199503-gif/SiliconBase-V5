@@ -1,0 +1,19 @@
+# SiliconBase V5 OCR扩展依赖
+# 安装: pip install -r requirements-ocr.txt
+#
+# 提供光学字符识别功能
+# 前置依赖: requirements-core.txt
+
+# ========== OCR核心 ==========
+# EasyOCR用于屏幕和图像文字识别
+# 注意: 这会安装PyTorch作为依赖（约2GB）
+easyocr>=1.7.0
+
+# ========== 备选OCR方案（更轻量） ==========
+# 如需更轻量的OCR方案，可以考虑:
+# - pytesseract + Tesseract-OCR引擎
+# - paddleocr（但体积也较大）
+# - 云API（如百度OCR、腾讯OCR等，无本地依赖）
+
+# 如果使用pytesseract方案，取消下面注释:
+# pytesseract>=0.3.10

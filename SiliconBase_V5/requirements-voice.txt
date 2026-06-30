@@ -1,0 +1,16 @@
+# SiliconBase V5 语音系统依赖
+# 安装: pip install -r requirements-voice.txt
+#
+# 提供唤醒词、ASR、TTS 功能
+
+# ASR / 录音
+pyaudio>=0.2.11
+vosk>=0.3.44
+
+# TTS 备用引擎
+pyttsx3>=2.90
+edge-tts>=6.1.0
+
+# Piper TTS（可选，模型已在 assets/models/piper/）
+# Windows 上可能需要从源码安装 piper-tts / piper-phonemize
+# piper-tts>=1.2.0

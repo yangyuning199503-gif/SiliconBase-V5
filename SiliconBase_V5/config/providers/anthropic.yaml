@@ -1,0 +1,89 @@
+# Anthropic Claude API 配置
+# 超长上下文、高安全性的模型
+
+provider: anthropic
+name: Anthropic Claude
+enabled: true
+priority: 2  # 优先级（次于OpenAI）
+
+# API 配置
+api_key: ${ANTHROPIC_API_KEY}  # 从环境变量读取
+base_url: https://api.anthropic.com  # 默认API地址
+
+# 模型配置
+models:
+  claude-3-opus:
+    name: Claude 3 Opus
+    description: 最强Claude模型，超长上下文
+    enabled: true
+    context_length: 200000
+    max_tokens: 4096
+    temperature: 0.7
+    # 成本: $0.015/1K input, $0.075/1K output
+    cost_per_1k_input: 0.015
+    cost_per_1k_output: 0.075
+    quality_score: 9.6
+    supports_tools: true
+    supports_vision: true
+    supports_json: true
+    
+  claude-3-sonnet:
+    name: Claude 3 Sonnet
+    description: 平衡性能与成本
+    enabled: true
+    context_length: 200000
+    max_tokens: 4096
+    temperature: 0.7
+    # 成本: $0.003/1K input, $0.015/1K output
+    cost_per_1k_input: 0.003
+    cost_per_1k_output: 0.015
+    quality_score: 8.8
+    supports_tools: true
+    supports_vision: true
+    supports_json: true
+    
+  claude-3-haiku:
+    name: Claude 3 Haiku
+    description: 快速响应，低成本
+    enabled: true
+    context_length: 200000
+    max_tokens: 4096
+    temperature: 0.7
+    # 成本: $0.00025/1K input, $0.00125/1K output
+    cost_per_1k_input: 0.00025
+    cost_per_1k_output: 0.00125
+    quality_score: 7.5
+    supports_tools: true
+    supports_vision: true
+    supports_json: true
+
+# 路由规则
+routing:
+  # 任务类型映射
+  task_mapping:
+    long_context: claude-3-opus
+    document_analysis: claude-3-opus
+    complex_reasoning: claude-3-opus
+    code: claude-3-sonnet
+    vision: claude-3-sonnet
+    chat: claude-3-haiku
+    default: claude-3-sonnet
+  
+  # 降级顺序
+  fallback_chain:
+    - claude-3-opus
+    - claude-3-sonnet
+    - claude-3-haiku
+
+# 限制配置
+limits:
+  max_requests_per_minute: 50
+  max_tokens_per_minute: 80000
+  timeout_seconds: 60
+  retry_attempts: 2
+
+# 成本告警
+cost_alerts:
+  daily_budget: 8.0  # 日预算（美元）
+  warning_threshold: 80
+  critical_threshold: 95

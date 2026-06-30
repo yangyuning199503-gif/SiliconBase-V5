@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-05-18T18:48:49.707968",
+  "summary": {
+    "total": 13,
+    "passed": 9,
+    "failed": 4,
+    "p0_failed": 4
+  },
+  "results": [
+    {
+      "name": "P0: .env 固定 SECURITY_ENCRYPTION_KEY",
+      "passed": true,
+      "evidence": "找到 SILICONBASE_SECURITY__ENCRYPTION_KEY=50RJ-lfRzJcc3CWBaZoF...",
+      "severity": "P0",
+      "timestamp": "2026-05-18T18:48:44.438297"
+    },
+    {
+      "name": "P1: Ollama num_predict >= 1024",
+      "passed": true,
+      "evidence": "OllamaProvider num_predict 默认值 = 1024 >= 1024",
+      "severity": "P1",
+      "timestamp": "2026-05-18T18:48:44.438297"
+    },
+    {
+      "name": "P1: REACT 场景 max_tokens >= 1024",
+      "passed": true,
+      "evidence": "ai_config.py REACT 场景 max_tokens = 2048",
+      "severity": "P1",
+      "timestamp": "2026-05-18T18:48:44.439800"
+    },
+    {
+      "name": "P1: add_memory 调用均正确 await",
+      "passed": true,
+      "evidence": "core/ 目录下所有 add_memory 调用均带有 await",
+      "severity": "P1",
+      "timestamp": "2026-05-18T18:48:45.623278"
+    },
+    {
+      "name": "P2: 前端策略面板组件存在",
+      "passed": true,
+      "evidence": "StrategyPanel、DecisionHistory、ErrorNotificationBar 均已创建",
+      "severity": "normal",
+      "timestamp": "2026-05-18T18:48:45.623278"
+    },
+    {
+      "name": "P2: tradingStore 包含新字段",
+      "passed": true,
+      "evidence": "tradingStore.ts 已包含所有新类型和状态字段",
+      "severity": "normal",
+      "timestamp": "2026-05-18T18:48:45.623278"
+    },
+    {
+      "name": "V1: 思维线程主动视觉拉取",
+      "passed": false,
+      "evidence": "日志中未找到 [Consciousness] 主动视觉拉取成功",
+      "severity": "P0",
+      "timestamp": "2026-05-18T18:48:45.624278"
+    },
+    {
+      "name": "V1b: 弱连接环境变化检测",
+      "passed": false,
+      "evidence": "日志中未找到 检测到弱连接环境变化",
+      "severity": "P0",
+      "timestamp": "2026-05-18T18:48:45.625782"
+    },
+    {
+      "name": "V2: 视觉输出结构化格式",
+      "passed": true,
+      "evidence": "dialogue_manager.py 包含 '【桌面全局】' 和 'scene_' 字样",
+      "severity": "normal",
+      "timestamp": "2026-05-18T18:48:45.630783"
+    },
+    {
+      "name": "V3: 反思系统积累经验",
+      "passed": true,
+      "evidence": "代码中存在 periodic_experience_extraction 方法，但尚未在日志中产生记录（可能刚启动）",
+      "severity": "normal",
+      "timestamp": "2026-05-18T18:48:45.632783"
+    },
+    {
+      "name": "V5: AI 决策 JSON 完整性",
+      "passed": false,
+      "evidence": "日志中未找到 'AI原始响应' 记录",
+      "severity": "P0",
+      "timestamp": "2026-05-18T18:48:45.633783"
+    },
+    {
+      "name": "V6: 未知元素发现触发",
+      "passed": true,
+      "evidence": "vision_unknown_discovery.py 模块已创建，但尚未在日志中触发（可能当前屏幕无未知元素）",
+      "severity": "normal",
+      "timestamp": "2026-05-18T18:48:45.635287"
+    },
+    {
+      "name": "V4: WebSocket MCP/指挥官事件",
+      "passed": false,
+      "evidence": "WebSocket 连接失败: [WinError 1225] 远程计算机拒绝网络连接。",
+      "severity": "P0",
+      "timestamp": "2026-05-18T18:48:49.706968"
+    }
+  ]
+}

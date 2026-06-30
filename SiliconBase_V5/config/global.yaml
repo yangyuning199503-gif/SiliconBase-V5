@@ -1,0 +1,120 @@
+ai:
+  default_model: qwen3:8b
+  ollama:
+    base_url: http://localhost:11434
+    model: qwen3:8b
+    timeout: 120
+  providers:
+    ollama:
+      timeout: 9999
+  vision:
+    backends:
+      ollama:
+        base_url: http://localhost:11434
+        model: qwen3-vl:2b
+    default_backend: ollama
+    enabled: true
+auth:
+  # [CFG-001] 默认用户不再硬编码。若配置中未提供 default_users，
+  # 系统启动时会为 admin 生成随机初始密码并保存到 data/.initial_password.txt，
+  # 同时设置 require_password_change=True。
+  enabled: true
+  jwt:
+    access_token_expire_minutes: 1440
+    algorithm: HS256
+    secret_key: dev-secret-key
+database:
+  postgresql:
+    database: siliconbase
+    host: localhost
+    password: siliconbase123456789
+    pool_size: 5
+    port: 5432
+    user: postgres
+  type: postgresql
+empty_string: null
+features:
+  advanced_models:
+    bigvgan_v2:
+      enabled: false
+    maskgct:
+      enabled: false
+    w2v_bert:
+      enabled: false
+  agent_loop:
+    enabled: true
+  consciousness:
+    enabled: true
+    self_drive: true
+  evolution:
+    enabled: true
+  memory_system:
+    enabled: true
+  onnx_training_mode:
+    enabled: false
+  social_reasoning:
+    enabled: false
+  tool_system:
+    enabled: true
+  weak_connection:
+    enabled: true
+  world_model:
+    enabled: true
+new:
+  path:
+    for:
+      testing: value
+perception:
+  learning_enabled: false
+  vision_enabled: true
+postgresql:
+  password: siliconbase123
+server:
+  api_port: 8600
+  host: 127.0.0.1
+  status_server_port: 8701
+  websocket_port: 8601
+status_server:
+  cors:
+    allow_credentials: true
+    allow_origins:
+    - http://localhost:3000
+    - http://localhost:5173
+    - http://localhost:5174
+    - http://127.0.0.1:5173
+    - http://127.0.0.1:5174
+  host: 127.0.0.1
+  port: 8701
+  require_auth: false
+  token: null
+system:
+  debug: true
+  log_level: INFO
+  mode: local
+test_key_0: value_0
+test_key_1: value_1
+test_key_2: value_2
+test_key_3: value_3
+test_key_4: value_4
+test_key_5: value_5
+test_key_6: value_6
+test_key_7: value_7
+test_key_8: value_8
+test_key_9: value_9
+test_sensitive:
+  api_key: sk-test-api-key-12345
+  credentials:
+    api_key: sk-secret
+    password: mypassword123
+    token: bearer-token-xyz
+voice:
+  enabled: true
+  model_path: assets/models/vosk-model-cn-0.22
+  piper:
+    config_path: assets/models/piper/zh_CN-huayan-medium.onnx.json
+    model_path: assets/models/piper/zh_CN-huayan-medium.onnx
+  tts_engine: piper
+  wake_words:
+  - 元旦
+  - 你好元旦
+  - 小助手

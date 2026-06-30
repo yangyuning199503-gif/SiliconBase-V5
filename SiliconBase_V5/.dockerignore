@@ -1,0 +1,87 @@
+# Python虚拟环境
+.venv
+venv/
+env/
+ENV/
+
+# Python缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 测试和缓存
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# 日志和临时文件
+logs/*.log
+*.log
+*.tmp
+*.temp
+
+# 数据文件（保留目录结构但忽略内容）
+data/*
+!data/.gitkeep
+models/*
+!models/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# 检查点和备份
+checkpoints/
+*.bak
+*.backup
+
+# 敏感信息
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+
+# Docker相关（避免递归）
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# 文档（可选，根据需要保留）
+docs/
+*.md
+!README.md
+
+# 测试文件
+tests/
+test_*.py
+*_test.py
+
+# 其他
+.archive/
+archive_backup_*/

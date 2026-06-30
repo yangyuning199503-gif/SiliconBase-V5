@@ -1,0 +1,31 @@
+# SiliconBase V5 完整依赖配置
+# 安装: pip install -r requirements-full.txt
+#
+# 这是完整功能安装配置，包含所有扩展功能
+# 如需最小安装，请使用 requirements-core.txt
+
+# 核心依赖
+-r requirements-core.txt
+
+# 视觉扩展
+-r requirements-vision.txt
+
+# OCR扩展
+-r requirements-ocr.txt
+
+# 机器学习扩展
+-r requirements-ml.txt
+
+# ========== 语音扩展 ==========
+-r requirements-voice.txt
+
+# ========== 云API ==========
+openai>=1.0.0
+
+# ========== 定时任务 ==========
+apscheduler>=3.10.0
+
+# ========== 开发依赖（可选） ==========
+# pytest>=7.0.0
+# pytest-asyncio>=0.21.0
+# black>=23.0.0

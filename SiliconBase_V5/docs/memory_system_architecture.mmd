@@ -1,0 +1,314 @@
+```mermaid
+%% 前后端记忆系统协同架构图
+
+graph TB
+    subgraph Frontend["前端 (React + TypeScript)"]
+        UI1[MemoryPanel<br/>记忆面板]
+        UI2[ChatArea<br/>对话区域]
+        UI3[MemoryAwareness<br/>记忆感知提示]
+        Store[MemoryStore<br/>Zustand状态管理]
+        Provider[MemoryProvider<br/>WebSocket/轮询]
+        API[memoryAPI.ts<br/>API封装]
+    end
+
+    subgraph Backend["后端 (FastAPI + Python)"]
+        Router[MemoryRouter<br/>API路由]
+        WS[WebSocketHandler<br/>实时推送]
+        Trigger[MemoryTrigger<br/>自动触发器]
+        Manager[MemoryManager<br/>记忆管理]
+        Events[EventBus<br/>事件总线]
+    end
+
+    subgraph Storage["存储层"]
+        PG[(PostgreSQL<br/>主存储)]
+        Vector[(ChromaDB<br/>向量存储)]
+        Redis[(Redis<br/>缓存/消息)]
+    end
+
+    %% 前端内部连接
+    UI1 --> Store
+    UI2 --> Store
+    UI3 --> Store
+    Store --> Provider
+    Provider --> API
+    
+    %% 前端到后端
+    API -->|HTTP| Router
+    Provider -->|WebSocket| WS
+    
+    %% 后端内部连接
+    Router --> Manager
+    WS --> Events
+    Trigger --> Manager
+    Manager --> Events
+    
+    %% 后端到存储
+    Manager --> PG
+    Manager --> Vector
+    Events --> Redis
+    
+    %% 存储到后端
+    PG -->|变更通知| Events
+    
+    %% 后端到前端
+    Events -->|推送| WS
+    Router -->|响应| API
+```
+
+```mermaid
+%% 记忆数据流图
+
+sequenceDiagram
+    participant User as 用户
+    participant FE as 前端
+    participant BE as 后端
+    participant DB as PostgreSQL
+    participant WS as WebSocket
+
+    %% 创建记忆
+    User->>FE: 输入消息
+    FE->>BE: POST /api/chat
+    BE->>BE: MemoryTrigger.on_user_input()
+    BE->>DB: INSERT memory (L2)
+    BE->>WS: 发布变更事件
+    WS->>FE: 推送 memory_created
+    FE->>FE: MemoryStore.addMemory()
+    FE->>User: UI更新显示
+
+    %% AI回复
+    BE->>BE: AI生成回复
+    BE->>BE: MemoryTrigger.on_ai_response()
+    BE->>DB: INSERT memory (L2)
+    BE->>WS: 发布变更事件
+    WS->>FE: 推送 memory_created
+    FE->>FE: 更新对话 + 记忆
+    FE->>User: 显示回复和记忆引用
+
+    %% 初始加载
+    User->>FE: 打开应用
+    FE->>BE: GET /api/memories
+    BE->>DB: SELECT memories
+    DB->>BE: 返回数据
+    BE->>FE: 返回记忆列表
+    FE->>FE: MemoryStore.batchUpdate()
+    FE->>User: 渲染记忆面板
+
+    %% 增量同步
+    Note over FE,BE: 30秒后
+    FE->>BE: GET /api/memories/delta-sync
+    BE->>DB: 查询变更
+    DB->>BE: 返回变更
+    BE->>FE: 返回 delta (created/updated/deleted)
+    FE->>FE: 合并变更
+```
+
+```mermaid
+%% 五层记忆架构
+
+graph LR
+    subgraph Layers["五层记忆架构"]
+        direction TB
+        
+        L1[L1 Working<br/>工作记忆
+           即时丢弃
+           当前上下文]
+        
+        L2[L2 Short<br/>短期记忆
+           24小时过期
+           会话历史]
+        
+        L3[L3 Medium<br/>中期记忆
+           7天过期
+           经验总结]
+        
+        L4[L4 Evolve<br/>长期记忆
+           永久保留
+           进化知识]
+        
+        L5[L5 Execution<br/>执行记忆
+           永久保留
+           工具轨迹]
+    end
+
+    subgraph Flow["数据流向"]
+        Input[用户输入/AI回复]
+        Compress[记忆压缩]
+        Evolve[记忆进化]
+    end
+
+    Input --> L1
+    L1 -->|触发条件| L2
+    L2 -->|自动压缩| L3
+    L3 -->|价值评估| L4
+    Input -.->|工具调用| L5
+    
+    L2 -.-> Compress
+    L3 -.-> Evolve
+```
+
+```mermaid
+%% 前后端数据结构对齐
+
+classDiagram
+    class Memory {
+        +string id
+        +string layer
+        +string mem_type
+        +MemoryContent content
+        +string scene
+        +int rating
+        +string source
+        +string creator
+        +ValueAssessment value_assessment
+        +string created_at
+        +string updated_at
+        +string expire_at
+        +MemoryContext context
+    }
+
+    class MemoryContent {
+        +string type
+        +string text
+        +string user_input
+        +string ai_response
+        +string tool_name
+        +object metadata
+    }
+
+    class ValueAssessment {
+        +int emotional_temperature
+        +int ethical_safety
+        +int self_growth
+        +int execution_effectiveness
+        +int sustainability
+        +int inspiration_innovation
+        +float overall
+        +string grade
+    }
+
+    class MemoryContext {
+        +string session_id
+        +string conversation_id
+        +string[] related_memory_ids
+        +string[] tags
+    }
+
+    Memory --> MemoryContent
+    Memory --> ValueAssessment
+    Memory --> MemoryContext
+```
+
+```mermaid
+%% API端点架构
+
+graph TB
+    subgraph API["记忆系统 API"]
+        CRUD[CRUD API
+             GET/POST/PUT/DELETE
+             /api/memories]
+        
+        Search[搜索 API
+               GET/POST
+               /api/memories/search
+               /api/memories/smart-search]
+        
+        Sync[同步 API
+             GET
+             /api/memories/delta-sync
+             /api/memories/by-conversation/{id}]
+        
+        Stream[实时 API
+               WebSocket/SSE
+               /ws/memories]
+        
+        User[用户 API
+             GET/POST
+             /api/memories/user-stats
+             /api/memories/{id}/feedback]
+    end
+
+    subgraph Frontend["前端使用"]
+        Init[初始加载]
+        Realtime[实时更新]
+        SearchUI[搜索功能]
+        Manage[管理操作]
+    end
+
+    Init --> CRUD
+    Init --> Sync
+    Realtime --> Stream
+    SearchUI --> Search
+    Manage --> User
+    Manage --> CRUD
+```
+
+```mermaid
+%% 实施路线图甘特图
+
+gantt
+    title 记忆系统协同实施路线图
+    dateFormat  YYYY-MM-DD
+    section 第一阶段
+    数据模型统一      :done, b1, 2026-03-13, 3d
+    API改造          :done, b2, after b1, 3d
+    对话存储修复      :done, b3, after b2, 4d
+    前端Store        :active, f1, 2026-03-13, 4d
+    前端组件          :f2, after f1, 5d
+    第一阶段验收      :milestone, m1, after b3, 0d
+    
+    section 第二阶段
+    WebSocket服务    :b4, after m1, 4d
+    事件发布机制      :b5, after b4, 3d
+    前端WebSocket    :f3, after m1, 5d
+    增量同步          :f4, after f3, 3d
+    第二阶段验收      :milestone, m2, after f4, 0d
+    
+    section 第三阶段
+    智能搜索API      :b6, after m2, 3d
+    记忆感知UI        :f5, after m2, 4d
+    搜索组件          :f6, after f5, 3d
+    第三阶段验收      :milestone, m3, after f6, 0d
+    
+    section 第四阶段
+    用户反馈API      :b7, after m3, 2d
+    统计API          :b8, after b7, 2d
+    管理UI           :f7, after m3, 4d
+    第四阶段验收      :milestone, m4, after f7, 0d
+```
+
+```mermaid
+%% 错误处理流程
+
+flowchart TD
+    Start[操作开始] --> Validate{数据验证}
+    
+    Validate -->|失败| ValError[返回 400
+    VALIDATION_FAILED]
+    ValError --> End1[结束]
+    
+    Validate -->|通过| Auth{权限检查}
+    
+    Auth -->|失败| AuthError[返回 403
+    ACCESS_DENIED]
+    AuthError --> End2[结束]
+    
+    Auth -->|通过| Storage[存储操作]
+    
+    Storage -->|成功| Notify[通知前端
+    via WebSocket]
+    Notify --> Success[返回 200
+    + sync_token]
+    Success --> End3[结束]
+    
+    Storage -->|失败| StoreError{错误类型}
+    
+    StoreError -->|冲突| Conflict[返回 409
+    SYNC_CONFLICT]
+    Conflict --> ClientResolve[客户端
+    选择解决策略]
+    ClientResolve --> Storage
+    
+    StoreError -->|其他| OtherError[返回 500
+    STORAGE_FAILED]
+    OtherError --> End4[结束]
+```

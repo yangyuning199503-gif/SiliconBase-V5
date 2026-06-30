@@ -1,0 +1,63 @@
+# Docker Compose 开发环境覆盖配置
+# 使用方式: docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+#
+# 此文件用于开发环境，覆盖生产环境的默认配置
+
+version: '3.8'
+
+services:
+  app:
+    # 开发模式: 启用热重载
+    command: ["python", "api/run.py", "--host", "0.0.0.0", "--port", "8600", "--reload"]
+    
+    # 开发环境卷映射（代码变更实时生效）
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+      - ./tools:/app/tools
+      - ./api:/app/api
+      - ./core:/app/core
+      - ./voice:/app/voice
+      - ./perception:/app/perception
+    
+    # 开发环境变量
+    environment:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=DEBUG
+      - DEBUG=true
+      - STORAGE_BACKEND=redis
+      - REDIS_URL=redis://redis:6379/0
+      - OLLAMA_URL=http://ollama:11434
+    
+    # 开发环境端口映射（与默认相同，可根据需要修改）
+    ports:
+      - "8600:8600"
+      - "8600:8600"
+      - "8600:8600"
+    
+    # 开发环境资源限制（更宽松）
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+
+  redis:
+    # 开发环境Redis配置
+    ports:
+      - "6379:6379"
+    # 开发环境可以禁用持久化以提高性能
+    # command: redis-server --appendonly no --save ""
+
+  ollama:
+    # 开发环境Ollama配置
+    ports:
+      - "11434:11434"
+    # 开发环境可以限制资源使用
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G

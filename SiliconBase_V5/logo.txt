@@ -1,0 +1,7 @@
+   SSSS  i   l      i      c      ooooo   nn    n  BBBBB    aaaa   sssss  eeeee 
+  S      i   l      i     c c     o   o   n n   n  B    B  a    a  s      e     
+   SSS   i   l      i    c   c    o   o   n  n  n  BBBBB   aaaaaa  sssss  eeee  
+      S  i   l      i   c     c   o   o   n   n n  B    B  a    a      s  e     
+  SSSS   i   lllll  i    ccc cc   ooooo   n    nn  BBBBB   a    a  sssss  eeeee 
+                                                                                
+                      V5 - 一键部署启动脚本

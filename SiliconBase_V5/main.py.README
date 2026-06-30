@@ -1,0 +1,53 @@
+# main.py 已弃用说明
+
+## 状态
+⚠️ **main.py 已弃用，请勿使用**
+
+## 原因
+main.py 是 SiliconBase V5 早期的单进程启动器，存在以下问题：
+1. **架构过时**: 试图在一个进程中启动所有服务（语音、意识线程、API等）
+2. **兼容性问题**: 与当前模块化架构不兼容，导致大量运行时错误
+3. **维护困难**: 代码已停止更新，无法支持新的功能模块
+4. **状态混乱**: 与独立的后端API服务冲突
+
+## 正确的启动方式
+
+### 方案1: 一键启动（推荐）
+在项目根目录运行：
+```
+启动V5-标准版.bat
+```
+
+### 方案2: 单独启动
+1. **启动后端API**（端口8600）:
+   ```
+   启动后端.bat
+   ```
+   或手动:
+   ```
+   cd SiliconBase_V5
+   .venv\Scripts\python api\run.py
+   ```
+
+2. **启动前端**（端口5173）:
+   ```
+   启动前端.bat
+   ```
+   或手动:
+   ```
+   cd SiliconBase_V5\frontend
+   npm run dev
+   ```
+
+### 方案3: 使用 PyCharm
+在 PyCharm 中配置运行:
+- 后端: `SiliconBase_V5/api/run.py`
+- 前端: `npm run dev` (Working directory: `SiliconBase_V5/frontend`)
+
+## 访问地址
+- 前端界面: http://localhost:5173
+- API文档: http://localhost:8600/docs
+- 后端API: http://localhost:8600
+
+## 更新日期
+2026-03-03

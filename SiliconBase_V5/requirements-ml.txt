@@ -1,0 +1,24 @@
+# SiliconBase V5 机器学习扩展依赖
+# 安装: pip install -r requirements-ml.txt
+#
+# 提供向量记忆、深度学习等AI功能
+# 前置依赖: requirements-core.txt
+# 
+# 注意: 这些依赖体积较大（总计约2-3GB）
+
+# ========== 深度学习框架 ==========
+# 如需GPU支持，建议从官网安装:
+# pip install torch --index-url https://download.pytorch.org/whl/cu121
+torch>=2.0.0
+
+# ========== 模型库 ==========
+transformers>=4.35.0
+sentence-transformers>=2.2.0
+
+# ========== 向量数据库 ==========
+chromadb>=0.4.0
+
+# ========== 自然语言处理 ==========
+# 如需要额外的NLP功能
+# spacy>=3.7.0
+# nltk>=3.8.0

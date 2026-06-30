@@ -1,0 +1,140 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "siliconbase-v5"
+version = "5.0.0"
+description = "SiliconBase V5 - 数字生命操作系统"
+requires-python = ">=3.10"
+
+[tool.setuptools]
+# 本项目不是可安装的 Python 包，仅使用 pyproject.toml 作为工具配置
+py-modules = []
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+exclude = [
+    ".venv",
+    ".venv.broken*",
+    "__pycache__",
+    "archive",
+    "frontend",
+    "node_modules",
+    "tmp",
+    "tmp_test",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # Pyflakes
+    "I",   # isort
+    "W",   # pycodestyle warnings
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+]
+ignore = ["E501"]  # line too long handled by formatter
+
+[tool.ruff.lint.per-file-ignores]
+# FastAPI 依赖注入/参数校验使用函数调用作为默认参数是框架惯用法
+"api/**" = ["B008"]
+"core/btc_integration/api_bridge.py" = ["B008"]
+# 大文件/模块中故意使用延迟/局部导入以避免循环依赖或实现可选依赖降级
+"core/agent/agent_loop.py" = ["E402"]
+"api/cloud_api.py" = ["E402"]
+"api/session_api.py" = ["E402"]
+"core/agent/checkpoint_manager.py" = ["E402"]
+"core/agent/loop_initialization.py" = ["E402"]
+"core/agent/loop_utils.py" = ["E402"]
+"core/ai/ai_adapter.py" = ["E402"]
+"core/ai/ai_client.py" = ["E402"]
+"core/btc_integration/engine/tools/okx_demo_shadow_exec.py" = ["E402"]
+"core/btc_integration/engine/tools/stage91_branch_event_alpha_matrix.py" = ["E402"]
+"core/btc_integration/market_data.py" = ["E402"]
+"core/btc_integration/process_manager_v2.py" = ["E402"]
+"core/btc_integration/tools/new_strategy_tools.py" = ["E402"]
+"core/btc_integration/trading_subagent.py" = ["E402"]
+"core/btc_integration/workflow_definitions.py" = ["E402"]
+"core/dialog/dialogue_manager.py" = ["E402"]
+"core/dialog/social_reasoning.py" = ["E402"]
+"core/experience_quantification/__init__.py" = ["E402"]
+"core/global_state.py" = ["E402"]
+"core/memory/memory.py" = ["E402"]
+"core/memory/memory_batch_operations.py" = ["E402"]
+"core/memory/memory_continuity_guard.py" = ["E402"]
+"core/memory/memory_query_cache.py" = ["E402"]
+"core/memory/recall_memory.py" = ["E402"]
+"core/memory/working_memory.py" = ["E402"]
+"core/prompt/context_builder.py" = ["E402"]
+"core/prompt/prompt_builder.py" = ["E402"]
+"core/prompt/smart_context_manager.py" = ["E402"]
+"core/providers/__init__.py" = ["E402"]
+"core/strategy/policy.py" = ["E402"]
+"core/subagent/manager.py" = ["E402"]
+"core/task/long_running_manager.py" = ["E402"]
+"core/tool/tool_manager.py" = ["E402"]
+"core/vision/__init__.py" = ["E402"]
+"core/vision/safe_screenshot_v2.py" = ["E402"]
+"siliconbase_client.py" = ["E402"]
+# 测试/脚本中常见 sys.path 调整，允许 import 不在最顶部；测试中大量遗留 API 调用未定义，单独处理
+"tests/**" = ["E402", "F821"]
+"test_core/**" = ["E402", "F821"]
+"scripts/**" = ["E402"]
+"voice/test_*.py" = ["E402", "F821"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+stubPath = "typings"
+include = ["core", "api", "tools"]
+exclude = [
+    ".venv",
+    ".venv.broken*",
+    "__pycache__",
+    "archive",
+    "tests/legacy",
+    "frontend",
+    "node_modules",
+    "tmp",
+    "tmp_test",
+]
+pythonVersion = "3.10"
+strict = [
+    "core/protocol.py",
+    "core/consciousness/experience_bus.py",
+    "core/consciousness/feedback_collector.py",
+    "core/strategy/rule_manager.py",
+    "core/strategy/goal_system.py",
+]
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportUndefinedVariable = true
+reportUnusedImport = true
+reportGeneralTypeIssues = true
+reportOptionalMemberAccess = true
+reportOptionalCall = true
+reportOptionalIterable = true
+reportOptionalSubscript = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short"

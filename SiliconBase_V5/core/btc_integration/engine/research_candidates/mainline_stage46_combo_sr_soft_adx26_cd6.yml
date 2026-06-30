@@ -1,0 +1,9 @@
+candidate:
+  name: combo_sr_soft_adx26_cd6
+  scope: mainline
+  status: shortlisted
+  objective: 提高主线交易频次，先激进做结构扩容，再保守微调
+  params:
+    structure: combo_sr_soft
+    adx_floor: 26
+    cooldown_bars: 6

@@ -1,0 +1,11 @@
+{
+  "system": {
+    "name": "SiliconBase V5",
+    "version": "5.0.0"
+  },
+  "auth": {
+    "default_username": "admin",
+    "default_password": "",
+    "require_password_change": true
+  }
+}

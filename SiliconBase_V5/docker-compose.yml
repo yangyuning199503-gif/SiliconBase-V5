@@ -1,0 +1,158 @@
+# SiliconBase V5 - Docker Compose 配置
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 服务组成：
+#   ✓ PostgreSQL (数据库)
+#   ✓ Redis (缓存/消息队列)
+#   ✓ ChromaDB (向量数据库)
+#   ✓ SiliconBase API (主应用)
+#   ✓ SiliconBase Frontend (前端)
+#
+# 使用方法：
+#   docker-compose up -d
+#
+
+version: '3.8'
+
+services:
+  # PostgreSQL 数据库
+  postgres:
+    image: postgres:15-alpine
+    container_name: siliconbase_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: siliconbase
+      POSTGRES_USER: siliconbase
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-siliconbase_password_123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U siliconbase -d siliconbase"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - siliconbase_network
+
+  # Redis 缓存 - 开箱即用配置
+  redis:
+    image: redis:7-alpine
+    container_name: siliconbase_redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro  # 挂载优化配置
+    ports:
+      - "6379:6379"
+    command: redis-server /usr/local/etc/redis/redis.conf  # 使用自定义配置
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - siliconbase_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - siliconbase_network
+
+  # ChromaDB 向量数据库
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: siliconbase_chromadb
+    restart: unless-stopped
+    volumes:
+      - chromadb_data:/chroma/chroma
+    ports:
+      - "8000:8000"
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+      - ANONYMIZED_TELEMETRY=FALSE
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - siliconbase_network
+
+  # SiliconBase API 后端服务
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: siliconbase_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      chromadb:
+        condition: service_healthy
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=siliconbase
+      - POSTGRES_USER=siliconbase
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-siliconbase_password_123}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - CHROMADB_HOST=chromadb
+      - CHROMADB_PORT=8000
+      - API_PORT=8600
+      - WEBSOCKET_PORT=8601
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8600:8600"
+      - "8601:8601"
+    volumes:
+      - ./data:/app/data
+      - ./checkpoints:/app/checkpoints
+      - ./logs:/app/logs
+      - ./.env:/app/.env
+    networks:
+      - siliconbase_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8600/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # SiliconBase 前端服务
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: siliconbase_frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      - VITE_API_BASE_URL=http://api:8600
+      - VITE_WS_URL=ws://api:8601
+    ports:
+      - "5173:80"
+    networks:
+      - siliconbase_network
+
+# 数据卷
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  chromadb_data:
+    driver: local
+
+# 网络
+networks:
+  siliconbase_network:
+    driver: bridge

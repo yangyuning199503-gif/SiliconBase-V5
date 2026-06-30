@@ -1,0 +1,9 @@
+# OKX Demo API 凭证模板（不要把真实值发给我）
+# 文件名建议：项目根目录 .okx_demo_env
+# 也支持放到 ~/.okx_demo_env
+OKX_API_KEY=你的_demo_key
+OKX_API_SECRET=你的_demo_secret
+OKX_API_PASSPHRASE='你创建 Demo API key 时设置的 passphrase'
+
+# 预留：后续用于 CoinGlass 风险/消息层
+COINGLASS_API_KEY=你的_coinglass_key

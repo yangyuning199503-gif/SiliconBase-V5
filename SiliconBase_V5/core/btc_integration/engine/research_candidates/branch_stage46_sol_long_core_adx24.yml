@@ -1,0 +1,9 @@
+candidate:
+  name: sol_long_core_adx24
+  scope: branch
+  status: shortlisted
+  objective: 先冲月化 20%+，达标后再接模拟盘
+  params:
+    symbol: sol
+    structure: long_core
+    adx_floor: 24

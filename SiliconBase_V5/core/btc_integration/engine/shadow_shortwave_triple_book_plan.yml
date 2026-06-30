@@ -1,0 +1,150 @@
+shadow:
+  exchange: okx
+  demo: true
+  submit_orders: false
+  auth:
+    api_key_env: OKX_API_KEY
+    api_secret_env: OKX_API_SECRET
+    api_passphrase_env: OKX_API_PASSPHRASE
+  contracts:
+    btc: BTC-USDT-SWAP
+    bnb: BNB-USDT-SWAP
+    eth: ETH-USDT-SWAP
+    sol: SOL-USDT-SWAP
+    xrp: XRP-USDT-SWAP
+    ada: ADA-USDT-SWAP
+    doge: DOGE-USDT-SWAP
+    dot: DOT-USDT-SWAP
+  account:
+    td_mode: cross
+    leverage: 6
+  endpoints:
+    rest_base: https://www.okx.com
+    public_ws_base: wss://wspap.okx.com:8443/ws/v5/public
+    private_ws_base: wss://wspap.okx.com:8443/ws/v5/private
+    business_ws_base: wss://wspap.okx.com:8443/ws/v5/business
+  order_preview:
+    enabled: true
+    notional_usdt: 20.0
+  execution_step:
+    enabled: true
+    bar: 15m
+    refresh_recent_klines: true
+    max_staleness_minutes: 45
+    stale_repair_enabled: true
+    stale_repair_tail_bars: 300
+    bootstrap_bars_when_csv_missing: 5000
+    default_notional_usdt: 20.0
+    notional_usdt_by_symbol:
+      btc: 20.0
+      bnb: 20.0
+      eth: 20.0
+      sol: 20.0
+    sizing:
+      enabled: true
+      equity_source: availEq
+      equity_utilization: 0.85
+      reserve_usdt: 0.0
+      capital_slices: 8
+      min_notional_usdt: 0.0
+      max_notional_usdt: 6000.0
+      leverage_mode: signal_profile
+      min_leverage: 4
+      max_leverage: 10
+      max_active_margin_pct: 0.45
+      max_symbol_margin_pct: 0.22
+      leverage_by_symbol:
+        btc: 7
+        bnb: 6
+        eth: 6
+        sol: 6
+      leverage_by_signal:
+        btc_short: 8
+        btc_long: 7
+        bnb_long: 6
+        bnb_short: 5
+        eth_short: 6
+        eth_long: 5
+        sol_short: 6
+        sol_long: 5
+    refuse_if_pending_orders: true
+    submit_retry_attempts: 2
+    submit_retry_sleep_seconds: 0.8
+    submit_poll_seconds: 6.0
+    confirm_position_timeout_seconds: 8.0
+    confirm_position_poll_seconds: 0.5
+    clord_prefix: okxb
+  private_channels:
+  - channel: orders
+    instType: SWAP
+  runner:
+    enabled: true
+    bar: 15m
+    grace_seconds: 20
+    loop_sleep_seconds: 2.0
+    bundle_every_cycles: 4
+    checkin_json: reports/okx_demo_checkin_latest.json
+    checkin_txt: reports/okx_demo_checkin_latest.txt
+    checkin_jsonl: reports/okx_demo_checkin_history.jsonl
+    status_json: reports/okx_demo_runner_status_latest.json
+  autopilot:
+    enabled: true
+    bar: 15m
+    grace_seconds: 20
+    loop_sleep_seconds: 2.0
+    runtime_dir: .runtime
+    pid_file: .runtime/okx_demo_autopilot.pid
+    state_json: .runtime/okx_demo_autopilot_state.json
+    public_report_txt: ~/Downloads/okx_demo_report_latest.txt
+    display_timezone: Asia/Shanghai
+    display_tz_label: UTC+8
+    coinglass:
+      enabled: true
+      base_url: https://open-api-v4.coinglass.com
+      news_path: /api/article/list
+      economic_path: /api/calendar/economic-data
+      report_headlines: 5
+      enforcement: shadow_only
+      require_news_timestamp: true
+      news_pause_lookback_minutes: 120
+      macro_pause_lead_minutes: 180
+      macro_pause_post_minutes: 30
+      news_pause_keywords:
+      - war
+      - attack
+      - invasion
+      - missile
+      - tariff
+      - sanction
+      - hack
+      - exploit
+      - bankruptcy
+      - liquidation
+      - emergency
+      - rate hike
+      - hawkish
+      - fomc
+      - fed
+      - cpi
+      - ppi
+      - nfp
+      - nonfarm
+      - powell
+      - dot plot
+      - rate decision
+      macro_keywords:
+      - fomc
+      - federal reserve
+      - powell
+      - rate decision
+      - interest rate
+      - cpi
+      - ppi
+      - nfp
+      - nonfarm
+      - ecb
+      - boj
+      - jerome powell
+      - dot plot
+      fomc_pause_lead_minutes: 360
+      fomc_pause_post_minutes: 180

@@ -1,0 +1,4 @@
+# 分支候选 shadow 模板
+# 分支 Demo 启动脚本会强制把 public_report_txt 改到 reports/shortwave_demo_report_latest.txt
+# 因此不会污染 Downloads 三文件口径。
+# 当前建议由我根据最新分支回测生成正式版本。

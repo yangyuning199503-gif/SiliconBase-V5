@@ -1,0 +1,55 @@
+# MCP (Model Context Protocol) 服务器配置
+# 
+# 使用方法：
+#   from core.tool_manager_v2 import tool_manager
+#   import yaml
+#   
+#   with open("config/mcp_servers.yaml") as f:
+#       config = yaml.safe_load(f)
+#   
+#   results = await tool_manager.enable_mcp(config["mcp_servers"])
+
+mcp_servers:
+  # 文件系统服务器 - 提供文件操作能力
+  # 使用 npx 启动本地已安装的包，避免 Windows 下直接调用 node + shell 脚本的兼容问题
+  - name: filesystem
+    transport: stdio
+    command: npx
+    args: 
+      - "-y"
+      - "@modelcontextprotocol/server-filesystem"
+      - "E:\\SiliconBase_V5"
+    enabled: true
+    timeout: 20
+
+  # Playwright 浏览器自动化服务器
+  - name: playwright
+    transport: stdio
+    command: npx
+    args:
+      - "-y"
+      - "@playwright/mcp"
+    enabled: true
+    timeout: 30
+
+  # GitHub API 服务器（需要配置 token）
+  - name: github
+    transport: stdio
+    command: npx
+    args:
+      - "-y"
+      - "@modelcontextprotocol/server-github"
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: "${GITHUB_TOKEN:-}"  # 从环境变量读取，未设置则为空
+    enabled: true
+    timeout: 20
+
+  # 量化交易服务器 - 暴露 shadow_exec 分析/执行能力
+  - name: trading
+    transport: stdio
+    command: "E:\\SiliconBase_V5\\SiliconBase_V5\\.venv\\Scripts\\python.exe"
+    args:
+      - "core/mcp/servers/trading_server.py"
+    cwd: "E:\\SiliconBase_V5\\SiliconBase_V5"
+    enabled: true
+    timeout: 20

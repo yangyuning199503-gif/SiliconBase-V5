@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # Redis服务
+  redis:
+    image: redis:7-alpine
+    container_name: siliconbase_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: redis-server /usr/local/etc/redis/redis.conf
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - siliconbase_network
+
+  # 应用实例1
+  app1:
+    build: .
+    container_name: siliconbase_app1
+    restart: unless-stopped
+    environment:
+      - STORAGE_BACKEND=redis
+      - REDIS_URL=redis://redis:6379/0
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - INSTANCE_ID=app1
+      - LOG_LEVEL=INFO
+    ports:
+      - "8601:8600"
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - app_data:/app/data
+    networks:
+      - siliconbase_network
+
+  # 应用实例2（用于测试多实例共享状态）
+  app2:
+    build: .
+    container_name: siliconbase_app2
+    restart: unless-stopped
+    environment:
+      - STORAGE_BACKEND=redis
+      - REDIS_URL=redis://redis:6379/0
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - INSTANCE_ID=app2
+      - LOG_LEVEL=INFO
+    ports:
+      - "8602:8600"
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - app_data:/app/data
+    networks:
+      - siliconbase_network
+
+  # Redis监控（可选）
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: siliconbase_redisinsight
+    restart: unless-stopped
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis
+    networks:
+      - siliconbase_network
+
+volumes:
+  redis_data:
+    driver: local
+  app_data:
+    driver: local
+
+networks:
+  siliconbase_network:
+    driver: bridge

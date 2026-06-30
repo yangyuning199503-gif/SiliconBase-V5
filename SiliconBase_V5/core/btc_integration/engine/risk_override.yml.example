@@ -1,0 +1,5 @@
+risk_override:
+  enabled: false
+  mode: normal   # normal | pause_new_entries | force_flat
+  until_utc: ''  # 例如 2026-03-18T19:30:00Z；留空表示直到你手动关闭
+  note: ''       # 例如 FOMC / 战争突发 / 系统维护

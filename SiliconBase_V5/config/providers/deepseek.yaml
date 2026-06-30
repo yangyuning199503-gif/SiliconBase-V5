@@ -1,0 +1,69 @@
+# DeepSeek API 配置
+# 性价比极高的国产模型
+
+provider: deepseek
+name: DeepSeek
+enabled: true
+priority: 3  # 优先级（次于OpenAI/Anthropic）
+
+# API 配置
+api_key: ${DEEPSEEK_API_KEY}  # 从环境变量读取
+base_url: https://api.deepseek.com
+
+# 模型配置
+models:
+  deepseek-chat:
+    name: DeepSeek Chat
+    description: 通用对话模型，性价比极高
+    enabled: true
+    context_length: 64000
+    max_tokens: 8192
+    temperature: 0.7
+    # 成本: $0.00014/1K input, $0.00028/1K output (极便宜)
+    cost_per_1k_input: 0.00014
+    cost_per_1k_output: 0.00028
+    quality_score: 8.5
+    supports_tools: true
+    supports_vision: false
+    supports_json: true
+    
+  deepseek-reasoner:
+    name: DeepSeek Reasoner
+    description: 推理专用模型
+    enabled: true
+    context_length: 64000
+    max_tokens: 8192
+    temperature: 0.7
+    # 成本: $0.00055/1K input, $0.00219/1K output
+    cost_per_1k_input: 0.00055
+    cost_per_1k_output: 0.00219
+    quality_score: 9.0
+    supports_tools: true
+    supports_vision: false
+    supports_json: true
+
+# 路由规则
+routing:
+  task_mapping:
+    chat: deepseek-chat
+    code: deepseek-chat
+    analysis: deepseek-reasoner
+    reasoning: deepseek-reasoner
+    default: deepseek-chat
+  
+  fallback_chain:
+    - deepseek-reasoner
+    - deepseek-chat
+
+# 限制配置
+limits:
+  max_requests_per_minute: 100
+  max_tokens_per_minute: 200000
+  timeout_seconds: 60
+  retry_attempts: 3  # 更多重试次数（因为便宜）
+
+# 成本告警
+cost_alerts:
+  daily_budget: 5.0  # 日预算（美元）- 更低的预算因为便宜
+  warning_threshold: 80
+  critical_threshold: 95

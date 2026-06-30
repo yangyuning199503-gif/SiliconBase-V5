@@ -1,0 +1,14 @@
+# SiliconBase V5 依赖配置
+# 
+# 本文件现在引用 requirements-full.txt 以保持一致性
+# 如需最小安装，请使用: pip install -r requirements-core.txt
+# 
+# 可用配置:
+# - requirements-core.txt    : 最小安装 (~50MB)
+# - requirements-vision.txt  : +视觉处理 (~180MB)
+# - requirements-ocr.txt     : +OCR功能 (~2.5GB，含PyTorch)
+# - requirements-ml.txt      : +AI/ML功能 (~2.5GB，含PyTorch)
+# - requirements-full.txt    : 完整安装 (~5GB，所有功能)
+
+# 默认安装完整配置
+-r requirements-full.txt

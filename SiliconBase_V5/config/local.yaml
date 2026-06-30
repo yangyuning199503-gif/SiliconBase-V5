@@ -1,0 +1,116 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# SiliconBase V5 本地快速启动配置
+# 适用于单人使用，已配置PostgreSQL
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+system:
+  mode: "local"
+  debug: true
+  log_level: "INFO"
+
+# ━━━━━━━━━━━━━━━ AI配置 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ai:
+  default_model: "qwen3:8b"
+  
+  # 本地Ollama配置
+  ollama:
+    base_url: "${AI_BASE_URL:http://localhost:11434}"
+    model: "qwen3:8b"
+    timeout: 120
+  
+  # 视觉模型配置
+  vision:
+    enabled: true
+    default_backend: "ollama"
+    backends:
+      ollama:
+        model: "qwen3-vl:2b"
+        base_url: "${AI_BASE_URL:http://localhost:11434}"
+
+# ━━━━━━━━━━━━━━━ 数据库配置 ━━━━━━━━━━━━━━━━━━━━━━━━━━
+database:
+  type: "postgresql"
+  
+  postgresql:
+    host: "${DB_HOST:localhost}"
+    port: ${DB_PORT:5432}
+    database: "${DB_NAME:siliconbase}"
+    user: "${DB_USER:postgres}"
+    password: "${DB_PASSWORD:siliconbase123}"
+    pool_size: 5
+
+# ━━━━━━━━━━━━━━━ 认证配置 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+auth:
+  enabled: true
+  
+  jwt:
+    secret_key: "${JWT_SECRET_KEY:dev-secret-key}"
+    algorithm: "HS256"
+    access_token_expire_minutes: 1440  # 24小时
+  
+  # [CFG-001] 默认用户不再硬编码。若需保留本地自动登录，请通过环境变量
+  # DEFAULT_ADMIN_PASSWORD 注入强密码；否则系统会自动生成随机初始密码。
+
+# ━━━━━━━━━━━━━━━ 语音配置 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+voice:
+  enabled: true
+  wake_words: ["元旦", "你好元旦", "小助手"]
+  model_path: "assets/models/vosk-model-cn-0.22"
+  tts_engine: "piper"
+  piper:
+    model_path: "assets/models/piper/zh_CN-huayan-medium.onnx"
+    config_path: "assets/models/piper/zh_CN-huayan-medium.onnx.json"
+
+# ━━━━━━━━━━━━━━━ 功能开关 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+features:
+  # 核心功能
+  agent_loop: { enabled: true }
+  tool_system: { enabled: true }
+  memory_system: { enabled: true }
+  
+  # 高级功能（按需启用）
+  consciousness: { enabled: true }
+  evolution: { enabled: true }
+  world_model: { enabled: true }  # 需要PyTorch
+  weak_connection: { enabled: true }
+  social_reasoning: { enabled: false }  # 保持关闭 - 规则回退模式已足够好用
+  
+  # ONNX 视觉模型训练模式
+  # 开启后：遇到不认识(unknown)的UI元素时，自动保存完整截图+bbox标注
+  # 用于后续导出 YOLO 训练集，训练自定义 ONNX 检测模型
+  # 默认关闭，仅在需要收集训练数据时手动开启
+  onnx_training_mode: { enabled: false }
+  
+  # 高级模型（大文件，默认关闭）
+  advanced_models:
+    bigvgan_v2: { enabled: false }
+    w2v_bert: { enabled: false }
+    maskgct: { enabled: false }
+
+# ━━━━━━━━━━━━━━━ 服务器配置 ━━━━━━━━━━━━━━━━━━━━━━━━━
+server:
+  api_port: ${API_PORT:8600}      # 使用全新端口范围
+  websocket_port: ${WS_PORT:8601}
+  status_server_port: ${STATUS_PORT:8701}  # 状态服务器端口，与API端口区分
+  host: ${SERVER_HOST:127.0.0.1}
+
+# ━━━━━━━━━━━━━━━ 状态服务器配置 ━━━━━━━━━━━━━━━━━━━━━━━
+status_server:
+  host: "${STATUS_HOST:127.0.0.1}"
+  port: ${STATUS_PORT:8701}          # 使用8701端口，避免与主API服务(8600)冲突
+  require_auth: ${STATUS_REQUIRE_AUTH:false}
+  token: "${STATUS_TOKEN:}"
+  
+  cors:
+    allow_origins:
+      - "${CORS_ORIGIN_1:http://localhost:3000}"
+      - "${CORS_ORIGIN_2:http://localhost:5173}"
+      - "${CORS_ORIGIN_3:http://localhost:5174}"
+      - "${CORS_ORIGIN_4:http://127.0.0.1:5173}"
+      - "${CORS_ORIGIN_5:http://127.0.0.1:5174}"
+    allow_credentials: ${CORS_ALLOW_CREDENTIALS:true}
+
+# ━━━━━━━━━━━━━━━ 感知配置 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+perception:
+  vision_enabled: true
+  learning_enabled: false

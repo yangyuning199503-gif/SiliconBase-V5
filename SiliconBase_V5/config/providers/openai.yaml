@@ -1,0 +1,118 @@
+# OpenAI API 配置
+# 用于接入 GPT-4/GPT-4o 等最强模型
+
+provider: openai
+name: OpenAI
+enabled: true
+priority: 1  # 优先级（1最高）
+
+# API 配置
+api_key: ${OPENAI_API_KEY}  # 从环境变量读取
+base_url: https://api.openai.com/v1  # 默认，可修改用于代理
+
+# 模型配置
+models:
+  gpt-4:
+    name: GPT-4
+    description: 最强通用模型，适合复杂推理和代码
+    enabled: true
+    context_length: 8192
+    max_tokens: 4096
+    temperature: 0.7
+    # 成本: $0.03/1K input, $0.06/1K output
+    cost_per_1k_input: 0.03
+    cost_per_1k_output: 0.06
+    quality_score: 9.5
+    supports_tools: true
+    supports_vision: false
+    supports_json: true
+    
+  gpt-4o:
+    name: GPT-4o
+    description: 多模态模型，支持视觉，性价比更高
+    enabled: true
+    context_length: 128000
+    max_tokens: 4096
+    temperature: 0.7
+    # 成本: $0.005/1K input, $0.015/1K output
+    cost_per_1k_input: 0.005
+    cost_per_1k_output: 0.015
+    quality_score: 9.2
+    supports_tools: true
+    supports_vision: true
+    supports_json: true
+    
+  gpt-4o-mini:
+    name: GPT-4o Mini
+    description: 经济型模型，适合简单任务
+    enabled: true
+    context_length: 128000
+    max_tokens: 4096
+    temperature: 0.7
+    # 成本: $0.00015/1K input, $0.0006/1K output
+    cost_per_1k_input: 0.00015
+    cost_per_1k_output: 0.0006
+    quality_score: 8.0
+    supports_tools: true
+    supports_vision: true
+    supports_json: true
+    
+  o1-preview:
+    name: O1 Preview
+    description: 推理专用模型，适合数学和科学问题
+    enabled: true
+    context_length: 128000
+    max_tokens: 32768
+    temperature: 1.0  # o1 系列固定为 1
+    # 成本: $0.015/1K input, $0.06/1K output
+    cost_per_1k_input: 0.015
+    cost_per_1k_output: 0.06
+    quality_score: 9.8
+    supports_tools: false
+    supports_vision: false
+    supports_json: false
+    
+  o1-mini:
+    name: O1 Mini
+    description: 轻量级推理模型
+    enabled: true
+    context_length: 128000
+    max_tokens: 65536
+    temperature: 1.0
+    # 成本: $0.003/1K input, $0.012/1K output
+    cost_per_1k_input: 0.003
+    cost_per_1k_output: 0.012
+    quality_score: 9.0
+    supports_tools: false
+    supports_vision: false
+    supports_json: false
+
+# 路由规则
+routing:
+  # 任务类型映射
+  task_mapping:
+    complex_reasoning: gpt-4
+    code: gpt-4
+    analysis: gpt-4o
+    vision: gpt-4o
+    chat: gpt-4o-mini
+    default: gpt-4o
+  
+  # 降级顺序
+  fallback_chain:
+    - gpt-4
+    - gpt-4o
+    - gpt-4o-mini
+
+# 限制配置
+limits:
+  max_requests_per_minute: 60
+  max_tokens_per_minute: 100000
+  timeout_seconds: 60
+  retry_attempts: 2
+
+# 成本告警
+cost_alerts:
+  daily_budget: 10.0  # 日预算（美元）
+  warning_threshold: 80  # 警告阈值（%）
+  critical_threshold: 95  # 严重阈值（%）

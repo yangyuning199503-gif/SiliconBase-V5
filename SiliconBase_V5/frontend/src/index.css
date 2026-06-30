@@ -1,0 +1,381 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #14141c;
+  color: white;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 【黑屏修复】确保body始终有高度 */
+  min-height: 100vh;
+  min-height: 100dvh; /* 支持动态视口高度 */
+}
+
+/* 【黑屏修复】#root基础样式保护 - 即使Tailwind失效也能正常显示 */
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   自定义滚动条 - 统一细线风格
+   ============================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================
+   玻璃态效果 - 统一毛玻璃风格
+   ============================================ */
+
+/* 基础玻璃态 */
+.glass {
+  background: rgba(30, 30, 42, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* 卡片玻璃态 - 更 subtle 的背景 */
+.glass-card {
+  background: rgba(35, 35, 48, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* 注意：圆角由具体组件通过 Tailwind 类控制，如 rounded-xl, rounded-2xl */
+}
+
+/* 强调玻璃态 - 用于重要元素 */
+.glass-accent {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.15) 0%,
+    rgba(123, 44, 191, 0.15) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   发光效果 - 统一发光层级
+   ============================================ */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4),
+              0 0 40px rgba(0, 212, 255, 0.2);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(123, 44, 191, 0.4),
+              0 0 40px rgba(123, 44, 191, 0.2);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4),
+              0 0 40px rgba(0, 255, 136, 0.2);
+}
+
+.glow-amber {
+  box-shadow: 0 0 20px rgba(255, 170, 0, 0.4),
+              0 0 40px rgba(255, 170, 0, 0.2);
+}
+
+/* ============================================
+   文字渐变 - 统一渐变风格
+   ============================================ */
+.text-gradient {
+  background: linear-gradient(135deg, #00d4ff 0%, #aa66ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00d4ff 0%, #00a8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #aa66ff 0%, #ff66aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   动画效果 - 统一动画参数
+   ============================================ */
+
+/* 悬浮动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 脉冲发光 */
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 0.6;
+    box-shadow: 0 0 20px currentColor;
+  }
+  50% { 
+    opacity: 1;
+    box-shadow: 0 0 40px currentColor;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* 闪烁光标 */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* 滑入动画 */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
+}
+
+/* ============================================
+   边框装饰 - 几何风格切角
+   ============================================ */
+
+/* 切角边框 - 左上 */
+.corner-cut-tl {
+  clip-path: polygon(
+    12px 0, 100% 0, 100% 100%, 0 100%, 0 12px
+  );
+}
+
+/* 切角边框 - 右上 */
+.corner-cut-tr {
+  clip-path: polygon(
+    0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%
+  );
+}
+
+/* 双边切角 */
+.corner-cut-both {
+  clip-path: polygon(
+    12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px
+  );
+}
+
+/* ============================================
+   表单元素样式
+   ============================================ */
+
+/* 输入框 placeholder */
+::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* 选中文字 */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: white;
+}
+
+/* 焦点样式 */
+*:focus-visible {
+  outline: 2px solid rgba(0, 212, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* 禁用状态 */
+*:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ============================================
+   【黑屏修复】基础样式保护 - Tailwind失效时的兜底样式
+   ============================================ */
+.bg-sb-bg-primary {
+  background-color: #14141c !important;
+}
+
+.text-sb-text-primary {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 【黑屏修复】确保关键工具类有CSS兜底 */
+.h-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+/* ============================================
+   AlignmentDialog 专用样式
+   ============================================ */
+
+/* 对话框动画 */
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes dialog-exit {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}
+
+.animate-dialog-enter {
+  animation: dialog-enter 0.2s ease-out forwards;
+}
+
+.animate-dialog-exit {
+  animation: dialog-exit 0.15s ease-in forwards;
+}
+
+/* 遮罩层动画 */
+@keyframes backdrop-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-backdrop-enter {
+  animation: backdrop-enter 0.2s ease-out forwards;
+}
+
+/* 按钮选中效果 */
+.alignment-option-selected {
+  box-shadow: 0 0 0 2px var(--sb-amber);
+}
+
+.alignment-option-confirm {
+  box-shadow: 0 0 0 2px var(--sb-cyan);
+}
+
+/* 倒计时条 */
+.countdown-bar {
+  transition: width 1s linear;
+}
+
+/* 模态对话框确保在最上层 */
+.alignment-dialog-overlay {
+  z-index: 100;
+}
+
+/* 禁用页面滚动当对话框打开 */
+body.alignment-dialog-open {
+  overflow: hidden;
+}
+
+/* ============================================
+   颜色变量 - CSS 自定义属性
+   ============================================ */
+:root {
+  /* 主色调 */
+  --sb-cyan: #00d4ff;
+  --sb-blue: #0066ff;
+  --sb-purple: #aa66ff;
+  --sb-pink: #ff66aa;
+  
+  /* 功能色 */
+  --sb-green: #00ff88;
+  --sb-amber: #ffaa00;
+  --sb-red: #ff4444;
+  
+  /* 背景色 */
+  --sb-bg-primary: #14141c;
+  --sb-bg-secondary: #1e1e2a;
+  --sb-bg-tertiary: #282836;
+  
+  /* 文字色 */
+  --sb-text-primary: rgba(255, 255, 255, 0.95);
+  --sb-text-secondary: rgba(255, 255, 255, 0.75);
+  --sb-text-tertiary: rgba(255, 255, 255, 0.55);
+  
+  /* 间距系统 */
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /* 8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  
+  /* 圆角系统 */
+  --radius-sm: 0.5rem;   /* 8px */
+  --radius-md: 0.75rem;  /* 12px */
+  --radius-lg: 1rem;     /* 16px */
+  --radius-xl: 1.5rem;   /* 24px */
+}

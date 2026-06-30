@@ -1,0 +1,3635 @@
+└── SiliconBase_V5/
+    ├── api/
+    │   ├── experience_api/
+    │   ├── routes/
+    │   │   ├── rlhf.py
+    │   │   └── weak_connection.py
+    │   ├── __init__.py
+    │   ├── advanced_models_api.py
+    │   ├── ai_config_api.py
+    │   ├── auth_utils.py
+    │   ├── auto_trading_api.py
+    │   ├── cloud_api.py
+    │   ├── cloud_api_minimal.py
+    │   ├── cloud_tool_repo.py
+    │   ├── config.py
+    │   ├── config_api.py
+    │   ├── consciousness_api.py
+    │   ├── cost_api.py
+    │   ├── dependencies.py
+    │   ├── exchange_config_api.py
+    │   ├── experience_api.py
+    │   ├── features_api.py
+    │   ├── gamification_api.py
+    │   ├── global_view_api.py
+    │   ├── interrupt_api.py
+    │   ├── long_task_slots_api.py
+    │   ├── memory_api.py
+    │   ├── memory_graph_api.py
+    │   ├── memory_sync_websocket.py
+    │   ├── memory_visualization_api.py
+    │   ├── metrics_api.py
+    │   ├── middleware.py
+    │   ├── monitoring.py
+    │   ├── procedure_learning_api.py
+    │   ├── prompt_api.py
+    │   ├── prompt_layer_api.py
+    │   ├── prompt_variant_api.py
+    │   ├── realtime_intervention_api.py
+    │   ├── requirements.txt
+    │   ├── run.py
+    │   ├── run_minimal_test.py
+    │   ├── run_no_lifespan.py
+    │   ├── run_simple.py
+    │   ├── run_ultra_minimal.py
+    │   ├── schemas.py
+    │   ├── session_api.py
+    │   ├── silicon_life_api.py
+    │   ├── stats_api.py
+    │   ├── sync_api.py
+    │   ├── task_api.py
+    │   ├── template_experiment_api.py
+    │   ├── three_views_api.py
+    │   ├── tool_market_api.py
+    │   ├── tools_api.py
+    │   ├── trading_api.py
+    │   ├── trading_mode_api.py
+    │   ├── trading_ws.py
+    │   ├── trading_ws_server.py
+    │   ├── voice_announce_api.py
+    │   ├── voice_api.py
+    │   ├── websocket_redis_patch.py
+    │   ├── workflow_api.py
+    │   └── world_model_api.py
+    ├── archive/
+    │   ├── dead_code_20260423/
+    │   │   ├── agent_loop.py.bak.20260406_125701
+    │   │   ├── cloud_api.py.bak.20260305
+    │   │   ├── cloud_api.py.bak.final
+    │   │   ├── dialogue_manager.py.bak.20260305
+    │   │   ├── interface.py.bak.20260311
+    │   │   ├── memory_associations.py.bak.20260305
+    │   │   ├── MemoryVisualizationPage.tsx.bak.20260312
+    │   │   └── ollama_provider_backup_20260311.py
+    │   ├── md_reports_backup_202504/
+    │   │   ├── docs_reports/
+    │   │   ├── fix_reports/
+    │   │   ├── iteration_reports/
+    │   │   ├── phase_reports/
+    │   │   └── temp_reports/
+    │   ├── patches/
+    │   │   └── websocket_communication_fix.patch
+    │   └── test_results/
+    ├── assets/
+    │   ├── models/
+    │   │   ├── piper/
+    │   │   │   ├── zh_CN-huayan-medium.onnx
+    │   │   │   └── zh_CN-huayan-medium.onnx.json
+    │   │   ├── vosk-model-cn-0.22/
+    │   │   │   ├── am/
+    │   │   │   │   └── final.mdl
+    │   │   │   ├── conf/
+    │   │   │   │   ├── mfcc.conf
+    │   │   │   │   └── model.conf
+    │   │   │   ├── graph/
+    │   │   │   │   ├── phones/
+    │   │   │   │   │   └── word_boundary.int
+    │   │   │   │   ├── HCLG.fst
+    │   │   │   │   └── words.txt
+    │   │   │   ├── ivector/
+    │   │   │   │   ├── final.dubm
+    │   │   │   │   ├── final.ie
+    │   │   │   │   ├── final.mat
+    │   │   │   │   ├── global_cmvn.stats
+    │   │   │   │   ├── online_cmvn.conf
+    │   │   │   │   └── splice.conf
+    │   │   │   ├── rescore/
+    │   │   │   │   ├── G.carpa
+    │   │   │   │   └── G.fst
+    │   │   │   ├── rnnlm/
+    │   │   │   │   ├── feat_embedding.final.mat
+    │   │   │   │   ├── features.txt
+    │   │   │   │   ├── final.raw
+    │   │   │   │   ├── oov.txt
+    │   │   │   │   ├── special_symbol_opts.conf
+    │   │   │   │   ├── special_symbol_opts.txt
+    │   │   │   │   └── word_feats.txt
+    │   │   │   └── README
+    │   │   ├── llava_setup.py
+    │   │   ├── nanodet-plus-m_416.onnx
+    │   │   ├── nanodet_plus.onnx
+    │   │   └── yolo_nano.onnx
+    │   └── __init__.py
+    ├── backups/
+    │   ├── pre_model_bus_20260321_224825/
+    │   │   ├── config/
+    │   │   │   ├── providers/
+    │   │   │   │   ├── anthropic.yaml
+    │   │   │   │   ├── deepseek.yaml
+    │   │   │   │   ├── ollama.yaml
+    │   │   │   │   └── openai.yaml
+    │   │   │   ├── cloud.yaml
+    │   │   │   ├── config.yaml
+    │   │   │   ├── connectors.example.yaml
+    │   │   │   ├── global.yaml
+    │   │   │   ├── global.yaml.advanced_models
+    │   │   │   ├── global.yaml.powerstrip
+    │   │   │   ├── local.yaml
+    │   │   │   ├── memory_config.yaml
+    │   │   │   ├── model_upgrade.yaml
+    │   │   │   ├── moral_rules.yaml
+    │   │   │   ├── risk_map.yaml
+    │   │   │   ├── roles.yaml
+    │   │   │   ├── roles_optimized.yaml
+    │   │   │   ├── system.json
+    │   │   │   └── system_ports.py
+    │   │   ├── core/
+    │   │   │   ├── providers/
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── ai_provider_factory.py
+    │   │   │   │   ├── anthropic_provider.py
+    │   │   │   │   ├── base.py
+    │   │   │   │   ├── custom_provider.py
+    │   │   │   │   ├── ollama_provider.py
+    │   │   │   │   ├── ollama_provider_backup_20260311.py
+    │   │   │   │   ├── openai_compatible_provider.py
+    │   │   │   │   └── openai_provider.py
+    │   │   │   └── vector_memory.py
+    │   │   ├── tools/
+    │   │   │   └── vision_agent.py
+    │   │   └── voice/
+    │   │       ├── __init__.py
+    │   │       ├── interface.py
+    │   │       ├── interface.py.bak.20260311
+    │   │       ├── interface_audio_fix.py
+    │   │       ├── interface_thread_fix.py
+    │   │       ├── protected_speak_queue.py
+    │   │       ├── rollback_interface.py
+    │   │       ├── state_sync.py
+    │   │       ├── test_audio_fix.py
+    │   │       ├── test_p0_006_ptt_wake_conflict.py
+    │   │       ├── test_wake_word_handler.py
+    │   │       ├── voice_assistant.py
+    │   │       └── wake_word_handler.py
+    │   ├── agent_loop.py.backup.initial.py
+    │   ├── App.tsx.backup.initial.py
+    │   └── LoginPage.tsx.backup.initial.py
+    ├── checkpoints/
+    │   └── hf_cache/
+    │       ├── .locks/
+    │       │   ├── models--amphion--MaskGCT/
+    │       │   │   └── ec947271175d8cad75ec37e83aa487e27c97a0f72a303393772da5ffa84bddf2.lock
+    │       │   ├── models--facebook--w2v-bert-2.0/
+    │       │   │   ├── 5db61951cdf5edab6337fd84ee619500c27aaa3d.lock
+    │       │   │   ├── a383a594dac18459628cd2837168cd276342a31a.lock
+    │       │   │   └── eb890c9660ed6e3414b6812e27257b8ce5454365d5490d3ad581ea60b93be043.lock
+    │       │   ├── models--funasr--campplus/
+    │       │   │   └── 3388cf5fd3493c9ac9c69851d8e7a8badcfb4f3dc631020c4961371646d5ada8.lock
+    │       │   ├── models--nvidia--bigvgan_v2_22khz_80band_256x/
+    │       │   │   ├── 635bd8975629bd6d4b51c409986944a281cfe7be.lock
+    │       │   │   └── e95ba25972d3de0628d99cd156e9315a9c018899bf739988959ebe3544080ced.lock
+    │       │   ├── models--sentence-transformers--all-MiniLM-L6-v2/
+    │       │   │   ├── 53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db.lock
+    │       │   │   ├── 58d4a9a45664eb9e12de9549c548c09b6134c17f.lock
+    │       │   │   ├── 59d594003bf59880a884c574bf88ef7555bb0202.lock
+    │       │   │   ├── 72b987fd805cfa2b58c4c8c952b274a11bfd5a00.lock
+    │       │   │   ├── 952a9b81c0bfd99800fabf352f69c7ccd46c5e43.lock
+    │       │   │   ├── c79f2b6a0cea6f4b564fed1938984bace9d30ff0.lock
+    │       │   │   ├── cb202bfe2e3c98645018a6d12f182a434c9d3e02.lock
+    │       │   │   ├── d1514c3162bbe87b343f565fadc62e6c06f04f03.lock
+    │       │   │   ├── e7b0375001f109a6b8873d756ad4f7bbb15fbaa5.lock
+    │       │   │   ├── fb140275c155a9c7c5a3b3e0e77a9e839594a938.lock
+    │       │   │   └── fd1b291129c607e5d49799f87cb219b27f98acdf.lock
+    │       │   └── models--uer--roberta-base-finetuned-jd-binary-chinese/
+    │       │       ├── 0eebd71f7150decb7cf221e3fa9a8b8c5add511b.lock
+    │       │       ├── 2309324cb315da00bd5dd3f1f2e59d9458a3a539.lock
+    │       │       ├── 94480df24580c4e614f9cd1a738d8aa100746b7b80051258c86132a0eecd1531.lock
+    │       │       ├── a808af3cfc1aa1168074249a0c8ec873bc880e754f3c68be01a15cb9ceb64c6a.lock
+    │       │       ├── ca4f9781030019ab9b253c6dcb8c7878b6dc87a5.lock
+    │       │       └── e7b0375001f109a6b8873d756ad4f7bbb15fbaa5.lock
+    │       ├── models--amphion--MaskGCT/
+    │       │   ├── blobs/
+    │       │   │   └── ec947271175d8cad75ec37e83aa487e27c97a0f72a303393772da5ffa84bddf2
+    │       │   ├── refs/
+    │       │   │   └── main
+    │       │   └── snapshots/
+    │       │       └── 265c6cef07625665d0c28d2faafb1415562379dc/
+    │       │           └── semantic_codec/
+    │       │               └── model.safetensors
+    │       ├── models--facebook--w2v-bert-2.0/
+    │       │   ├── blobs/
+    │       │   │   ├── 5db61951cdf5edab6337fd84ee619500c27aaa3d
+    │       │   │   ├── a383a594dac18459628cd2837168cd276342a31a
+    │       │   │   └── eb890c9660ed6e3414b6812e27257b8ce5454365d5490d3ad581ea60b93be043
+    │       │   ├── refs/
+    │       │   │   └── main
+    │       │   └── snapshots/
+    │       │       └── da985ba0987f70aaeb84a80f2851cfac8c697a7b/
+    │       │           ├── config.json
+    │       │           ├── model.safetensors
+    │       │           └── preprocessor_config.json
+    │       ├── models--funasr--campplus/
+    │       │   ├── blobs/
+    │       │   │   └── 3388cf5fd3493c9ac9c69851d8e7a8badcfb4f3dc631020c4961371646d5ada8
+    │       │   ├── refs/
+    │       │   │   └── main
+    │       │   └── snapshots/
+    │       │       └── fb71fe990cbf6031ae6987a2d76fe64f94377b7e/
+    │       │           └── campplus_cn_common.bin
+    │       ├── models--nvidia--bigvgan_v2_22khz_80band_256x/
+    │       │   ├── blobs/
+    │       │   │   ├── 635bd8975629bd6d4b51c409986944a281cfe7be
+    │       │   │   └── e95ba25972d3de0628d99cd156e9315a9c018899bf739988959ebe3544080ced
+    │       │   ├── refs/
+    │       │   │   └── main
+    │       │   └── snapshots/
+    │       │       └── 633ff708ed5b74903e86ff1298cf4a98e921c513/
+    │       │           ├── bigvgan_generator.pt
+    │       │           └── config.json
+    │       ├── models--sentence-transformers--all-MiniLM-L6-v2/
+    │       │   ├── .no_exist/
+    │       │   │   └── c9745ed1d9f207416be6d2e6f8de32d1f16199bf/
+    │       │   │       ├── adapter_config.json
+    │       │   │       ├── added_tokens.json
+    │       │   │       └── chat_template.jinja
+    │       │   ├── blobs/
+    │       │   │   ├── 53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db
+    │       │   │   ├── 58d4a9a45664eb9e12de9549c548c09b6134c17f
+    │       │   │   ├── 59d594003bf59880a884c574bf88ef7555bb0202
+    │       │   │   ├── 72b987fd805cfa2b58c4c8c952b274a11bfd5a00
+    │       │   │   ├── 952a9b81c0bfd99800fabf352f69c7ccd46c5e43
+    │       │   │   ├── c79f2b6a0cea6f4b564fed1938984bace9d30ff0
+    │       │   │   ├── cb202bfe2e3c98645018a6d12f182a434c9d3e02
+    │       │   │   ├── d1514c3162bbe87b343f565fadc62e6c06f04f03
+    │       │   │   ├── e7b0375001f109a6b8873d756ad4f7bbb15fbaa5
+    │       │   │   ├── fb140275c155a9c7c5a3b3e0e77a9e839594a938
+    │       │   │   └── fd1b291129c607e5d49799f87cb219b27f98acdf
+    │       │   ├── refs/
+    │       │   │   └── main
+    │       │   └── snapshots/
+    │       │       └── c9745ed1d9f207416be6d2e6f8de32d1f16199bf/
+    │       │           ├── 1_Pooling/
+    │       │           │   └── config.json
+    │       │           ├── config.json
+    │       │           ├── config_sentence_transformers.json
+    │       │           ├── model.safetensors
+    │       │           ├── modules.json
+    │       │           ├── sentence_bert_config.json
+    │       │           ├── special_tokens_map.json
+    │       │           ├── tokenizer.json
+    │       │           ├── tokenizer_config.json
+    │       │           └── vocab.txt
+    │       ├── models--uer--roberta-base-finetuned-jd-binary-chinese/
+    │       │   ├── .no_exist/
+    │       │   │   └── 133367c1beb2d5b04e6df3e7ec218a49575bc437/
+    │       │   │       ├── added_tokens.json
+    │       │   │       ├── chat_template.jinja
+    │       │   │       ├── model.safetensors
+    │       │   │       ├── model.safetensors.index.json
+    │       │   │       └── tokenizer.json
+    │       │   ├── blobs/
+    │       │   │   ├── 0eebd71f7150decb7cf221e3fa9a8b8c5add511b
+    │       │   │   ├── 2309324cb315da00bd5dd3f1f2e59d9458a3a539
+    │       │   │   ├── 94480df24580c4e614f9cd1a738d8aa100746b7b80051258c86132a0eecd1531
+    │       │   │   ├── a808af3cfc1aa1168074249a0c8ec873bc880e754f3c68be01a15cb9ceb64c6a
+    │       │   │   ├── ca4f9781030019ab9b253c6dcb8c7878b6dc87a5
+    │       │   │   └── e7b0375001f109a6b8873d756ad4f7bbb15fbaa5
+    │       │   ├── refs/
+    │       │   │   ├── refs/
+    │       │   │   │   └── pr/
+    │       │   │   │       └── 3
+    │       │   │   └── main
+    │       │   └── snapshots/
+    │       │       ├── 133367c1beb2d5b04e6df3e7ec218a49575bc437/
+    │       │       │   ├── config.json
+    │       │       │   ├── pytorch_model.bin
+    │       │       │   ├── special_tokens_map.json
+    │       │       │   ├── tokenizer_config.json
+    │       │       │   └── vocab.txt
+    │       │       └── 7d325972e136def7e8382efe6002693636891852/
+    │       │           └── model.safetensors
+    │       ├── xet/
+    │       │   ├── https___cas_serv-tGqkUaZf_CBPHQ6h/
+    │       │   │   └── staging/
+    │       │   └── logs/
+    │       └── version.txt
+    ├── cloud/
+    │   └── adapters.py
+    ├── config/
+    │   ├── providers/
+    │   │   ├── anthropic.yaml
+    │   │   ├── deepseek.yaml
+    │   │   ├── ollama.yaml
+    │   │   └── openai.yaml
+    │   ├── deduplication.yaml
+    │   ├── global.yaml
+    │   ├── information_delivery.yaml
+    │   ├── local.yaml
+    │   ├── mcp_servers.yaml
+    │   ├── model_upgrade.yaml
+    │   ├── risk_map.yaml
+    │   ├── roles.yaml
+    │   ├── subagents.yaml
+    │   ├── system.json
+    │   └── system_ports.py
+    ├── core/
+    │   ├── adapter/
+    │   │   ├── __init__.py
+    │   │   ├── agent_loop_adapter.py
+    │   │   ├── consciousness_adapter.py
+    │   │   ├── evolution_adapter.py
+    │   │   └── example_usage.py
+    │   ├── agent/
+    │   │   ├── hooks/
+    │   │   │   ├── content_strategy_hook.py
+    │   │   │   ├── core_logic_hooks.py
+    │   │   │   ├── safety_hook.py
+    │   │   │   ├── tool_hook.py
+    │   │   │   ├── vision_hook.py
+    │   │   │   └── voice_hook.py
+    │   │   ├── phases/
+    │   │   │   └── intent_phase.py
+    │   │   ├── __init__.py
+    │   │   ├── agent_loop.py
+    │   │   ├── agent_loop_decompiled.py
+    │   │   ├── agent_loop_hooks.py
+    │   │   ├── agent_runtime.py
+    │   │   ├── async_tool_gateway.py
+    │   │   ├── checkpoint_manager.py
+    │   │   ├── checkpoint_manager.py.orig
+    │   │   ├── consciousness_bridge.py
+    │   │   ├── context_assembler.py
+    │   │   ├── gamification_bridge.py
+    │   │   ├── interrupt_handler.py
+    │   │   ├── intervention_learning.py
+    │   │   ├── loop_initialization.py
+    │   │   ├── loop_types.py
+    │   │   ├── loop_utils.py
+    │   │   ├── master_scheduler.py
+    │   │   ├── pause_confirmation_state_machine.py
+    │   │   ├── phase_context.py
+    │   │   ├── phase_registry.py
+    │   │   ├── prompt_assembly_bridge.py
+    │   │   ├── realtime_intervention.py
+    │   │   ├── reflection_bridge.py
+    │   │   ├── remaining_chars.txt
+    │   │   ├── smart_intervention_detector.py
+    │   │   ├── voice_strategy.py
+    │   │   ├── voice_utils.py
+    │   │   └── weak_connection_bridge.py
+    │   ├── ai/
+    │   │   ├── __init__.py
+    │   │   ├── advanced_model_manager.py
+    │   │   ├── ai_adapter.py
+    │   │   ├── ai_client.py
+    │   │   ├── ai_config.py
+    │   │   ├── ai_model_bridge.py
+    │   │   ├── model_coordinator.py
+    │   │   ├── model_profile.py
+    │   │   ├── model_router.py
+    │   │   └── smart_ai_router.py
+    │   ├── ai_models/
+    │   │   ├── providers/
+    │   │   │   ├── audio/
+    │   │   │   │   ├── asr/
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   ├── base_asr_provider.py
+    │   │   │   │   │   ├── vosk_asr_provider.py
+    │   │   │   │   │   └── whisper_asr_provider.py
+    │   │   │   │   ├── enhance/
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   ├── base_enhance_provider.py
+    │   │   │   │   │   └── maskgct_provider.py
+    │   │   │   │   ├── tts/
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   ├── base_tts_provider.py
+    │   │   │   │   │   ├── edge_tts_provider.py
+    │   │   │   │   │   ├── fish_speech_provider.py
+    │   │   │   │   │   └── piper_tts_provider.py
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── base_audio_provider.py
+    │   │   │   ├── embedding/
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── base_embedding_provider.py
+    │   │   │   │   ├── openai_embedding_provider.py
+    │   │   │   │   └── sentence_transformer_provider.py
+    │   │   │   ├── llm/
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── anthropic_llm_provider.py
+    │   │   │   │   ├── base_llm_provider.py
+    │   │   │   │   ├── ollama_llm_provider.py
+    │   │   │   │   ├── openai_compatible_llm_provider.py
+    │   │   │   │   └── openai_llm_provider.py
+    │   │   │   ├── multimodal/
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── base_multimodal_provider.py
+    │   │   │   │   └── ui_tars_provider.py
+    │   │   │   ├── vision/
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── base_vision_provider.py
+    │   │   │   │   └── ollama_vision_provider.py
+    │   │   │   └── __init__.py
+    │   │   ├── __init__.py
+    │   │   ├── base.py
+    │   │   ├── bus.py
+    │   │   ├── config.py
+    │   │   ├── config_loader.py
+    │   │   ├── exceptions.py
+    │   │   ├── registry.py
+    │   │   ├── types.py
+    │   │   └── validator.py
+    │   ├── backup_bare_exception_fix/
+    │   ├── btc_integration/
+    │   │   ├── engine/
+    │   │   │   ├── .branch_shortwave_demo/
+    │   │   │   │   └── workspace/
+    │   │   │   ├── data/
+    │   │   │   │   ├── events/
+    │   │   │   │   │   ├── event_windows_v2.csv
+    │   │   │   │   │   ├── event_windows_v3.csv
+    │   │   │   │   │   └── event_windows_v4.csv
+    │   │   │   │   ├── external/
+    │   │   │   │   │   └── coinglass/
+    │   │   │   │   ├── funding/
+    │   │   │   │   ├── raw/
+    │   │   │   │   │   ├── ada_15m.csv
+    │   │   │   │   │   ├── bnb_15m.csv
+    │   │   │   │   │   ├── bnb_15m.csv.pre_repair_guard
+    │   │   │   │   │   ├── bnb_5m.csv
+    │   │   │   │   │   ├── btc_15m.csv
+    │   │   │   │   │   ├── btc_15m.csv.pre_repair_guard
+    │   │   │   │   │   ├── btc_5m.csv
+    │   │   │   │   │   ├── doge_15m.csv
+    │   │   │   │   │   ├── dot_15m.csv
+    │   │   │   │   │   ├── eth_15m.csv
+    │   │   │   │   │   ├── eth_15m.csv.pre_repair_guard
+    │   │   │   │   │   ├── eth_5m.csv
+    │   │   │   │   │   ├── README.txt
+    │   │   │   │   │   ├── sol_15m.csv
+    │   │   │   │   │   ├── sol_15m.csv.pre_repair_guard
+    │   │   │   │   │   ├── sol_5m.csv
+    │   │   │   │   │   ├── trx_15m.csv
+    │   │   │   │   │   └── xrp_15m.csv
+    │   │   │   │   └── raw_snapshots/
+    │   │   │   │       ├── bnb_15m.best.csv
+    │   │   │   │       └── sol_15m.best.csv.repair_guard_backup
+    │   │   │   ├── logs/
+    │   │   │   │   ├── run_20260411_212600.log
+    │   │   │   │   └── run_20260411_220159.log
+    │   │   │   ├── patch_notes/
+    │   │   │   │   ├── PATCH_NOTE_20260401_STAGE175_AGGRESSIVE_REGIME_HEDGE_GRID.txt
+    │   │   │   │   ├── PATCH_NOTE_20260401_STAGE176_SYSTEM_STABILITY_DEADANGLE_GUARD.txt
+    │   │   │   │   ├── PATCH_NOTE_20260402_STAGE184_AGGRESSIVE_MONTHLY_ACCEL.txt
+    │   │   │   │   ├── PATCH_NOTE_20260402_STAGE185_TARGET_MONTHLY_FOCUS.txt
+    │   │   │   │   ├── PATCH_NOTE_20260402_STAGE186_TRUTH_ANCHOR_TARGET_LIFT.txt
+    │   │   │   │   ├── PATCH_NOTE_20260402_STAGE187_REGIME_BOOK_TARGET_ACCEL.txt
+    │   │   │   │   ├── PATCH_NOTE_20260402_STAGE188_ETH_DRIFT_SQUEEZE_SPRINT.txt
+    │   │   │   │   ├── PATCH_NOTE_20260402_STAGE189_REGIME_WEBBLEND_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260402_STAGE190_WEBLEARNED_MULTI_FREQUENCY_INNOVATION_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260403_STAGE191_CROSSSIGNAL_VOLMANAGED_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260403_STAGE192_RECLAIM_PAIR_VOLTARGET_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260403_STAGE193_ANCHOR_PLATEAU_BETA_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260403_STAGE194_VOLTARGET_HYBRID_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260403_STAGE195_BRANCH_CORE_FOCUS_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260403_STAGE196_ETH_SOL_RECLAIM_SHORT_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260404_STAGE197_STAGE196_MAINLINE_COMMON_RANGE_HOTFIX.txt
+    │   │   │   │   ├── PATCH_NOTE_20260404_STAGE198_AGGRESSIVE_REGIME_SWITCH_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260404_STAGE199_STAGE198_COMMON_RANGE_RESILIENT_HOTFIX.txt
+    │   │   │   │   ├── PATCH_NOTE_20260404_STAGE200_AGGRESSIVE_DUALCORE_BRANCH_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260404_STAGE201_ETH_RECLAIM_HYBRID_RESET_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260405_STAGE202_EXPORT_GUARD.txt
+    │   │   │   │   ├── PATCH_NOTE_20260405_STAGE202_MAINLINE_MESSAGE_LINK_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260405_STAGE203_AGGRESSIVE_WINRATE_RISK_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260405_STAGE204_RECLAIM_CLUSTER_RISK_SPRINT.txt
+    │   │   │   │   ├── PATCH_NOTE_20260405_STAGE205_BTC_TRUTH_AND_DUAL_RERUN.txt
+    │   │   │   │   ├── PATCH_NOTE_20260405_STAGE206_MESSAGE_RECLAIM_SYNC_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260405_STAGE207_WEB_COMMUNITY_PLAYBOOK_ACCEL.txt
+    │   │   │   │   ├── PATCH_NOTE_20260405_STAGE208_MESSAGE_QUANTIZATION_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE209_MESSAGE_ACTION_TIER_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE210_COMMON_EVENT_MESSAGE_MODEL_FRONTIER.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE211_FUTURE_EVENT_RUNTIME_BRIDGE.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE212_MESSAGE_SIZING_OVERLAY.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE213_BRANCH_SIZING_OVERLAY.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE214_BRANCH_SIZING_DTYPE_FIX.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE215_BRANCH_OVERLAY_SCORE_HARDEN.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE216_BRANCH_ETHCORE_OVERLAY_GUARD.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE217_MULTIREGIME_BROADFRONT.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE218_CANDIDATE_TRUTH_SYNC.txt
+    │   │   │   │   ├── PATCH_NOTE_20260406_STAGE219_TRUTH_LOCKED_SEED.txt
+    │   │   │   │   ├── PATCH_NOTE_20260407_STAGE220_BTC_RAW_TRUTH_RESTORE.txt
+    │   │   │   │   ├── PATCH_NOTE_20260407_STAGE221_BTC_RUNTIME_TRUTH_FENCE.txt
+    │   │   │   │   ├── PATCH_NOTE_20260407_STAGE223_ONEPASS_TRUTH_LOCKED_BROADFRONT.txt
+    │   │   │   │   ├── PATCH_NOTE_20260407_STAGE223_TRUTH_LOCKED_BROADFRONT.txt
+    │   │   │   │   ├── PATCH_NOTE_20260410_STAGE224_STRATEGY_OPTIMIZE_NOW.txt
+    │   │   │   │   ├── PATCH_NOTE_20260410_STAGE225_COMBO_MATRIX_LAB.txt
+    │   │   │   │   ├── PATCH_NOTE_20260411_STAGE227_FIVE_MIN_RAW_AND_MATRIX.txt
+    │   │   │   │   ├── PATCH_NOTE_20260411_STAGE228_SEEDED_CLUSTER_EXPANSION.txt
+    │   │   │   │   └── PATCH_NOTE_20260411_STAGE229_CONSOLIDATED_RESEARCH_LANES.txt
+    │   │   │   ├── reports/
+    │   │   │   │   ├── research_raw/
+    │   │   │   │   ├── run_20260411_212600/
+    │   │   │   │   ├── run_20260411_220159/
+    │   │   │   │   ├── runtime_snapshots/
+    │   │   │   │   ├── current_demo_strategy_trades_latest.csv
+    │   │   │   │   ├── deepseek_brief_latest.txt
+    │   │   │   │   ├── dual_window_backtest_latest.json
+    │   │   │   │   ├── dual_window_backtest_latest.txt
+    │   │   │   │   ├── event_window_sweep_latest.json
+    │   │   │   │   ├── event_window_walkforward_latest.json
+    │   │   │   │   ├── message_stack_backtest_latest.txt
+    │   │   │   │   ├── metrics_latest.json
+    │   │   │   │   ├── monthly_returns_latest.csv
+    │   │   │   │   ├── monthly_stats_latest.txt
+    │   │   │   │   ├── okx_demo_probe_latest.json
+    │   │   │   │   ├── okx_demo_probe_latest.jsonl
+    │   │   │   │   ├── okx_demo_probe_latest.txt
+    │   │   │   │   ├── okx_demo_shadow_exec_latest.json
+    │   │   │   │   ├── okx_demo_shadow_exec_latest.jsonl
+    │   │   │   │   ├── okx_demo_shadow_exec_latest.txt
+    │   │   │   │   ├── okx_demo_smoke_submit_latest.json
+    │   │   │   │   ├── okx_demo_smoke_submit_latest.jsonl
+    │   │   │   │   ├── okx_demo_smoke_submit_latest.txt
+    │   │   │   │   ├── shadow_mode_plan_latest.json
+    │   │   │   │   ├── shadow_mode_plan_latest.md
+    │   │   │   │   ├── stage77_mainline_dual_window_latest.json
+    │   │   │   │   ├── stage77_mainline_dual_window_latest.txt
+    │   │   │   │   └── support_bundle_latest.zip
+    │   │   │   ├── research_baselines/
+    │   │   │   │   └── mainline_live_base.yml
+    │   │   │   ├── research_candidates/
+    │   │   │   │   ├── branch_stage46_sol_long_core_adx24.yml
+    │   │   │   │   └── mainline_stage46_combo_sr_soft_adx26_cd6.yml
+    │   │   │   ├── scripts/
+    │   │   │   │   ├── bootstrap.sh
+    │   │   │   │   ├── retest_btc_trx_sol.sh
+    │   │   │   │   ├── run_matrix.sh
+    │   │   │   │   └── universe_scan.sh
+    │   │   │   ├── src/
+    │   │   │   │   ├── backtest/
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   ├── engine.py
+    │   │   │   │   │   ├── indicators.py
+    │   │   │   │   │   ├── io.py
+    │   │   │   │   │   ├── metrics.py
+    │   │   │   │   │   └── timeparse.py
+    │   │   │   │   ├── live/
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   ├── binance_shadow.py
+    │   │   │   │   │   └── okx_shadow.py
+    │   │   │   │   ├── strategy/
+    │   │   │   │   ├── utils/
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   └── logger.py
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── main.py
+    │   │   │   │   ├── segment_backtest.py
+    │   │   │   │   └── version.py
+    │   │   │   ├── stage113/
+    │   │   │   │   ├── config_mainline_stage113_shadow_eventbridge.yml
+    │   │   │   │   ├── config_shortwave_triple_book_stage113.yml
+    │   │   │   │   ├── shadow_mainline_stage113_shadow_eventbridge.yml
+    │   │   │   │   ├── shadow_shortwave_triple_book_stage113.yml
+    │   │   │   │   └── stage113_joint_apply_manifest_latest.txt
+    │   │   │   ├── tools/
+    │   │   │   │   ├── .toolignore
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── align_backtest_end.py
+    │   │   │   │   ├── alt_shortwave_focus_grid.py
+    │   │   │   │   ├── alt_shortwave_lab.py
+    │   │   │   │   ├── alt_shortwave_message_overlay.py
+    │   │   │   │   ├── alt_shortwave_symbol_overlay.py
+    │   │   │   │   ├── apply_patch.py
+    │   │   │   │   ├── backtest_dual_window_report.py
+    │   │   │   │   ├── binance_testnet_probe.py
+    │   │   │   │   ├── binance_testnet_smoke_submit.py
+    │   │   │   │   ├── blockbeats_probe.py
+    │   │   │   │   ├── btc_dual_branch_lab.py
+    │   │   │   │   ├── build_branch_demo_candidate.py
+    │   │   │   │   ├── build_clean_package.py
+    │   │   │   │   ├── build_current_strategy_trades.py
+    │   │   │   │   ├── build_mainline_shadow_candidate.py
+    │   │   │   │   ├── canonicalize_raw_csv.py
+    │   │   │   │   ├── coinglass_ab_backtest.py
+    │   │   │   │   ├── coinglass_history_export.py
+    │   │   │   │   ├── deepseek_strategy_pack.py
+    │   │   │   │   ├── demo_terminal_compact.py
+    │   │   │   │   ├── event_short_overlay.py
+    │   │   │   │   ├── event_window_robust.py
+    │   │   │   │   ├── event_window_strict_cv.py
+    │   │   │   │   ├── event_window_sweep.py
+    │   │   │   │   ├── event_window_walkforward.py
+    │   │   │   │   ├── fetch_binance_funding.py
+    │   │   │   │   ├── fetch_binance_klines.py
+    │   │   │   │   ├── finalize_research_outputs.py
+    │   │   │   │   ├── free_feeds_probe.py
+    │   │   │   │   ├── frequency_trade_audit.py
+    │   │   │   │   ├── local_info_sources_pack.py
+    │   │   │   │   ├── mainline_density_lab.py
+    │   │   │   │   ├── make_support_bundle.py
+    │   │   │   │   ├── message_combo_ab_backtest.py
+    │   │   │   │   ├── message_stack_backtest.py
+    │   │   │   │   ├── okx_coinglass_diag.py
+    │   │   │   │   ├── okx_demo_autopilot.py
+    │   │   │   │   ├── okx_demo_common.py
+    │   │   │   │   ├── okx_demo_probe.py
+    │   │   │   │   ├── okx_demo_runner.py
+    │   │   │   │   ├── okx_demo_shadow_exec.py
+    │   │   │   │   ├── okx_demo_sizing.py
+    │   │   │   │   ├── okx_demo_smoke_submit.py
+    │   │   │   │   ├── overfit_check.py
+    │   │   │   │   ├── pick_branch_demo_candidate.py
+    │   │   │   │   ├── polymarket_probe.py
+    │   │   │   │   ├── portfolio_retest.py
+    │   │   │   │   ├── raw_data_guard.py
+    │   │   │   │   ├── repair_mixed_time_csv.py
+    │   │   │   │   ├── repair_raw_from_snapshots.py
+    │   │   │   │   ├── research_config_baseline.py
+    │   │   │   │   ├── run_matrix.py
+    │   │   │   │   ├── run_shadow.py
+    │   │   │   │   ├── send_files_pack.py
+    │   │   │   │   ├── stage100_mainline_shadow_monitor.py
+    │   │   │   │   ├── stage103_asset_integrated_legs.py
+    │   │   │   │   ├── stage105_main_focus.py
+    │   │   │   │   ├── stage107_joint_upgrade_plan.py
+    │   │   │   │   ├── stage109_joint_upgrade_plan.py
+    │   │   │   │   ├── stage110_triple_book_raw_repair.py
+    │   │   │   │   ├── stage112_joint_upgrade_gate.py
+    │   │   │   │   ├── stage113_joint_event_tech_upgrade.py
+    │   │   │   │   ├── stage116_joint_dual_uplift_pack.py
+    │   │   │   │   ├── stage119_joint_event_bridge.py
+    │   │   │   │   ├── stage120_event_window_frontier.py
+    │   │   │   │   ├── stage128_joint_shortlist_refresh.py
+    │   │   │   │   ├── stage134_target_monthly_frontier.py
+    │   │   │   │   ├── stage135_web_playbook_frontier.py
+    │   │   │   │   ├── stage136_regime_plateau_frontier.py
+    │   │   │   │   ├── stage137_anchor_playbook_frontier.py
+    │   │   │   │   ├── stage138_anchor_guard_refresh.py
+    │   │   │   │   ├── stage139_microstructure_confluence_frontier.py
+    │   │   │   │   ├── stage140_regime_switch_risk_ladder.py
+    │   │   │   │   ├── stage141_guarded_asymmetry_shortlist.py
+    │   │   │   │   ├── stage142_reclaim_cluster_frontier.py
+    │   │   │   │   ├── stage144_reclaim_plateau_phase2.py
+    │   │   │   │   ├── stage145_reclaim_plateau_phase3.py
+    │   │   │   │   ├── stage146_reclaim_plateau_phase4.py
+    │   │   │   │   ├── stage147_reclaim_density_phase5.py
+    │   │   │   │   ├── stage148_livebase_restore_and_multiasset_frontier.py
+    │   │   │   │   ├── stage150_livebase_guard_and_mainline_recover.py
+    │   │   │   │   ├── stage151_mainline_runtime_resync.py
+    │   │   │   │   ├── stage151_runtime_report_truth_sync.py
+    │   │   │   │   ├── stage152_multiasset_playbook_frontier.py
+    │   │   │   │   ├── stage154_multiasset_reclaim_momentum_frontier.py
+    │   │   │   │   ├── stage157_regime_playbook_accel_frontier.py
+    │   │   │   │   ├── stage158_stage157_fast_resume.py
+    │   │   │   │   ├── stage159_message_confirm_reclaim_cluster_frontier.py
+    │   │   │   │   ├── stage160_mainline_overlay_hold_cluster_frontier.py
+    │   │   │   │   ├── stage161_mainline_risk_budget_multiasset_link_frontier.py
+    │   │   │   │   ├── stage162_event_confirm_eth_pair_frontier.py
+    │   │   │   │   ├── stage163_web_aggressive_multiasset_frontier.py
+    │   │   │   │   ├── stage165_composite_hedge_ladder_frontier.py
+    │   │   │   │   ├── stage166_data_deadangle_audit.py
+    │   │   │   │   ├── stage167_data_repair_diversity_guard.py
+    │   │   │   │   ├── stage168_bnb_gap_quarantine_and_family_cap.py
+    │   │   │   │   ├── stage175_aggressive_regime_hedge_grid_frontier.py
+    │   │   │   │   ├── stage176_system_stability_deadangle_guard.py
+    │   │   │   │   ├── stage177_runtime_row_truth_and_gap_guard.py
+    │   │   │   │   ├── stage178_process_owner_and_runtime_truth_sync.py
+    │   │   │   │   ├── stage179_mainline_runtime_readiness_guard.py
+    │   │   │   │   ├── stage180_btc_raw_floor_and_snapshot_guard.py
+    │   │   │   │   ├── stage181_frontier_coverage_diversity_guard.py
+    │   │   │   │   ├── stage182_single_export_diversity_frontier.py
+    │   │   │   │   ├── stage183_family_taxonomy_blacklist_seed_frontier.py
+    │   │   │   │   ├── stage184_aggressive_monthly_accel_frontier.py
+    │   │   │   │   ├── stage185_target_monthly_focus_frontier.py
+    │   │   │   │   ├── stage186_truth_anchor_target_lift_frontier.py
+    │   │   │   │   ├── stage187_regime_book_target_accel_frontier.py
+    │   │   │   │   ├── stage188_eth_drift_squeeze_sprint.py
+    │   │   │   │   ├── stage189_regime_webblend_frontier.py
+    │   │   │   │   ├── stage190_weblearned_multi_frequency_innovation_frontier.py
+    │   │   │   │   ├── stage191_crosssignal_volmanaged_frontier.py
+    │   │   │   │   ├── stage192_reclaim_pair_voltarget_frontier.py
+    │   │   │   │   ├── stage193_anchor_plateau_beta_frontier.py
+    │   │   │   │   ├── stage194_voltarget_hybrid_frontier.py
+    │   │   │   │   ├── stage195_branch_core_focus_frontier.py
+    │   │   │   │   ├── stage196_eth_sol_reclaim_short_frontier.py
+    │   │   │   │   ├── stage198_aggressive_regime_switch_frontier.py
+    │   │   │   │   ├── stage200_aggressive_dualcore_branch_frontier.py
+    │   │   │   │   ├── stage201_eth_reclaim_hybrid_reset_frontier.py
+    │   │   │   │   ├── stage208_message_quantization_frontier.py
+    │   │   │   │   ├── stage209_message_action_tier_frontier.py
+    │   │   │   │   ├── stage210_common_event_message_model_frontier.py
+    │   │   │   │   ├── stage211_future_event_runtime_bridge_frontier.py
+    │   │   │   │   ├── stage212_message_sizing_overlay_frontier.py
+    │   │   │   │   ├── stage213_branch_sizing_overlay_frontier.py
+    │   │   │   │   ├── stage215_branch_sizing_overlay_score_harden.py
+    │   │   │   │   ├── stage216_branch_ethcore_overlay_guard_frontier.py
+    │   │   │   │   ├── stage217_multiregime_broadfront_frontier.py
+    │   │   │   │   ├── stage218_candidate_truth_sync_frontier.py
+    │   │   │   │   ├── stage219_truth_locked_seed_frontier.py
+    │   │   │   │   ├── stage223_truth_locked_broadfront_frontier.py
+    │   │   │   │   ├── stage224_strategy_optimize_now.py
+    │   │   │   │   ├── stage225_combo_matrix_lab.py
+    │   │   │   │   ├── stage228_seeded_cluster_expansion.py
+    │   │   │   │   ├── stage230_expanded_combo_matrix.py
+    │   │   │   │   ├── stage231_seeded_confirmation_matrix.py
+    │   │   │   │   ├── stage232_sol_gate_neighborhood.py
+    │   │   │   │   ├── stage233_seeded_layer_matrix.py
+    │   │   │   │   ├── stage234_seeded_message_overlay_matrix.py
+    │   │   │   │   ├── stage235_seeded_multiview_risk_matrix.py
+    │   │   │   │   ├── stage236_multiview_conflict_matrix.py
+    │   │   │   │   ├── stage240_reopen_family_matrix.py
+    │   │   │   │   ├── stage241_neighborhood_priority_matrix.py
+    │   │   │   │   ├── stage242_exit_profitlock_matrix.py
+    │   │   │   │   ├── stage243_cluster_exit_family_matrix.py
+    │   │   │   │   ├── stage42_research.py
+    │   │   │   │   ├── stage43_efficiency_lab.py
+    │   │   │   │   ├── stage43_pack_outputs.py
+    │   │   │   │   ├── stage44_pack_outputs.py
+    │   │   │   │   ├── stage44_priority_lab.py
+    │   │   │   │   ├── stage45_pack_outputs.py
+    │   │   │   │   ├── stage45_targeted_lab.py
+    │   │   │   │   ├── stage46_aggressive_lab.py
+    │   │   │   │   ├── stage46_pack_outputs.py
+    │   │   │   │   ├── stage47_pack_outputs.py
+    │   │   │   │   ├── stage47_tranche_lock_lab.py
+    │   │   │   │   ├── stage48_aggressive_refine_lab.py
+    │   │   │   │   ├── stage48_pack_outputs.py
+    │   │   │   │   ├── stage49_aggressive_sprint_lab.py
+    │   │   │   │   ├── stage49_pack_outputs.py
+    │   │   │   │   ├── stage51_aggressive_frontier_lab.py
+    │   │   │   │   ├── stage51_pack_outputs.py
+    │   │   │   │   ├── stage54_full_angle.py
+    │   │   │   │   ├── stage54_pack_outputs.py
+    │   │   │   │   ├── stage55_broad_dual_track.py
+    │   │   │   │   ├── stage55_pack_outputs.py
+    │   │   │   │   ├── stage59_pack_outputs.py
+    │   │   │   │   ├── stage59_structural_lab.py
+    │   │   │   │   ├── stage63_pack_outputs.py
+    │   │   │   │   ├── stage63_price_impact_structural_lab.py
+    │   │   │   │   ├── stage64_pack_outputs.py
+    │   │   │   │   ├── stage64_polymarket_relevance.py
+    │   │   │   │   ├── stage64_relevance_hybrid_lab.py
+    │   │   │   │   ├── stage65_pack_outputs.py
+    │   │   │   │   ├── stage65_polymarket_focus.py
+    │   │   │   │   ├── stage65_price_impact_frontier_lab.py
+    │   │   │   │   ├── stage68_pack_outputs.py
+    │   │   │   │   ├── stage69_branch_single_leg_arena.py
+    │   │   │   │   ├── stage69_pack_outputs.py
+    │   │   │   │   ├── stage70_mainline_wide_frontier.py
+    │   │   │   │   ├── stage70_pack_outputs.py
+    │   │   │   │   ├── stage71_mainline_open_bands.py
+    │   │   │   │   ├── stage72_branch_asymmetry_open.py
+    │   │   │   │   ├── stage72_pack_outputs.py
+    │   │   │   │   ├── stage73_mainline_bridge_frontier.py
+    │   │   │   │   ├── stage74_branch_rebuild_lanes.py
+    │   │   │   │   ├── stage74_pack_outputs.py
+    │   │   │   │   ├── stage75_mainline_event_state_lab.py
+    │   │   │   │   ├── stage76_branch_event_state_lab.py
+    │   │   │   │   ├── stage76_pack_outputs.py
+    │   │   │   │   ├── stage77_mainline_dual_window_lab.py
+    │   │   │   │   ├── stage78_branch_dual_window_lab.py
+    │   │   │   │   ├── stage78_pack_outputs.py
+    │   │   │   │   ├── stage80_console_summary.py
+    │   │   │   │   ├── stage81_mainline_walkforward_lab.py
+    │   │   │   │   ├── stage82_branch_walkforward_lab.py
+    │   │   │   │   ├── stage83_console_summary.py
+    │   │   │   │   ├── stage86_branch_fast_matrix.py
+    │   │   │   │   ├── stage88_strategy_fusion_walkforward.py
+    │   │   │   │   ├── stage90_event_alpha_matrix.py
+    │   │   │   │   ├── stage91_branch_event_alpha_matrix.py
+    │   │   │   │   ├── stage92_eth_sol_open_frontier.py
+    │   │   │   │   ├── stage93_frequency_accel.py
+    │   │   │   │   ├── stage94_priority_pipeline.py
+    │   │   │   │   ├── stage96_event_bridge.py
+    │   │   │   │   ├── stage97_multi_standard_frontier.py
+    │   │   │   │   ├── stage98_branch_expert_playbook.py
+    │   │   │   │   ├── stage98_triple_demo_wire.py
+    │   │   │   │   ├── stage99_mainline_frequency_push.py
+    │   │   │   │   ├── sweep_riskon_hi.py
+    │   │   │   │   ├── sweep_sizing.py
+    │   │   │   │   ├── sweep_slices.py
+    │   │   │   │   └── universe_scan.py
+    │   │   │   ├── .okx_demo_env.example
+    │   │   │   ├── __init__.py
+    │   │   │   ├── apply_v14p1_now.sh
+    │   │   │   ├── build_chatgpt_bundle_now.sh
+    │   │   │   ├── build_clean_system_package.sh
+    │   │   │   ├── check_blockbeats.sh
+    │   │   │   ├── check_free_feeds.sh
+    │   │   │   ├── check_okx_coinglass.sh
+    │   │   │   ├── cleanup_download_exports.sh
+    │   │   │   ├── config.yml
+    │   │   │   ├── config_mainline_dynlev_fix8_lock18.yml
+    │   │   │   ├── config_mainline_legacy_broken_backup.yml
+    │   │   │   ├── config_mainline_legacy_research_only_anchor_stage150.yml
+    │   │   │   ├── config_mainline_live_base_restore_stage148.yml
+    │   │   │   ├── config_mainline_shadow_candidate.yml
+    │   │   │   ├── config_mainline_stage113_shadow_eventbridge.yml
+    │   │   │   ├── config_recent2y.yml
+    │   │   │   ├── config_shortwave_asset_integrated.yml
+    │   │   │   ├── config_shortwave_candidate.yml
+    │   │   │   ├── config_shortwave_candidate.yml.example
+    │   │   │   ├── config_shortwave_triple_book_plan.yml
+    │   │   │   ├── config_shortwave_triple_book_preview.yml
+    │   │   │   ├── config_shortwave_triple_book_stage113.yml
+    │   │   │   ├── config_shortwave_triple_book_stage133.yml
+    │   │   │   ├── config_stage148_pre_restore_backup.yml
+    │   │   │   ├── config_stage150_pre_recover_backup.yml
+    │   │   │   ├── config_stage151_pre_resync_backup.yml
+    │   │   │   ├── export_fresh_bundle_now.sh
+    │   │   │   ├── export_research_stage94_now.sh
+    │   │   │   ├── export_stage100_mainline_shadow_watch.sh
+    │   │   │   ├── export_stage102_joint_key_files.sh
+    │   │   │   ├── export_stage103_joint_key_files.sh
+    │   │   │   ├── export_stage104_joint_preview.sh
+    │   │   │   ├── export_stage105_joint_preview.sh
+    │   │   │   ├── export_stage106_joint_runtime_watch.sh
+    │   │   │   ├── export_stage107_joint_upgrade_plan.sh
+    │   │   │   ├── export_stage108_joint_key_files.sh
+    │   │   │   ├── export_stage111_joint_runtime_watch.sh
+    │   │   │   ├── export_stage114_apply_watch.sh
+    │   │   │   ├── export_stage95_key_now.sh
+    │   │   │   ├── FIX_PERMISSIONS_README.txt
+    │   │   │   ├── hard_stop_branch_demo_all.sh
+    │   │   │   ├── LOCAL_VALIDATION_NOTE_20260401.txt
+    │   │   │   ├── make_upload_bundle.sh
+    │   │   │   ├── OPENAI_REBUILD_NOTE_20260411.txt
+    │   │   │   ├── openai_step1_verify_then_probe.sh
+    │   │   │   ├── openai_step2_start_demo.sh
+    │   │   │   ├── PATCH_NOTE_20260317.txt
+    │   │   │   ├── PATCH_NOTE_20260317_STAGE46_TO48.txt
+    │   │   │   ├── PATCH_NOTE_20260317_STAGE49_51.txt
+    │   │   │   ├── PATCH_NOTE_20260318_BRANCH_DEMO_FOMC.txt
+    │   │   │   ├── PATCH_NOTE_20260318_R248_PNL_SPLIT.txt
+    │   │   │   ├── PATCH_NOTE_20260318_R249_REPORT_CLARITY.txt
+    │   │   │   ├── PATCH_NOTE_20260318_R250_REPORT_VISIBILITY.txt
+    │   │   │   ├── PATCH_NOTE_20260319_R251_MAIN_DEMO_LATEST.txt
+    │   │   │   ├── PATCH_NOTE_20260319_R252_MAIN_DEMO_FORCE.txt
+    │   │   │   ├── PATCH_NOTE_20260319_R257_AGGRESSIVE_FIRST.txt
+    │   │   │   ├── PATCH_NOTE_20260319_R260_BRANCH_FAST_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260319_R265_EVENT_ALPHA_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260320_STAGE97_MULTI_STANDARD.txt
+    │   │   │   ├── PATCH_NOTE_20260322_RECOVERY_STABILITY.txt
+    │   │   │   ├── PATCH_NOTE_20260323_STAGE100_MAINLINE_SHADOW_MONITOR.txt
+    │   │   │   ├── PATCH_NOTE_20260323_STAGE100_STATEFIX.txt
+    │   │   │   ├── PATCH_NOTE_20260323_STAGE100_WAITFIX.txt
+    │   │   │   ├── PATCH_NOTE_20260323_STAGE98_EXPERT_PLAYBOOK.txt
+    │   │   │   ├── PATCH_NOTE_20260323_STAGE99_MAINLINE_FREQ.txt
+    │   │   │   ├── PATCH_NOTE_20260324_V15P8.txt
+    │   │   │   ├── PATCH_NOTE_20260326_CHATGPT_REBUILD.txt
+    │   │   │   ├── PATCH_NOTE_20260329_STAGE143_NAMEERROR_FIX.txt
+    │   │   │   ├── PATCH_NOTE_20260329_STAGE145_RECLAIM_PHASE3.txt
+    │   │   │   ├── PATCH_NOTE_20260330_STAGE151_RUNTIME_RESYNC.txt
+    │   │   │   ├── PATCH_NOTE_20260330_STAGE152_MULTISET.txt
+    │   │   │   ├── PATCH_NOTE_20260330_STAGE153_HOTFIX.txt
+    │   │   │   ├── PATCH_NOTE_20260330_STAGE153_MULTISET_HOTFIX.txt
+    │   │   │   ├── PATCH_NOTE_20260330_STAGE154_MULTISET.txt
+    │   │   │   ├── PATCH_NOTE_20260330_STAGE154_SHARED_ACCOUNT_GUARD.txt
+    │   │   │   ├── PATCH_NOTE_20260330_STAGE157_REGIME_PLAYBOOK_ACCEL.txt
+    │   │   │   ├── PATCH_NOTE_20260330_STAGE158_STAGE157_FAST_RESUME.txt
+    │   │   │   ├── PATCH_NOTE_20260331_STAGE170_STARTUP_RAW_GUARD.txt
+    │   │   │   ├── PATCH_NOTE_20260331_STAGE171_SYSTEM_PREFLIGHT.txt
+    │   │   │   ├── PATCH_NOTE_20260401_STAGE172_173_INTEGRATED.txt
+    │   │   │   ├── PATCH_NOTE_20260401_STAGE174_ANCHOR_ACCEL_AND_RUNTIME_SYNC.txt
+    │   │   │   ├── PATCH_NOTE_20260401_STAGE177_RUNTIME_ROW_TRUTH_AND_GAP_GUARD.txt
+    │   │   │   ├── PATCH_NOTE_20260401_STAGE178.txt
+    │   │   │   ├── PATCH_NOTE_20260401_STAGE179.txt
+    │   │   │   ├── PATCH_NOTE_20260401_STAGE180_BTC_RAW_FLOOR_AND_SNAPSHOT_GUARD.txt
+    │   │   │   ├── PATCH_NOTE_20260404_GUARD_FIX_AND_CLEAN_REBUILD.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE230_EXPANDED_COMBO_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE231_SEEDED_CONFIRMATION_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE232_SOL_GATE_NEIGHBORHOOD.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE233_SEEDED_LAYER_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE234_SEEDED_MESSAGE_OVERLAY_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE235_SEEDED_MULTIVIEW_RISK_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE236_MULTIVIEW_CONFLICT_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE237_COMPACT_DEMO_TERMINAL.txt
+    │   │   │   ├── PATCH_NOTE_20260411_STAGE238_REPORT_REASON_LINES.txt
+    │   │   │   ├── PATCH_NOTE_20260412_STAGE240_REOPEN_FAMILY_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260412_STAGE241_NEIGHBORHOOD_PRIORITY_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260412_STAGE242_EXIT_PROFITLOCK_MATRIX.txt
+    │   │   │   ├── PATCH_NOTE_20260412_STAGE243_CLUSTER_EXIT_FAMILY_MATRIX.txt
+    │   │   │   ├── PATCH_README_20260322_v12p2.txt
+    │   │   │   ├── PATCH_README_20260322_v12p3.txt
+    │   │   │   ├── PATCH_README_20260322_v12p4_TERMINAL_RULE_RESTORE.txt
+    │   │   │   ├── PATCH_README_20260322_v12p5_RESEARCH_RULE_RESTORE.txt
+    │   │   │   ├── PATCH_README_20260322_v12p6_WF_GAPFILL_AND_6Y_ALIGN.txt
+    │   │   │   ├── PATCH_README_20260322_v12p7_BRANCH_REPORT_AND_DUAL_RESTART.txt
+    │   │   │   ├── PATCH_README_20260322_v12p8_BUNDLE_FIX.txt
+    │   │   │   ├── PATCH_README_20260322_v12p9_STALE_REPAIR.txt
+    │   │   │   ├── PATCH_README_20260322_v14p1_FAST_AND_STALE_FIX.txt
+    │   │   │   ├── PATCH_README_20260322_v14p1_FAST_BRANCH_AND_STALE_LOCK.txt
+    │   │   │   ├── PATCH_README_20260323_v14p2_STAGE93_FAST.txt
+    │   │   │   ├── PATCH_README_20260323_v14p2_STAGE93_PROGRESS_AND_CACHE.txt
+    │   │   │   ├── PATCH_README_20260323_v14p2_STAGE93_SPEED.txt
+    │   │   │   ├── PATCH_README_20260323_v14p3_BRANCH_REFRESH.txt
+    │   │   │   ├── PATCH_README_20260323_v14p4_STAGE94_EXPORT_AND_RETRY.txt
+    │   │   │   ├── PATCH_README_20260323_v14p5_BRANCH_UPLIFT_SYNC.txt
+    │   │   │   ├── PATCH_README_20260323_v14p5_STAGE95_FAST_SYNC.txt
+    │   │   │   ├── PATCH_README_20260323_v14p6_EXPORT_FRESH_BUNDLE.txt
+    │   │   │   ├── PATCH_README_20260323_v14p8_BREADTH_EVENT_REGIME.txt
+    │   │   │   ├── PATCH_README_20260324_v15p10_STAGE108_MIXED_TIME_FIX.txt
+    │   │   │   ├── PATCH_README_20260324_v15p11_STAGE108_BTC_TIMEFIX.txt
+    │   │   │   ├── PATCH_README_20260324_v15p5_STAGE103_ASSET_INTEGRATED.txt
+    │   │   │   ├── PATCH_README_20260324_v15p6_BRANCH_ASSET_INTEGRATED.txt
+    │   │   │   ├── PATCH_README_20260324_v15p7_STAGE105.txt
+    │   │   │   ├── PATCH_README_20260324_v15p9_STAGE107_108_JOINT_PLAN.txt
+    │   │   │   ├── PATCH_README_20260325_v15p15_TRIPLE_BOOK_PROMOTE.txt
+    │   │   │   ├── PATCH_README_20260325_v15p16_STAGE112_GATE.txt
+    │   │   │   ├── PATCH_README_20260325_v15p17_STAGE113_JOINT_EVENT_TECH.txt
+    │   │   │   ├── PATCH_README_20260325_v15p20_TERMINAL_TITLE.txt
+    │   │   │   ├── PATCH_README_20260325_v15p21_TERMINAL_TITLE_FIX.txt
+    │   │   │   ├── PATCH_README_20260325_v15p22_STAGE116.txt
+    │   │   │   ├── PATCH_README_20260325_v15p23_STAGE117.txt
+    │   │   │   ├── PATCH_README_20260325_v15p24_STAGE117_FIX.txt
+    │   │   │   ├── PATCH_README_20260325_v15p25_STAGE118.txt
+    │   │   │   ├── PATCH_README_20260326_v15p28_STAGE120_REPAIR.txt
+    │   │   │   ├── PATCH_README_20260326_v15p29_RUNTIME_SYNC_AND_EVENT_GATE.txt
+    │   │   │   ├── pause_branch_demo.sh
+    │   │   │   ├── pause_mainline_shadow_demo.sh
+    │   │   │   ├── pause_okx_demo.sh
+    │   │   │   ├── pause_shortwave_demo.sh
+    │   │   │   ├── REBUILD_NOTE_20260313.txt
+    │   │   │   ├── REBUILD_NOTE_20260314_CHATGPT.txt
+    │   │   │   ├── REBUILD_NOTE_20260314_SUPPORT_VERIFIED.txt
+    │   │   │   ├── REBUILD_NOTE_20260317_CHATGPT.txt
+    │   │   │   ├── refresh_branch_raw.sh
+    │   │   │   ├── refresh_branch_research_raw.sh
+    │   │   │   ├── refresh_mainline_raw.sh
+    │   │   │   ├── refresh_stage225_five_min_raw.sh
+    │   │   │   ├── reload_dual_demo_now.sh
+    │   │   │   ├── requirements.txt
+    │   │   │   ├── restart_dual_demo_terminals.sh
+    │   │   │   ├── risk_override.yml
+    │   │   │   ├── risk_override.yml.example
+    │   │   │   ├── run.sh
+    │   │   │   ├── run_alt_shortwave_focus_grid.sh
+    │   │   │   ├── run_alt_shortwave_lab.sh
+    │   │   │   ├── run_alt_shortwave_message_overlay.sh
+    │   │   │   ├── run_alt_shortwave_research_batch.sh
+    │   │   │   ├── run_alt_shortwave_research_full.sh
+    │   │   │   ├── run_alt_shortwave_symbol_overlay.sh
+    │   │   │   ├── run_branch_fast_and_restart_mainline_now.sh
+    │   │   │   ├── run_branch_fast_research.sh
+    │   │   │   ├── run_branch_fusion_pick_now.sh
+    │   │   │   ├── run_btc_dual_branch_lab.sh
+    │   │   │   ├── run_btc_research_batch.sh
+    │   │   │   ├── run_coinglass_ab.sh
+    │   │   │   ├── run_coinglass_history_export.sh
+    │   │   │   ├── run_deepseek_strategy_pack.sh
+    │   │   │   ├── run_event_short_overlay.sh
+    │   │   │   ├── run_event_window_robust.sh
+    │   │   │   ├── run_event_window_strict_cv.sh
+    │   │   │   ├── run_event_window_sweep.sh
+    │   │   │   ├── run_event_window_walkforward.sh
+    │   │   │   ├── run_frequency_trade_audit.sh
+    │   │   │   ├── run_gapfill_wf_fusion_now.sh
+    │   │   │   ├── run_joint_message_tech_research.sh
+    │   │   │   ├── run_local_info_sources_test.sh
+    │   │   │   ├── run_mainline_density_lab.sh
+    │   │   │   ├── run_message_combo_ab.sh
+    │   │   │   ├── run_message_stack_backtest.sh
+    │   │   │   ├── run_okx_demo_runner.sh
+    │   │   │   ├── run_overfit_check.sh
+    │   │   │   ├── run_precheck.sh
+    │   │   │   ├── run_priority_research_now.sh
+    │   │   │   ├── run_riskon_sweep.sh
+    │   │   │   ├── run_send_files.sh
+    │   │   │   ├── run_sizing_sweep.sh
+    │   │   │   ├── run_stage100_mainline_shadow_monitor.sh
+    │   │   │   ├── run_stage101_main_focus.sh
+    │   │   │   ├── run_stage102_structural_focus.sh
+    │   │   │   ├── run_stage103_asset_integrated_legs.sh
+    │   │   │   ├── run_stage104_focus_repair.sh
+    │   │   │   ├── run_stage105_joint_parallel_now.sh
+    │   │   │   ├── run_stage105_main_focus.sh
+    │   │   │   ├── run_stage106_joint_runtime_watch.sh
+    │   │   │   ├── run_stage106_main_focus.sh
+    │   │   │   ├── run_stage107_joint_upgrade_plan.sh
+    │   │   │   ├── run_stage108_joint_dual_track_opt.sh
+    │   │   │   ├── run_stage109_joint_upgrade_plan.sh
+    │   │   │   ├── run_stage110_triple_book_raw_repair.sh
+    │   │   │   ├── run_stage111_joint_runtime_watch.sh
+    │   │   │   ├── run_stage112_joint_upgrade_gate.sh
+    │   │   │   ├── run_stage113_joint_event_tech_upgrade.sh
+    │   │   │   ├── run_stage114_apply_and_watch.sh
+    │   │   │   ├── run_stage115_runtime_sync.sh
+    │   │   │   ├── run_stage116_joint_dual_uplift.sh
+    │   │   │   ├── run_stage117_mainline_wf_repair.sh
+    │   │   │   ├── run_stage118_apply_stable_plan.sh
+    │   │   │   ├── run_stage118_apply_verify.sh
+    │   │   │   ├── run_stage118_joint_decision_refresh.sh
+    │   │   │   ├── run_stage118_mainline_raw_rebuild.sh
+    │   │   │   ├── run_stage118_mainline_repair.sh
+    │   │   │   ├── run_stage119_joint_event_bridge.sh
+    │   │   │   ├── run_stage120_event_window_frontier.sh
+    │   │   │   ├── run_stage121_runtime_event_sync.sh
+    │   │   │   ├── run_stage125_event_window_sync.sh
+    │   │   │   ├── run_stage126_event_profile_walkforward.sh
+    │   │   │   ├── run_stage128_joint_shortlist_refresh.sh
+    │   │   │   ├── run_stage129_gate_quality_refresh.sh
+    │   │   │   ├── run_stage130_wf_gate_rescore.sh
+    │   │   │   ├── run_stage131_bidirectional_guard_refresh.sh
+    │   │   │   ├── run_stage132_branch_runtime_sync.sh
+    │   │   │   ├── run_stage133_branch_runtime_force_triple_book.sh
+    │   │   │   ├── run_stage134_target_monthly_frontier.sh
+    │   │   │   ├── run_stage135_web_playbook_frontier.sh
+    │   │   │   ├── run_stage136_regime_plateau_frontier.sh
+    │   │   │   ├── run_stage137_anchor_playbook_frontier.sh
+    │   │   │   ├── run_stage138_anchor_guard_refresh.sh
+    │   │   │   ├── run_stage139_microstructure_confluence_frontier.sh
+    │   │   │   ├── run_stage140_regime_switch_risk_ladder.sh
+    │   │   │   ├── run_stage141_guarded_asymmetry_shortlist.sh
+    │   │   │   ├── run_stage142_reclaim_cluster_frontier.sh
+    │   │   │   ├── run_stage144_reclaim_plateau_phase2.sh
+    │   │   │   ├── run_stage145_reclaim_plateau_phase3.sh
+    │   │   │   ├── run_stage146_reclaim_plateau_phase4.sh
+    │   │   │   ├── run_stage147_reclaim_density_phase5.sh
+    │   │   │   ├── run_stage148_livebase_restore_and_multiasset_frontier.sh
+    │   │   │   ├── run_stage150_livebase_guard_and_mainline_recover.sh
+    │   │   │   ├── run_stage151_mainline_runtime_resync.sh
+    │   │   │   ├── run_stage151_runtime_report_truth_sync.sh
+    │   │   │   ├── run_stage152_multiasset_playbook_frontier.sh
+    │   │   │   ├── run_stage153_multiasset_playbook_hotfix.sh
+    │   │   │   ├── run_stage154_multiasset_reclaim_momentum_frontier.sh
+    │   │   │   ├── run_stage154_shared_account_overlap_guard.sh
+    │   │   │   ├── run_stage157_regime_playbook_accel_frontier.sh
+    │   │   │   ├── run_stage158_stage157_fast_resume.sh
+    │   │   │   ├── run_stage159_message_confirm_reclaim_cluster_frontier.sh
+    │   │   │   ├── run_stage160_mainline_overlay_hold_cluster_frontier.sh
+    │   │   │   ├── run_stage161_mainline_risk_budget_multiasset_link_frontier.sh
+    │   │   │   ├── run_stage162_event_confirm_eth_pair_frontier.sh
+    │   │   │   ├── run_stage163_web_aggressive_multiasset_frontier.sh
+    │   │   │   ├── run_stage165_composite_hedge_ladder_frontier.sh
+    │   │   │   ├── run_stage166_data_deadangle_audit.sh
+    │   │   │   ├── run_stage167_data_repair_diversity_guard.sh
+    │   │   │   ├── run_stage168_bnb_gap_quarantine_and_family_cap.sh
+    │   │   │   ├── run_stage171_system_preflight.sh
+    │   │   │   ├── run_stage172_joint_frontier_bundle.sh
+    │   │   │   ├── run_stage173_rebuild_firstpass.sh
+    │   │   │   ├── run_stage174_anchor_accel_and_runtime_sync.sh
+    │   │   │   ├── run_stage175_aggressive_regime_hedge_grid_frontier.sh
+    │   │   │   ├── run_stage176_system_stability_deadangle_guard.sh
+    │   │   │   ├── run_stage177_runtime_row_truth_and_gap_guard.sh
+    │   │   │   ├── run_stage178_process_owner_and_runtime_truth_sync.sh
+    │   │   │   ├── run_stage179_mainline_runtime_readiness_guard.sh
+    │   │   │   ├── run_stage180_btc_raw_floor_and_snapshot_guard.sh
+    │   │   │   ├── run_stage181_frontier_coverage_diversity_guard.sh
+    │   │   │   ├── run_stage182_single_export_diversity_frontier.sh
+    │   │   │   ├── run_stage183_family_taxonomy_blacklist_seed_frontier.sh
+    │   │   │   ├── run_stage184_aggressive_monthly_accel_frontier.sh
+    │   │   │   ├── run_stage185_target_monthly_focus_frontier.sh
+    │   │   │   ├── run_stage186_truth_anchor_target_lift_frontier.sh
+    │   │   │   ├── run_stage187_regime_book_target_accel_frontier.sh
+    │   │   │   ├── run_stage188_eth_drift_squeeze_sprint.sh
+    │   │   │   ├── run_stage189_regime_webblend_frontier.sh
+    │   │   │   ├── run_stage190_weblearned_multi_frequency_innovation_frontier.sh
+    │   │   │   ├── run_stage191_crosssignal_volmanaged_frontier.sh
+    │   │   │   ├── run_stage192_reclaim_pair_voltarget_frontier.sh
+    │   │   │   ├── run_stage193_anchor_plateau_beta_frontier.sh
+    │   │   │   ├── run_stage194_voltarget_hybrid_frontier.sh
+    │   │   │   ├── run_stage195_branch_core_focus_frontier.sh
+    │   │   │   ├── run_stage196_eth_sol_reclaim_short_frontier.sh
+    │   │   │   ├── run_stage198_aggressive_regime_switch_frontier.sh
+    │   │   │   ├── run_stage200_aggressive_dualcore_branch_frontier.sh
+    │   │   │   ├── run_stage201_eth_reclaim_hybrid_reset_frontier.sh
+    │   │   │   ├── run_stage202_mainline_message_link_frontier.sh
+    │   │   │   ├── run_stage203_aggressive_winrate_risk_frontier.sh
+    │   │   │   ├── run_stage203_bruteforce_expectancy_frontier.sh
+    │   │   │   ├── run_stage204_reclaim_cluster_risk_sprint.sh
+    │   │   │   ├── run_stage205_btc_truth_and_dual_rerun.sh
+    │   │   │   ├── run_stage206_message_reclaim_sync_frontier.sh
+    │   │   │   ├── run_stage207_web_community_playbook_accel.sh
+    │   │   │   ├── run_stage208_message_quantization_frontier.sh
+    │   │   │   ├── run_stage209_message_action_tier_frontier.sh
+    │   │   │   ├── run_stage210_common_event_message_model_frontier.sh
+    │   │   │   ├── run_stage211_future_event_runtime_bridge_frontier.sh
+    │   │   │   ├── run_stage212_message_sizing_overlay_frontier.sh
+    │   │   │   ├── run_stage213_branch_sizing_overlay_frontier.sh
+    │   │   │   ├── run_stage214_branch_sizing_overlay_dtype_fix.sh
+    │   │   │   ├── run_stage215_branch_sizing_overlay_score_harden.sh
+    │   │   │   ├── run_stage216_branch_ethcore_overlay_guard_frontier.sh
+    │   │   │   ├── run_stage217_multiregime_broadfront_frontier.sh
+    │   │   │   ├── run_stage218_candidate_truth_sync_frontier.sh
+    │   │   │   ├── run_stage219_truth_locked_seed_frontier.sh
+    │   │   │   ├── run_stage220_btc_raw_truth_restore.sh
+    │   │   │   ├── run_stage221_btc_runtime_truth_fence.sh
+    │   │   │   ├── run_stage223_onepass_truth_locked_broadfront.sh
+    │   │   │   ├── run_stage223_truth_locked_broadfront_frontier.sh
+    │   │   │   ├── run_stage224_strategy_optimize_now.sh
+    │   │   │   ├── run_stage225_combo_matrix_lab.sh
+    │   │   │   ├── run_stage227_five_min_combo_matrix.sh
+    │   │   │   ├── run_stage228_seeded_cluster_expansion.sh
+    │   │   │   ├── run_stage229_research_lanes.sh
+    │   │   │   ├── run_stage230_expanded_combo_matrix.sh
+    │   │   │   ├── run_stage231_seeded_confirmation_matrix.sh
+    │   │   │   ├── run_stage232_sol_gate_neighborhood.sh
+    │   │   │   ├── run_stage233_seeded_layer_matrix.sh
+    │   │   │   ├── run_stage234_seeded_message_overlay_matrix.sh
+    │   │   │   ├── run_stage235_seeded_multiview_risk_matrix.sh
+    │   │   │   ├── run_stage236_multiview_conflict_matrix.sh
+    │   │   │   ├── run_stage240_reopen_family_matrix.sh
+    │   │   │   ├── run_stage241_neighborhood_priority_matrix.sh
+    │   │   │   ├── run_stage242_exit_profitlock_matrix.sh
+    │   │   │   ├── run_stage243_cluster_exit_family_matrix.sh
+    │   │   │   ├── run_stage42_research.sh
+    │   │   │   ├── run_stage43_efficiency.sh
+    │   │   │   ├── run_stage44_priority.sh
+    │   │   │   ├── run_stage45_targeted.sh
+    │   │   │   ├── run_stage46_aggressive.sh
+    │   │   │   ├── run_stage47_tranche_lock.sh
+    │   │   │   ├── run_stage48_aggressive_refine.sh
+    │   │   │   ├── run_stage49_aggressive_sprint.sh
+    │   │   │   ├── run_stage51_aggressive_frontier.sh
+    │   │   │   ├── run_stage54_full_angle.sh
+    │   │   │   ├── run_stage55_broad_dual_track.sh
+    │   │   │   ├── run_stage59_structural_priority.sh
+    │   │   │   ├── run_stage61_structural_plus.sh
+    │   │   │   ├── run_stage63_price_impact_structural.sh
+    │   │   │   ├── run_stage64_relevance_hybrid.sh
+    │   │   │   ├── run_stage65_price_impact_frontier.sh
+    │   │   │   ├── run_stage66_broad_both_sides.sh
+    │   │   │   ├── run_stage67_broad_message_frontier.sh
+    │   │   │   ├── run_stage68_joint_frontier.sh
+    │   │   │   ├── run_stage69_finalist_fast.sh
+    │   │   │   ├── run_stage70_reopen_frontier.sh
+    │   │   │   ├── run_stage71_72_open_frontier.sh
+    │   │   │   ├── run_stage73_74_bridge_rebuild.sh
+    │   │   │   ├── run_stage75_76_event_state.sh
+    │   │   │   ├── run_stage77_78_dual_window.sh
+    │   │   │   ├── run_stage79_dual_window_monthlyized.sh
+    │   │   │   ├── run_stage80_research_round.sh
+    │   │   │   ├── run_stage81_82_walkforward.sh
+    │   │   │   ├── run_stage84_aggressive_then_conservative.sh
+    │   │   │   ├── run_stage85_event_state_sprint.sh
+    │   │   │   ├── run_stage86_branch_fast_matrix.sh
+    │   │   │   ├── run_stage87_branch_multi_standard.sh
+    │   │   │   ├── run_stage88_fusion_sprint.sh
+    │   │   │   ├── run_stage90_event_alpha_sprint.sh
+    │   │   │   ├── run_stage91_switch_branch_demo.sh
+    │   │   │   ├── run_stage92_eth_sol_open_frontier.sh
+    │   │   │   ├── run_stage93_frequency_accel.sh
+    │   │   │   ├── run_stage93_frequency_accel_full.sh
+    │   │   │   ├── run_stage94_branch_refresh_frontier.sh
+    │   │   │   ├── run_stage94_priority_pipeline.sh
+    │   │   │   ├── run_stage95_branch_uplift_now.sh
+    │   │   │   ├── run_stage95_priority_sync.sh
+    │   │   │   ├── run_stage96_event_bridge.sh
+    │   │   │   ├── run_stage96_priority_refresh.sh
+    │   │   │   ├── run_stage97_multi_standard_frontier.sh
+    │   │   │   ├── run_stage98_branch_expert_playbook.sh
+    │   │   │   ├── run_stage98_triple_demo_wire.sh
+    │   │   │   ├── run_stage99_mainline_frequency_push.sh
+    │   │   │   ├── run_sweep.sh
+    │   │   │   ├── run_with_single_export.sh
+    │   │   │   ├── shadow.yml
+    │   │   │   ├── shadow.yml.example
+    │   │   │   ├── shadow_mainline_shadow_candidate.yml
+    │   │   │   ├── shadow_mainline_stage113_shadow_eventbridge.yml
+    │   │   │   ├── shadow_shortwave_asset_integrated.yml
+    │   │   │   ├── shadow_shortwave_candidate.yml
+    │   │   │   ├── shadow_shortwave_candidate.yml.example
+    │   │   │   ├── shadow_shortwave_triple_book_plan.yml
+    │   │   │   ├── shadow_shortwave_triple_book_preview.yml
+    │   │   │   ├── shadow_shortwave_triple_book_stage113.yml
+    │   │   │   ├── shadow_shortwave_triple_book_stage133.yml
+    │   │   │   ├── STAGE121_EVENT_GATE_NOTES_20260326.txt
+    │   │   │   ├── stage230_shortlist_stage231_seedlanes.txt
+    │   │   │   ├── STAGE66_67_README.txt
+    │   │   │   ├── start_branch_demo.sh
+    │   │   │   ├── start_branch_demo_asset_integrated.sh
+    │   │   │   ├── start_branch_demo_now.sh
+    │   │   │   ├── start_branch_demo_triple_book.sh
+    │   │   │   ├── start_demos_fast.sh
+    │   │   │   ├── start_mainline_shadow_demo.sh
+    │   │   │   ├── start_okx_demo.sh
+    │   │   │   ├── start_okx_demo_now.sh
+    │   │   │   ├── start_shortwave_demo.sh
+    │   │   │   ├── start_shortwave_demo_existing_config.sh
+    │   │   │   ├── STRATEGY_FRAMEWORK_20260322.txt
+    │   │   │   ├── switch_branch_demo_to_asset_integrated.sh
+    │   │   │   ├── switch_branch_demo_to_fast_now.sh
+    │   │   │   ├── switch_branch_demo_to_triple_book.sh
+    │   │   │   ├── SYSTEM_STABILITY_SCAN_20260322.txt
+    │   │   │   ├── SYSTEM_STABILITY_SCAN_20260322_v14.txt
+    │   │   │   ├── TRADER_EVENT_PLAYBOOK_20260323.txt
+    │   │   │   └── VERIFICATION_SUMMARY_20260317.txt
+    │   │   ├── tools/
+    │   │   │   ├── __init__.py
+    │   │   │   ├── auto_risk_gate_tool.py
+    │   │   │   ├── base_btc_tool.py
+    │   │   │   ├── market_tools.py
+    │   │   │   ├── new_strategy_tools.py
+    │   │   │   ├── strategy_tools.py
+    │   │   │   └── trading_tools.py
+    │   │   ├── __init__.py
+    │   │   ├── ai_strategy_generator.py
+    │   │   ├── ai_trading_commander.py
+    │   │   ├── ai_trading_manager.py
+    │   │   ├── api_bridge.py
+    │   │   ├── auto_trading_scheduler.py
+    │   │   ├── btc_system_client.py
+    │   │   ├── config.py
+    │   │   ├── event_bus.py
+    │   │   ├── exchange_config.py
+    │   │   ├── intelligence_integration.py
+    │   │   ├── intervention_system.py
+    │   │   ├── living_system.py
+    │   │   ├── market_data.py
+    │   │   ├── news_monitor.py
+    │   │   ├── process_guardian.py
+    │   │   ├── process_manager.py
+    │   │   ├── process_manager_v2.py
+    │   │   ├── quant_trading_runner.py
+    │   │   ├── recovery_manager.py
+    │   │   ├── resource_monitor.py
+    │   │   ├── risk_monitor.py
+    │   │   ├── shadow_signal_provider.py
+    │   │   ├── simple_ai_quant.py
+    │   │   ├── smart_quant_engine.py
+    │   │   ├── start_ai_trading.py
+    │   │   ├── strategy_analyzer.py
+    │   │   ├── trade_executor.py
+    │   │   ├── trading_config.py
+    │   │   ├── trading_logger.py
+    │   │   ├── trading_memory.py
+    │   │   ├── trading_resource_guard.py
+    │   │   ├── trading_subagent.py
+    │   │   ├── user_trading_manager.py
+    │   │   └── workflow_definitions.py
+    │   ├── checkpoints/
+    │   │   └── hf_cache/
+    │   │       └── models--uer--roberta-base-finetuned-jd-binary-chinese/
+    │   │           ├── .no_exist/
+    │   │           │   └── 133367c1beb2d5b04e6df3e7ec218a49575bc437/
+    │   │           │       ├── added_tokens.json
+    │   │           │       ├── chat_template.jinja
+    │   │           │       ├── model.safetensors
+    │   │           │       ├── model.safetensors.index.json
+    │   │           │       └── tokenizer.json
+    │   │           ├── blobs/
+    │   │           │   ├── 0eebd71f7150decb7cf221e3fa9a8b8c5add511b
+    │   │           │   ├── 2309324cb315da00bd5dd3f1f2e59d9458a3a539
+    │   │           │   ├── 94480df24580c4e614f9cd1a738d8aa100746b7b80051258c86132a0eecd1531
+    │   │           │   ├── a808af3cfc1aa1168074249a0c8ec873bc880e754f3c68be01a15cb9ceb64c6a
+    │   │           │   ├── ca4f9781030019ab9b253c6dcb8c7878b6dc87a5
+    │   │           │   └── e7b0375001f109a6b8873d756ad4f7bbb15fbaa5
+    │   │           ├── refs/
+    │   │           │   ├── refs/
+    │   │           │   │   └── pr/
+    │   │           │   │       └── 3
+    │   │           │   └── main
+    │   │           └── snapshots/
+    │   │               ├── 133367c1beb2d5b04e6df3e7ec218a49575bc437/
+    │   │               │   ├── config.json
+    │   │               │   ├── pytorch_model.bin
+    │   │               │   ├── special_tokens_map.json
+    │   │               │   ├── tokenizer_config.json
+    │   │               │   └── vocab.txt
+    │   │               └── 7d325972e136def7e8382efe6002693636891852/
+    │   │                   └── model.safetensors
+    │   ├── consciousness/
+    │   │   ├── data/
+    │   │   │   └── silicon_life/
+    │   │   ├── __init__.py
+    │   │   ├── Consciousness.py
+    │   │   ├── Consciousness.py.bak
+    │   │   ├── consciousness_integration.py
+    │   │   ├── life_presence.py
+    │   │   ├── life_presence_enhanced.py
+    │   │   ├── self_awareness.py
+    │   │   ├── silicon_life_consciousness.py
+    │   │   ├── subconscious_engine.py
+    │   │   ├── tool_feedback_enhanced.py
+    │   │   ├── tool_feedback_filter.py
+    │   │   └── tool_feedback_manager.py
+    │   ├── constants/
+    │   │   ├── __init__.py
+    │   │   └── chat_keywords.py
+    │   ├── cost/
+    │   │   ├── __init__.py
+    │   │   ├── cost_manager.py
+    │   │   ├── token_budget_integration.py
+    │   │   └── token_budget_manager.py
+    │   ├── data/
+    │   │   ├── archive/
+    │   │   ├── checkpoints/
+    │   │   ├── consciousness_states/
+    │   │   │   ├── user_123_state.json
+    │   │   │   └── user_456_state.json
+    │   │   ├── execution/
+    │   │   │   ├── compressed/
+    │   │   │   ├── default/
+    │   │   │   │   ├── compressed/
+    │   │   │   │   ├── .last_sync
+    │   │   │   │   └── executions.jsonl
+    │   │   │   ├── test_user_001/
+    │   │   │   │   ├── compressed/
+    │   │   │   │   └── executions.jsonl
+    │   │   │   ├── user_530a4363/
+    │   │   │   │   ├── compressed/
+    │   │   │   │   ├── .last_sync
+    │   │   │   │   └── executions.jsonl
+    │   │   │   └── executions.jsonl
+    │   │   ├── rlhf/
+    │   │   ├── sessions/
+    │   │   ├── silicon_life/
+    │   │   ├── states/
+    │   │   └── vector/
+    │   │       └── default/
+    │   │           └── chroma.sqlite3
+    │   ├── db/
+    │   │   ├── __init__.py
+    │   │   └── connection_pool.py
+    │   ├── dialog/
+    │   │   ├── __init__.py
+    │   │   ├── chat_mode_handler.py
+    │   │   ├── dialogue_manager.py
+    │   │   ├── emotion_behavior_adapter.py
+    │   │   └── social_reasoning.py
+    │   ├── evolution/
+    │   │   ├── __init__.py
+    │   │   ├── auto_evolve_trigger.py
+    │   │   ├── evolution.py
+    │   │   ├── experience_engine.py
+    │   │   ├── experience_injector.py
+    │   │   ├── experience_quality.py
+    │   │   ├── experience_rlhf_bridge.py
+    │   │   ├── exploration_engine.py
+    │   │   ├── procedure_learning_integration.py
+    │   │   ├── reinforcement_learning_engine.py
+    │   │   ├── rlhf_feedback.py
+    │   │   ├── skill_generator.py
+    │   │   ├── skill_manager_gui.py
+    │   │   └── task_classifier.py
+    │   ├── execution/
+    │   │   ├── __init__.py
+    │   │   ├── agent_loop_core.py
+    │   │   └── agent_runtime.py
+    │   ├── experience/
+    │   │   └── experience_recorder.py
+    │   ├── experience_quantification/
+    │   │   ├── __init__.py
+    │   │   ├── ab_test_framework.py
+    │   │   ├── auto_purge_engine.py
+    │   │   ├── experience_effectiveness_tracker.py
+    │   │   └── integration.py
+    │   ├── experiment/
+    │   │   ├── __init__.py
+    │   │   ├── experiment_manager.py
+    │   │   └── template_experiment.py
+    │   ├── intent/
+    │   │   ├── __init__.py
+    │   │   ├── command_parser.py
+    │   │   ├── function_trigger.py
+    │   │   ├── goal_alignment_engine.py
+    │   │   ├── intent_handler.py
+    │   │   └── nlp_intent_parser.py
+    │   ├── interface/
+    │   ├── intervention/
+    │   │   └── intervention_checker.py
+    │   ├── mcp/
+    │   │   ├── servers/
+    │   │   │   └── trading_server.py
+    │   │   ├── __init__.py
+    │   │   ├── client.py
+    │   │   └── tools.py
+    │   ├── memory/
+    │   │   ├── __init__.py
+    │   │   ├── async_memory.py
+    │   │   ├── checkpoint_memory_bridge.py
+    │   │   ├── data_lifecycle.py
+    │   │   ├── execution_memory.py
+    │   │   ├── formatter.py
+    │   │   ├── memory.py
+    │   │   ├── memory_associations.py
+    │   │   ├── memory_auto_trigger.py
+    │   │   ├── memory_batch_operations.py
+    │   │   ├── memory_compression.py
+    │   │   ├── memory_compressor.py
+    │   │   ├── memory_continuity_guard.py
+    │   │   ├── memory_graph.py
+    │   │   ├── memory_manager.py
+    │   │   ├── memory_promotion.py
+    │   │   ├── memory_query_cache.py
+    │   │   ├── memory_retrieval_optimizer.py
+    │   │   ├── memory_schema.py
+    │   │   ├── memory_service.py
+    │   │   ├── memory_source.py
+    │   │   ├── memory_sync_manager.py
+    │   │   ├── memory_trigger.py
+    │   │   ├── memory_update.py
+    │   │   ├── phase_anchor.py
+    │   │   ├── recall_memory.py
+    │   │   ├── vector_memory_compat.py
+    │   │   ├── vector_store.py
+    │   │   └── working_memory.py
+    │   ├── mode/
+    │   │   ├── __init__.py
+    │   │   ├── mode_switch_coordinator.py
+    │   │   └── work_mode_manager.py
+    │   ├── model_upgrade/
+    │   │   ├── __init__.py
+    │   │   ├── cost_controller.py
+    │   │   ├── enhanced_router.py
+    │   │   ├── examples.py
+    │   │   ├── fallback_manager.py
+    │   │   ├── orchestrator.py
+    │   │   └── README.md
+    │   ├── monitoring/
+    │   │   ├── __init__.py
+    │   │   ├── behavior_recognizer.py
+    │   │   └── failure_analytics.py
+    │   ├── moral_rules/
+    │   │   ├── __init__.py
+    │   │   ├── data_theft_rules.py
+    │   │   ├── evasion_rules.py
+    │   │   ├── malicious_operation_rules.py
+    │   │   ├── privilege_escalation_rules.py
+    │   │   └── social_engineering_rules.py
+    │   ├── multi_user/
+    │   │   ├── __init__.py
+    │   │   ├── multi_tenant_logger.py
+    │   │   └── multi_user.py
+    │   ├── orchestration/
+    │   │   ├── __init__.py
+    │   │   ├── intervention_coordinator.py
+    │   │   └── task_scheduler.py
+    │   ├── perception/
+    │   │   ├── __init__.py
+    │   │   ├── semantic_trigger_enhanced.py
+    │   │   └── trigger_with_fallback.py
+    │   ├── platform_adapter/
+    │   │   ├── interfaces/
+    │   │   ├── posix/
+    │   │   │   ├── __init__.py
+    │   │   │   ├── process.py
+    │   │   │   └── shell.py
+    │   │   ├── universal/
+    │   │   │   ├── __init__.py
+    │   │   │   ├── mss_capture.py
+    │   │   │   ├── null_capture.py
+    │   │   │   └── null_window.py
+    │   │   ├── windows/
+    │   │   │   ├── __init__.py
+    │   │   │   ├── process.py
+    │   │   │   └── shell.py
+    │   │   ├── __init__.py
+    │   │   ├── factory.py
+    │   │   ├── interfaces.py
+    │   │   └── paths.py
+    │   ├── platform_dispatcher/
+    │   │   ├── platforms/
+    │   │   │   ├── discord_adapter.py
+    │   │   │   └── telegram_adapter.py
+    │   │   ├── __init__.py
+    │   │   ├── dispatcher.py
+    │   │   ├── interfaces.py
+    │   │   └── registry.py
+    │   ├── procedure_learning/
+    │   │   ├── __init__.py
+    │   │   ├── adaptive_executor.py
+    │   │   ├── demonstration_learner.py
+    │   │   ├── operation_recorder.py
+    │   │   ├── procedure_library.py
+    │   │   └── task_coordinator.py
+    │   ├── prompt/
+    │   │   ├── __init__.py
+    │   │   ├── context_builder.py
+    │   │   ├── life_prompt_injector.py
+    │   │   ├── llm_compressor.py
+    │   │   ├── prompt_builder.py
+    │   │   ├── prompt_builder_v2.py
+    │   │   ├── prompt_debugger.py
+    │   │   ├── prompt_finalizer.py
+    │   │   ├── prompt_navigator.py
+    │   │   ├── prompt_templates.py
+    │   │   ├── smart_context_compressor.py
+    │   │   ├── smart_context_manager.py
+    │   │   ├── smart_prompt_engine.py
+    │   │   └── vision_verify_prompt.txt
+    │   ├── providers/
+    │   │   ├── __init__.py
+    │   │   ├── adapter.py
+    │   │   ├── ai_provider_factory.py
+    │   │   ├── anthropic_provider.py
+    │   │   ├── base.py
+    │   │   ├── custom_provider.py
+    │   │   ├── ollama_provider.py
+    │   │   ├── openai_compatible_provider.py
+    │   │   └── openai_provider.py
+    │   ├── reflector/
+    │   │   ├── __init__.py
+    │   │   ├── reflector.py
+    │   │   ├── three_views_generator.py
+    │   │   └── weekly_report_scheduler.py
+    │   ├── safety/
+    │   │   ├── __init__.py
+    │   │   ├── ast_security_checker.py
+    │   │   ├── command_whitelist.py
+    │   │   ├── confirmation_manager.py
+    │   │   ├── detector.py
+    │   │   ├── hallucination_detector.py
+    │   │   ├── hallucination_stats.py
+    │   │   ├── moral_module.py
+    │   │   ├── moral_rule_loader.py
+    │   │   ├── moral_system.py
+    │   │   ├── permission_tags.py
+    │   │   ├── policy.py
+    │   │   ├── risk_level.py
+    │   │   ├── safety_framework.py
+    │   │   ├── safety_guard.py
+    │   │   ├── security.py
+    │   │   └── security_enhanced.py
+    │   ├── scripts/
+    │   │   ├── backups/
+    │   │   ├── generated/
+    │   │   └── registry.json
+    │   ├── services/
+    │   │   ├── memory_sync_service.py
+    │   │   └── voice_service.py
+    │   ├── session/
+    │   │   ├── __init__.py
+    │   │   ├── alignment_state.py
+    │   │   ├── global_state.py.bak
+    │   │   ├── runtime_state.py
+    │   │   ├── session_integration.py
+    │   │   ├── session_manager.py
+    │   │   ├── session_persistence.py
+    │   │   ├── state_coordinator.py
+    │   │   ├── state_registry.py
+    │   │   ├── state_snapshot.py
+    │   │   └── user_session_manager.py
+    │   ├── strategy/
+    │   │   ├── __init__.py
+    │   │   ├── adaptive_policy.py
+    │   │   ├── behavior_analyzer.py
+    │   │   ├── belief_engine.py
+    │   │   ├── belief_strategy.py
+    │   │   ├── content_strategy_engine.py
+    │   │   ├── distribution_controller.py
+    │   │   ├── goal_system.py
+    │   │   ├── hypothesis_generator.py
+    │   │   ├── importance_engine.py
+    │   │   ├── intrinsic_motivation.py
+    │   │   ├── key_decision_detector.py
+    │   │   ├── policy.py
+    │   │   ├── rule_manager.py
+    │   │   ├── strategy_promoter.py
+    │   │   └── value_system_v2.py
+    │   ├── subagent/
+    │   │   ├── __init__.py
+    │   │   ├── config.py
+    │   │   ├── event_broadcaster.py
+    │   │   ├── feedback_aggregator.py
+    │   │   ├── file_context.py
+    │   │   ├── manager.py
+    │   │   └── runtime.py
+    │   ├── sync/
+    │   │   ├── __init__.py
+    │   │   ├── async_event_bus.py
+    │   │   ├── event_bus.py
+    │   │   ├── realtime_sync.py
+    │   │   ├── redis_backend.py
+    │   │   ├── status_server.py
+    │   │   ├── sync_service.py
+    │   │   └── websocket_server.py
+    │   ├── task/
+    │   │   ├── __init__.py
+    │   │   ├── background_task_registry.py
+    │   │   ├── completion_analyzer.py
+    │   │   ├── long_running_manager.py
+    │   │   ├── long_task_api.py
+    │   │   ├── long_task_context_manager.py
+    │   │   ├── long_task_slots.py
+    │   │   ├── pause_manager.py
+    │   │   ├── planner.py
+    │   │   ├── retry_policy.py
+    │   │   ├── task_context_integrator.py
+    │   │   ├── task_event_adapter.py
+    │   │   ├── task_orchestrator.py
+    │   │   ├── task_planning.py
+    │   │   ├── task_queue.py
+    │   │   ├── task_scheduler.py
+    │   │   ├── task_status.py
+    │   │   ├── task_templates.py
+    │   │   ├── user_task_manager.py
+    │   │   ├── user_task_store.py
+    │   │   └── user_task_vector_store.py
+    │   ├── tool/
+    │   │   ├── __init__.py
+    │   │   ├── base_tool.py
+    │   │   ├── plugin_system.py
+    │   │   ├── tool_audit_middleware.py
+    │   │   ├── tool_categories.py
+    │   │   ├── tool_loader.py
+    │   │   ├── tool_manager.py
+    │   │   ├── tool_market_client.py
+    │   │   ├── tool_router.py
+    │   │   └── toolformer.py
+    │   ├── tools/
+    │   │   └── installed/
+    │   ├── trading/
+    │   │   ├── ai_backtest/
+    │   │   │   └── __init__.py
+    │   │   ├── ai_strategy/
+    │   │   │   └── evolution.py
+    │   │   ├── backtest/
+    │   │   │   ├── __init__.py
+    │   │   │   ├── ai_enhanced.py
+    │   │   │   └── engine.py
+    │   │   ├── data/
+    │   │   │   ├── __init__.py
+    │   │   │   └── provider.py
+    │   │   ├── strategy/
+    │   │   │   ├── __init__.py
+    │   │   │   ├── base.py
+    │   │   │   ├── mr_strategy.py
+    │   │   │   ├── sr_strategy.py
+    │   │   │   └── trend_strategy.py
+    │   │   └── __init__.py
+    │   ├── utils/
+    │   │   ├── __init__.py
+    │   │   ├── app_mapping.py
+    │   │   ├── color_utils.py
+    │   │   ├── common.py
+    │   │   ├── compression.py
+    │   │   ├── deduplication_monitor.py
+    │   │   ├── dependency_checker.py
+    │   │   ├── dependency_utils.py
+    │   │   ├── dpi.py
+    │   │   ├── error_codes.py
+    │   │   ├── executors.py
+    │   │   ├── feature_manager.py.bak
+    │   │   ├── file_utils.py
+    │   │   ├── hardware_detector.py
+    │   │   ├── path_utils.py
+    │   │   ├── permission_utils.py
+    │   │   ├── script_manager.py
+    │   │   ├── search_cache.py
+    │   │   ├── security.py
+    │   │   ├── session_utils.py
+    │   │   ├── stop_hooks.py
+    │   │   ├── text_parser.py
+    │   │   └── token_tracker.py
+    │   ├── vision/
+    │   │   ├── __init__.py
+    │   │   ├── desktop_monitor.py
+    │   │   ├── dxgi_capture.py
+    │   │   ├── global_view_v2.py
+    │   │   ├── gui_locator.py
+    │   │   ├── label_cache.py
+    │   │   ├── perception_manager.py
+    │   │   ├── perception_planner.py
+    │   │   ├── perception_strategy.py
+    │   │   ├── realtime_detector.py
+    │   │   ├── safe_screenshot.py
+    │   │   ├── safe_screenshot_v2.py
+    │   │   ├── screen_change_detector.py
+    │   │   ├── screenshot_manager.py
+    │   │   ├── vision_cache.py
+    │   │   ├── vision_health_check.py
+    │   │   ├── vision_processor.py
+    │   │   ├── vision_tag_system.py
+    │   │   ├── vision_user_notifier.py
+    │   │   ├── vision_validator.py
+    │   │   ├── visual_analysis_cache.py
+    │   │   └── visual_tool_coordinator.py
+    │   ├── weak_connection/
+    │   │   ├── __init__.py
+    │   │   ├── weak_connection.py
+    │   │   └── weak_connection_connector.py
+    │   ├── workflow/
+    │   │   ├── __init__.py
+    │   │   ├── condition_evaluator_enhanced.py
+    │   │   ├── condition_evaluator_with_fallback.py
+    │   │   ├── config_validator.py
+    │   │   ├── context_bridge.py
+    │   │   ├── events.py
+    │   │   ├── examples.py
+    │   │   ├── perception_fusion.py
+    │   │   ├── state_machine.py
+    │   │   ├── subagent_step.py
+    │   │   ├── variable_resolver_enhanced.py
+    │   │   ├── variable_resolver_with_fallback.py
+    │   │   ├── workflow_engine.py
+    │   │   └── workflow_executor.py
+    │   ├── world_model/
+    │   │   ├── __init__.py
+    │   │   ├── world_model.py
+    │   │   └── world_model_proxy.py
+    │   ├── __init__.py
+    │   ├── ai_adapter.py
+    │   ├── ai_task_scheduler.py
+    │   ├── api_handlers.py
+    │   ├── base_tool.py
+    │   ├── checkpoint_manager.py.simplified_20260320
+    │   ├── config.py
+    │   ├── config_unified.py
+    │   ├── Consciousness.py
+    │   ├── constants.py
+    │   ├── enhancement_fallback.py
+    │   ├── error_codes.py
+    │   ├── exceptions.py
+    │   ├── experience_extractor.py.bak.20260305
+    │   ├── experience_injector.py.simplified_20260320
+    │   ├── feature_manager.py
+    │   ├── global_state.py
+    │   ├── interfaces.py
+    │   ├── logger.py
+    │   ├── memory.py.simplified_20260320
+    │   ├── model_coordinator.py.bak.20260305
+    │   ├── permission_utils.py
+    │   ├── planner.py.bak.20260406_125359
+    │   ├── protocol.py
+    │   ├── redis_backend.py
+    │   ├── reflector.py.simplified_20260320
+    │   ├── resource_coordinator.py
+    │   ├── status_server.py.bak.20260305
+    │   ├── subscription_manager.py
+    │   ├── template_experiment.py
+    │   ├── tool_manager.py
+    │   ├── vector_index_optimizer.py
+    │   └── work_mode_manager.py
+    ├── data/
+    │   ├── archive/
+    │   ├── checkpoint_memory_index/
+    │   ├── checkpoints/
+    │   ├── cloud_tools/
+    │   ├── consciousness_states/
+    │   │   ├── default_state.json
+    │   │   ├── user_123_state.json
+    │   │   └── user_456_state.json
+    │   ├── evolution_config/
+    │   ├── execution/
+    │   │   ├── conn_227751fd0c34/
+    │   │   │   └── compressed/
+    │   │   ├── conn_3c0c83c4cff8/
+    │   │   │   └── compressed/
+    │   │   ├── conn_441a24f6f964/
+    │   │   │   └── compressed/
+    │   │   ├── conn_54a8bfa1d40e/
+    │   │   │   └── compressed/
+    │   │   ├── conn_5b9f4e546180/
+    │   │   │   └── compressed/
+    │   │   ├── conn_7438f1b19937/
+    │   │   │   └── compressed/
+    │   │   ├── conn_74744f70567b/
+    │   │   │   └── compressed/
+    │   │   ├── conn_8832919ae957/
+    │   │   │   └── compressed/
+    │   │   ├── conn_8ef70829da4c/
+    │   │   │   ├── compressed/
+    │   │   │   ├── .last_sync
+    │   │   │   └── executions.jsonl
+    │   │   ├── conn_d357d4e6033e/
+    │   │   │   └── compressed/
+    │   │   ├── conn_d40fec08e6ae/
+    │   │   │   └── compressed/
+    │   │   ├── conn_dfb249668a7d/
+    │   │   │   └── compressed/
+    │   │   ├── conn_f3a9da99e525/
+    │   │   │   └── compressed/
+    │   │   ├── default/
+    │   │   │   ├── compressed/
+    │   │   │   ├── .last_sync
+    │   │   │   └── executions.jsonl
+    │   │   ├── default_user/
+    │   │   │   └── compressed/
+    │   │   ├── integration_test/
+    │   │   │   └── compressed/
+    │   │   ├── review_test_user/
+    │   │   │   ├── compressed/
+    │   │   │   └── executions.jsonl
+    │   │   ├── sess_0ibtqkdusc0mydksxxy01g/
+    │   │   │   ├── compressed/
+    │   │   │   ├── .last_sync
+    │   │   │   └── executions.jsonl
+    │   │   ├── sess_3hnuxdmw91ls6oqi55e31r/
+    │   │   │   └── compressed/
+    │   │   ├── sess_bqptkq1z3ngzab6wtxg8d/
+    │   │   │   └── compressed/
+    │   │   ├── sess_bu7xw85k3uirqudhvmqty/
+    │   │   │   └── compressed/
+    │   │   ├── sess_cqpmqhtyoqb00a4f69xoy8yk/
+    │   │   │   └── compressed/
+    │   │   ├── sess_g670s0skx265dxd8izpa/
+    │   │   │   ├── compressed/
+    │   │   │   └── executions.jsonl
+    │   │   ├── sess_mp2cwm9462horo086t939/
+    │   │   │   └── compressed/
+    │   │   ├── sess_mtc2iii535j8v0urlahd9/
+    │   │   │   ├── compressed/
+    │   │   │   ├── .last_sync
+    │   │   │   └── executions.jsonl
+    │   │   ├── sess_w2tzrpmn4hn2tu2z3jo7o9/
+    │   │   │   └── compressed/
+    │   │   ├── sess_x23xgwu9pt4342ilvp14i/
+    │   │   │   └── compressed/
+    │   │   ├── sess_xd2jgxdz3ofw4iol3fkf3r/
+    │   │   │   ├── compressed/
+    │   │   │   ├── .last_sync
+    │   │   │   └── executions.jsonl
+    │   │   ├── sess_xdskmutf6wgd7oz1kfx1/
+    │   │   │   └── compressed/
+    │   │   ├── test_review6/
+    │   │   │   └── compressed/
+    │   │   ├── test_user/
+    │   │   │   ├── compressed/
+    │   │   │   └── executions.jsonl
+    │   │   ├── test_user_l5/
+    │   │   │   ├── compressed/
+    │   │   │   ├── .last_sync
+    │   │   │   └── executions.jsonl
+    │   │   ├── user_123/
+    │   │   │   ├── compressed/
+    │   │   │   └── executions.jsonl
+    │   │   ├── user_530a4363/
+    │   │   │   ├── compressed/
+    │   │   │   ├── .last_sync
+    │   │   │   └── executions.jsonl
+    │   │   ├── user_admin/
+    │   │   │   └── compressed/
+    │   │   └── voice/
+    │   │       ├── compressed/
+    │   │       ├── .last_sync
+    │   │       └── executions.jsonl
+    │   ├── lifecycle/
+    │   ├── memory/
+    │   │   ├── default/
+    │   │   │   └── silicon_memory.db
+    │   │   ├── test_lifecycle/
+    │   │   │   ├── silicon_memory.db
+    │   │   │   ├── silicon_memory.db-shm
+    │   │   │   └── silicon_memory.db-wal
+    │   │   ├── test_manager/
+    │   │   │   ├── silicon_memory.db
+    │   │   │   ├── silicon_memory.db-shm
+    │   │   │   └── silicon_memory.db-wal
+    │   │   ├── test_plan/
+    │   │   │   ├── silicon_memory.db
+    │   │   │   ├── silicon_memory.db-shm
+    │   │   │   └── silicon_memory.db-wal
+    │   │   ├── test_user_deps/
+    │   │   │   ├── silicon_memory.db
+    │   │   │   ├── silicon_memory.db-shm
+    │   │   │   └── silicon_memory.db-wal
+    │   │   ├── user_test_a/
+    │   │   │   ├── silicon_memory.db
+    │   │   │   ├── silicon_memory.db-shm
+    │   │   │   └── silicon_memory.db-wal
+    │   │   └── user_test_b/
+    │   │       ├── silicon_memory.db
+    │   │       ├── silicon_memory.db-shm
+    │   │       └── silicon_memory.db-wal
+    │   ├── memory_db/
+    │   │   ├── silicon_memory.db
+    │   │   └── silicon_memory.db-shm~
+    │   ├── mode_switch_snapshots/
+    │   ├── notifications/
+    │   │   └── report_2026-03-02.json
+    │   ├── phase_anchors/
+    │   │   ├── anchor_0060830b9a85.json
+    │   │   ├── anchor_01fbee3ddf6f.json
+    │   │   ├── anchor_0416737a4f53.json
+    │   │   ├── anchor_05e85cd3833e.json
+    │   │   ├── anchor_08f6f303c7f0.json
+    │   │   ├── anchor_0a6ff4987beb.json
+    │   │   ├── anchor_0aedbe7b467b.json
+    │   │   ├── anchor_0c6d53be130d.json
+    │   │   ├── anchor_0fd4a482e380.json
+    │   │   ├── anchor_0ffe3bd4b65f.json
+    │   │   ├── anchor_100dbcd2cc78.json
+    │   │   ├── anchor_118e568014e4.json
+    │   │   ├── anchor_131f7e646b13.json
+    │   │   ├── anchor_143b371a16a7.json
+    │   │   ├── anchor_145e3c82d4f2.json
+    │   │   ├── anchor_15b387be4d16.json
+    │   │   ├── anchor_15cecf6daadb.json
+    │   │   ├── anchor_160a95bd46eb.json
+    │   │   ├── anchor_16aa3b7e2543.json
+    │   │   ├── anchor_181a87c975fa.json
+    │   │   ├── anchor_19af57754f9f.json
+    │   │   ├── anchor_1a9084fdb618.json
+    │   │   ├── anchor_1b410c810145.json
+    │   │   ├── anchor_1b995c114565.json
+    │   │   ├── anchor_1d2342e909da.json
+    │   │   ├── anchor_1d3d449459bc.json
+    │   │   ├── anchor_1d836a507a7f.json
+    │   │   ├── anchor_229879f6eca6.json
+    │   │   ├── anchor_230204175a62.json
+    │   │   ├── anchor_23621830be84.json
+    │   │   ├── anchor_23d72c3e12c1.json
+    │   │   ├── anchor_24194b142934.json
+    │   │   ├── anchor_248797c731a1.json
+    │   │   ├── anchor_2608b99c5866.json
+    │   │   ├── anchor_275fa9a030d7.json
+    │   │   ├── anchor_27c0b97b45ef.json
+    │   │   ├── anchor_28efe15f52b9.json
+    │   │   ├── anchor_2bfa7d7aa2b4.json
+    │   │   ├── anchor_2c85de98c304.json
+    │   │   ├── anchor_2ca20358ad40.json
+    │   │   ├── anchor_2d2fcad4791e.json
+    │   │   ├── anchor_2d4bde3531dc.json
+    │   │   ├── anchor_2df0b9002c3e.json
+    │   │   ├── anchor_2f7db38ddd2f.json
+    │   │   ├── anchor_306fd6dc2cd9.json
+    │   │   ├── anchor_30b80d5cbe8b.json
+    │   │   ├── anchor_323a3c638716.json
+    │   │   ├── anchor_3312b36eb458.json
+    │   │   ├── anchor_33ea4c35f410.json
+    │   │   ├── anchor_34da5f25f493.json
+    │   │   ├── anchor_36a1f37bb2ce.json
+    │   │   ├── anchor_36efa491d1ca.json
+    │   │   ├── anchor_36f22bb7bd41.json
+    │   │   ├── anchor_37db4139da88.json
+    │   │   ├── anchor_38b5ccb55c79.json
+    │   │   ├── anchor_3a9a33f6fd5a.json
+    │   │   ├── anchor_3a9ea64b4a8f.json
+    │   │   ├── anchor_3b0f473d4838.json
+    │   │   ├── anchor_4241d3862b99.json
+    │   │   ├── anchor_42d5ec96f7b9.json
+    │   │   ├── anchor_431ac4c36696.json
+    │   │   ├── anchor_449f2313efc8.json
+    │   │   ├── anchor_4ae026c86c34.json
+    │   │   ├── anchor_4c892e2f4ce7.json
+    │   │   ├── anchor_4d47e95997ce.json
+    │   │   ├── anchor_4d7d1b382e03.json
+    │   │   ├── anchor_4e2eaa0e9cf5.json
+    │   │   ├── anchor_5005dbe0b2f6.json
+    │   │   ├── anchor_50977132480b.json
+    │   │   ├── anchor_5277c61fef70.json
+    │   │   ├── anchor_54f52871d143.json
+    │   │   ├── anchor_56bfba37a69f.json
+    │   │   ├── anchor_5a49f4d2ea5d.json
+    │   │   ├── anchor_5a4db553fd5f.json
+    │   │   ├── anchor_5d9a71ca19f7.json
+    │   │   ├── anchor_5dc6b7c500a8.json
+    │   │   ├── anchor_5dc6d8bf7ac2.json
+    │   │   ├── anchor_5e732f4fd51a.json
+    │   │   ├── anchor_5e9510fd4a2a.json
+    │   │   ├── anchor_5f744b58644d.json
+    │   │   ├── anchor_60f22a28d252.json
+    │   │   ├── anchor_612c70fb3930.json
+    │   │   ├── anchor_62eacf1d30e7.json
+    │   │   ├── anchor_652f343f3816.json
+    │   │   ├── anchor_653f2f247ce1.json
+    │   │   ├── anchor_686134eb8681.json
+    │   │   ├── anchor_69874e695226.json
+    │   │   ├── anchor_6a86a76a8f66.json
+    │   │   ├── anchor_6c0e7abe3413.json
+    │   │   ├── anchor_6dc78cb40392.json
+    │   │   ├── anchor_6df15355d225.json
+    │   │   ├── anchor_7216a42907e6.json
+    │   │   ├── anchor_74602b73664d.json
+    │   │   ├── anchor_748557ac8fa6.json
+    │   │   ├── anchor_74fe0f4f793b.json
+    │   │   ├── anchor_753c0a46f584.json
+    │   │   ├── anchor_75aa4a0b6a41.json
+    │   │   ├── anchor_7634385fb13e.json
+    │   │   ├── anchor_76571ed5da83.json
+    │   │   ├── anchor_771ad2197443.json
+    │   │   ├── anchor_774ff6b3151b.json
+    │   │   ├── anchor_78a346d259eb.json
+    │   │   ├── anchor_79a08a998ccc.json
+    │   │   ├── anchor_79b3ceb7e076.json
+    │   │   ├── anchor_7a29cf013bb2.json
+    │   │   ├── anchor_7c182d382869.json
+    │   │   ├── anchor_7d4477a56d87.json
+    │   │   ├── anchor_7d5766a4c27b.json
+    │   │   ├── anchor_7d6727ce5ca2.json
+    │   │   ├── anchor_7e290e3778f3.json
+    │   │   ├── anchor_7e8d7e76a2b7.json
+    │   │   ├── anchor_7f1bd56d9024.json
+    │   │   ├── anchor_8097ba965cb5.json
+    │   │   ├── anchor_8285c3f9b21d.json
+    │   │   ├── anchor_82da461976a5.json
+    │   │   ├── anchor_8656eeae9dfa.json
+    │   │   ├── anchor_86ba4cf6461c.json
+    │   │   ├── anchor_87d659e4d27b.json
+    │   │   ├── anchor_882212e883f6.json
+    │   │   ├── anchor_887b469ed6d9.json
+    │   │   ├── anchor_88c565ab122b.json
+    │   │   ├── anchor_88ecec109076.json
+    │   │   ├── anchor_8973c2f4a4d9.json
+    │   │   ├── anchor_8ac8a786ff77.json
+    │   │   ├── anchor_8c2bea49fc65.json
+    │   │   ├── anchor_8ed60306bc63.json
+    │   │   ├── anchor_913812086d05.json
+    │   │   ├── anchor_91fd33985a74.json
+    │   │   ├── anchor_9385904bfd13.json
+    │   │   ├── anchor_94c01efb978d.json
+    │   │   ├── anchor_95a5d0530544.json
+    │   │   ├── anchor_963cbe8ffe6d.json
+    │   │   ├── anchor_97730856da72.json
+    │   │   ├── anchor_9871c8939311.json
+    │   │   ├── anchor_98bf43970a77.json
+    │   │   ├── anchor_992a2dd82a00.json
+    │   │   ├── anchor_9c7f4c682a87.json
+    │   │   ├── anchor_9cdab90ee9e9.json
+    │   │   ├── anchor_a21709541b5f.json
+    │   │   ├── anchor_a38b1a603e96.json
+    │   │   ├── anchor_a4012fa36304.json
+    │   │   ├── anchor_a44c1f2c0fec.json
+    │   │   ├── anchor_a5779ed15fe5.json
+    │   │   ├── anchor_a676f6a2bc77.json
+    │   │   ├── anchor_a72011c3b85a.json
+    │   │   ├── anchor_a7db39c025a1.json
+    │   │   ├── anchor_a9ac676382dd.json
+    │   │   ├── anchor_aa3071e5a068.json
+    │   │   ├── anchor_aa6759f5377b.json
+    │   │   ├── anchor_aa75bb48b714.json
+    │   │   ├── anchor_ad1191175e1c.json
+    │   │   ├── anchor_ad242122d9aa.json
+    │   │   ├── anchor_ad413e231507.json
+    │   │   ├── anchor_ae67db9a52a6.json
+    │   │   ├── anchor_aef8b05bd075.json
+    │   │   ├── anchor_af0595d92d9a.json
+    │   │   ├── anchor_afa69c29b5ff.json
+    │   │   ├── anchor_b0a4da2766e9.json
+    │   │   ├── anchor_b153abce672f.json
+    │   │   ├── anchor_b4b687086d44.json
+    │   │   ├── anchor_b62920c5d04b.json
+    │   │   ├── anchor_b635de37ad80.json
+    │   │   ├── anchor_b6a51a4ad34a.json
+    │   │   ├── anchor_b6cbb821b52a.json
+    │   │   ├── anchor_b7cf7faa81c9.json
+    │   │   ├── anchor_b812b3d3c1e8.json
+    │   │   ├── anchor_b81992ad4e5f.json
+    │   │   ├── anchor_b8db469799b4.json
+    │   │   ├── anchor_baa23fdc394e.json
+    │   │   ├── anchor_bc88bd094d4f.json
+    │   │   ├── anchor_bcaf55a2beca.json
+    │   │   ├── anchor_bd30de2dc7b7.json
+    │   │   ├── anchor_be78eb9b46a4.json
+    │   │   ├── anchor_bf49994ebaa7.json
+    │   │   ├── anchor_bf8faec0a85f.json
+    │   │   ├── anchor_c3afbe889aa8.json
+    │   │   ├── anchor_c4c7555b098f.json
+    │   │   ├── anchor_c599dc604275.json
+    │   │   ├── anchor_c5c3a222ecdf.json
+    │   │   ├── anchor_c659b3a7e879.json
+    │   │   ├── anchor_c66e97ffff92.json
+    │   │   ├── anchor_c6ab3fc61a3c.json
+    │   │   ├── anchor_c73fb8746786.json
+    │   │   ├── anchor_c98581d0101a.json
+    │   │   ├── anchor_cc15ff48b7b7.json
+    │   │   ├── anchor_ccc14805156e.json
+    │   │   ├── anchor_cceca9771638.json
+    │   │   ├── anchor_cec6f4c66759.json
+    │   │   ├── anchor_cf1be0e528b6.json
+    │   │   ├── anchor_d19baac26de9.json
+    │   │   ├── anchor_d27f58ecc845.json
+    │   │   ├── anchor_d3612111c83c.json
+    │   │   ├── anchor_d4a972ddeb7a.json
+    │   │   ├── anchor_d4f6c4377993.json
+    │   │   ├── anchor_d70688f1ed06.json
+    │   │   ├── anchor_d825ef35540e.json
+    │   │   ├── anchor_d8340f18a043.json
+    │   │   ├── anchor_d908a84f9c47.json
+    │   │   ├── anchor_d9eded0c0819.json
+    │   │   ├── anchor_d9f1a35a227b.json
+    │   │   ├── anchor_da1434527b57.json
+    │   │   ├── anchor_da610e815886.json
+    │   │   ├── anchor_dccd47fcf319.json
+    │   │   ├── anchor_df2b52a105f6.json
+    │   │   ├── anchor_e17ee217eae9.json
+    │   │   ├── anchor_e2cca974fd8d.json
+    │   │   ├── anchor_e41d5600b205.json
+    │   │   ├── anchor_e63cb87a8f37.json
+    │   │   ├── anchor_e747c32c5876.json
+    │   │   ├── anchor_e90f4192e27c.json
+    │   │   ├── anchor_e9851ac46c3f.json
+    │   │   ├── anchor_ea3773a692f8.json
+    │   │   ├── anchor_ea8a19db0b08.json
+    │   │   ├── anchor_ece828bfff2f.json
+    │   │   ├── anchor_ee58e3e1e301.json
+    │   │   ├── anchor_eef336118774.json
+    │   │   ├── anchor_ef14baba185b.json
+    │   │   ├── anchor_f0416b8e60a3.json
+    │   │   ├── anchor_f3204bf326f6.json
+    │   │   ├── anchor_f3eec9f912e5.json
+    │   │   ├── anchor_f4a6f3d0a702.json
+    │   │   ├── anchor_f5ee2b5b956f.json
+    │   │   ├── anchor_f69560c97b47.json
+    │   │   ├── anchor_f72155773699.json
+    │   │   ├── anchor_f9f7c36e36b1.json
+    │   │   ├── anchor_fa0e152c06ca.json
+    │   │   ├── anchor_fb95a29b8f24.json
+    │   │   ├── anchor_fc198665d7e6.json
+    │   │   └── anchor_ff18264196eb.json
+    │   ├── procedures/
+    │   ├── prompt_dumps/
+    │   │   ├── last_system_prompt.txt
+    │   │   ├── prompt_dump_20260509_211422_r01_loop.txt
+    │   │   ├── prompt_dump_20260510_070851_364443_r01.txt
+    │   │   ├── prompt_dump_20260510_070851_r01_loop.txt
+    │   │   ├── prompt_dump_20260510_073051_881356_r01.txt
+    │   │   ├── prompt_dump_20260510_073051_r01_loop.txt
+    │   │   ├── prompt_dump_20260510_073310_170466_r02.txt
+    │   │   ├── prompt_dump_20260510_073310_r02_loop.txt
+    │   │   ├── prompt_dump_20260510_073444_543721_r03.txt
+    │   │   ├── prompt_dump_20260510_073444_r03_loop.txt
+    │   │   ├── prompt_dump_20260510_211709_963276_r01.txt
+    │   │   ├── prompt_dump_20260510_211709_r01_loop.txt
+    │   │   ├── prompt_dump_20260510_212110_940343_r02.txt
+    │   │   ├── prompt_dump_20260510_212110_r02_loop.txt
+    │   │   ├── prompt_dump_20260510_212511_143818_r01.txt
+    │   │   ├── prompt_dump_20260510_212511_r01_loop.txt
+    │   │   ├── prompt_dump_20260510_212848_966189_r02.txt
+    │   │   ├── prompt_dump_20260510_212848_r02_loop.txt
+    │   │   ├── prompt_dump_20260510_213100_228314_r03.txt
+    │   │   ├── prompt_dump_20260510_213100_r03_loop.txt
+    │   │   ├── prompt_dump_20260511_165303_825797_r01.txt
+    │   │   ├── prompt_dump_20260511_165303_r01_loop.txt
+    │   │   ├── prompt_dump_20260511_165346_991592_r01.txt
+    │   │   ├── prompt_dump_20260511_165346_r01_loop.txt
+    │   │   ├── prompt_dump_20260513_204352_073522_r01.txt
+    │   │   ├── prompt_dump_20260513_204352_r01_loop.txt
+    │   │   ├── prompt_dump_20260513_204651_831150_r02.txt
+    │   │   ├── prompt_dump_20260513_204651_r02_loop.txt
+    │   │   ├── prompt_dump_20260513_211409_956525_r01.txt
+    │   │   ├── prompt_dump_20260513_211409_r01_loop.txt
+    │   │   ├── prompt_dump_20260513_211715_727623_r02.txt
+    │   │   └── prompt_dump_20260513_211715_r02_loop.txt
+    │   ├── recordings/
+    │   ├── reports/
+    │   │   └── memory_source_report_20260306_223702.json
+    │   ├── rlhf/
+    │   ├── screenshots/
+    │   │   ├── verify_20260513_204722_537.png
+    │   │   └── verify_20260513_211440_709.png
+    │   ├── sessions/
+    │   │   └── default_user/
+    │   │       ├── integration_session_001_checkpoints.json
+    │   │       └── session_001_checkpoints.json
+    │   ├── silicon_life/
+    │   │   ├── default_life_state.json
+    │   │   └── test_life_state.json
+    │   ├── state/
+    │   │   ├── state_1773250660.json
+    │   │   ├── state_1773250963.json
+    │   │   ├── state_1773260842.json
+    │   │   ├── state_1773263215.json
+    │   │   ├── state_1773263380.json
+    │   │   ├── state_1773263685.json
+    │   │   ├── state_1773263985.json
+    │   │   ├── state_1773264078.json
+    │   │   ├── state_1773998006.json
+    │   │   └── state_1775129373.json
+    │   ├── state_snapshots/
+    │   │   └── snapshot_perf_task_1772278678.json
+    │   ├── states/
+    │   │   ├── 0866eafeb4c74f1ca491bd1b255e7f28.json
+    │   │   ├── 08a02271c08b4b548af7f207f4b57342.json
+    │   │   ├── 1df87f1047dc4220b265b859aed018ed.json
+    │   │   ├── 1e46280834934f959b5d18ae6f635160.json
+    │   │   ├── 1e56bea6f28741bfbd2f092af772389e.json
+    │   │   ├── 2812210c953443b6a9a9497dea61bf77.json
+    │   │   ├── 2e0032ccd6c94391a9804f3b2754dd7c.json
+    │   │   ├── 3a4e61397e7f48b9a62b2ba77740a9bf.json
+    │   │   ├── 6b739619272c4b7ca1c52c9480bda6ef.json
+    │   │   ├── 6bc1aab949954b96b367b722766d80c3.json
+    │   │   ├── 77aae49c770d456b8409b5f1aab610ff.json
+    │   │   ├── 7afdd536e79d4d4b8d997fac591fd162.json
+    │   │   ├── 7b4a36ddbb3d437293b3fd0227bce4db.json
+    │   │   ├── 83fb451364b54202a9a55f861877c28f.json
+    │   │   ├── 8f63e474be4e4fdb8a04b950ad36dbaa.json
+    │   │   ├── 99b7cc7938a44de680a85d0b6139e5f6.json
+    │   │   ├── 9b660ed8c4224787bdad0c10589b3fa0.json
+    │   │   ├── bb83f80ead5e45f59316f794e4c8ec74.json
+    │   │   ├── bf8b39b68377475ebda087cba49d3117.json
+    │   │   ├── c3396473eef042eb8ebc6369b0bf547d.json
+    │   │   ├── ccef195153e4473eae4ecdeb25ff09c3.json
+    │   │   ├── dca734110a8e469aa98d464f4fdd2daa.json
+    │   │   ├── eabe09b313d84e9ca171827f99304803.json
+    │   │   ├── ef72027a982247ed9f4f6d478da7eaf1.json
+    │   │   └── fb33cb8a6b2d4c3cb1946b6ee4f172c5.json
+    │   ├── sync_cache/
+    │   │   ├── offline_queue.json
+    │   │   └── sync_records.json
+    │   ├── template_experiments/
+    │   │   ├── task_history.json
+    │   │   ├── template_stats.json
+    │   │   ├── user_profiles.json
+    │   │   └── weekly_reports.json
+    │   ├── templates/
+    │   │   └── custom_task.yaml
+    │   ├── test_snapshots/
+    │   │   ├── snapshot_test_empty_1772275886.json
+    │   │   └── snapshot_test_large_1772275886.json
+    │   ├── trading/
+    │   │   └── ai/
+    │   ├── user_configs/
+    │   │   ├── .json
+    │   │   ├── deep_user.json
+    │   │   ├── user.json
+    │   │   ├── user_530a4363.json
+    │   │   └── user_admin.json
+    │   ├── user_configs_backup/
+    │   │   ├── .json_20260307_185518
+    │   │   ├── deep_user_20260307_185518.json
+    │   │   └── user_20260307_185518.json
+    │   ├── user_memories/
+    │   ├── user_preferences/
+    │   ├── user_prompts/
+    │   │   ├── 2b8c4068-b464-407e-914d-0c7c0c01ac9d/
+    │   │   │   └── modules/
+    │   │   ├── 43e411b6-6f1f-4b87-b2a1-5d2e4c4dd076/
+    │   │   │   └── modules/
+    │   │   ├── 66a6e707-3945-4ce4-a6b3-033913c6e512/
+    │   │   │   └── modules/
+    │   │   ├── 78db8bfb-b037-4466-a8be-b35645dd847f/
+    │   │   │   └── modules/
+    │   │   ├── 7f1ff1ce-a42d-4394-9456-f24718739b1a/
+    │   │   │   └── modules/
+    │   │   ├── conn_0fda94443de1/
+    │   │   │   └── modules/
+    │   │   ├── conn_227751fd0c34/
+    │   │   │   └── modules/
+    │   │   ├── conn_28a4a667a3f8/
+    │   │   │   └── modules/
+    │   │   ├── conn_2cbd66e1f75c/
+    │   │   │   └── modules/
+    │   │   ├── conn_3c0c83c4cff8/
+    │   │   │   └── modules/
+    │   │   ├── conn_441a24f6f964/
+    │   │   │   └── modules/
+    │   │   ├── conn_4bbe9f7e971d/
+    │   │   │   └── modules/
+    │   │   ├── conn_535a35d6fa37/
+    │   │   │   └── modules/
+    │   │   ├── conn_54a8bfa1d40e/
+    │   │   │   └── modules/
+    │   │   ├── conn_5b9f4e546180/
+    │   │   │   └── modules/
+    │   │   ├── conn_62d599b5d76e/
+    │   │   │   └── modules/
+    │   │   ├── conn_7438f1b19937/
+    │   │   │   └── modules/
+    │   │   ├── conn_74744f70567b/
+    │   │   │   └── modules/
+    │   │   ├── conn_7e08f3a75d04/
+    │   │   │   └── modules/
+    │   │   ├── conn_859fa3708e2a/
+    │   │   │   └── modules/
+    │   │   ├── conn_8832919ae957/
+    │   │   │   └── modules/
+    │   │   ├── conn_8ef70829da4c/
+    │   │   │   └── modules/
+    │   │   ├── conn_b53675e4784f/
+    │   │   │   └── modules/
+    │   │   ├── conn_ce49936a424f/
+    │   │   │   └── modules/
+    │   │   ├── conn_d357d4e6033e/
+    │   │   │   └── modules/
+    │   │   ├── conn_d40fec08e6ae/
+    │   │   │   └── modules/
+    │   │   ├── conn_dfb249668a7d/
+    │   │   │   └── modules/
+    │   │   ├── conn_f3a9da99e525/
+    │   │   │   └── modules/
+    │   │   ├── console/
+    │   │   │   └── modules/
+    │   │   ├── sess_0ibtqkdusc0mydksxxy01g/
+    │   │   │   └── modules/
+    │   │   ├── sess_3hnuxdmw91ls6oqi55e31r/
+    │   │   │   └── modules/
+    │   │   ├── sess_a58hnnywdy1roxllm7bzbj/
+    │   │   │   └── modules/
+    │   │   ├── sess_bqptkq1z3ngzab6wtxg8d/
+    │   │   │   └── modules/
+    │   │   ├── sess_bu7xw85k3uirqudhvmqty/
+    │   │   │   └── modules/
+    │   │   ├── sess_cavj0n5gr17w62p4g1spx/
+    │   │   │   └── modules/
+    │   │   ├── sess_cqpmqhtyoqb00a4f69xoy8yk/
+    │   │   │   └── modules/
+    │   │   ├── sess_g670s0skx265dxd8izpa/
+    │   │   │   └── modules/
+    │   │   ├── sess_guu1faolq7thfx4xsnub/
+    │   │   │   └── modules/
+    │   │   ├── sess_mp2cwm9462horo086t939/
+    │   │   │   └── modules/
+    │   │   ├── sess_mtc2iii535j8v0urlahd9/
+    │   │   │   └── modules/
+    │   │   ├── sess_oirl6yeee0kzmredpr9ohm/
+    │   │   │   └── modules/
+    │   │   ├── sess_rmyowr0v56al3vif607ego/
+    │   │   │   └── modules/
+    │   │   ├── sess_w2tzrpmn4hn2tu2z3jo7o9/
+    │   │   │   └── modules/
+    │   │   ├── sess_x23xgwu9pt4342ilvp14i/
+    │   │   │   └── modules/
+    │   │   ├── sess_xd2jgxdz3ofw4iol3fkf3r/
+    │   │   │   └── modules/
+    │   │   ├── sess_xdskmutf6wgd7oz1kfx1/
+    │   │   │   └── modules/
+    │   │   ├── slot_1_longtask_d32a2e3f1b65450d_1773034661/
+    │   │   │   └── modules/
+    │   │   ├── slot_1_longtask_e3187cfdf49c4017_1773034507/
+    │   │   │   └── modules/
+    │   │   ├── test/
+    │   │   │   └── modules/
+    │   │   ├── test_user/
+    │   │   │   └── modules/
+    │   │   ├── user_530a4363/
+    │   │   │   └── modules/
+    │   │   ├── user_admin/
+    │   │   │   └── modules/
+    │   │   └── voice/
+    │   │       └── modules/
+    │   ├── vector/
+    │   │   ├── admin/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_227751fd0c34/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_3c0c83c4cff8/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_441a24f6f964/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_54a8bfa1d40e/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_5b9f4e546180/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_7438f1b19937/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_74744f70567b/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_7e08f3a75d04/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_8832919ae957/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_8ef70829da4c/
+    │   │   │   ├── f9b60a27-e529-441e-b223-9d244d935b8a/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_d357d4e6033e/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_d40fec08e6ae/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── conn_dfb249668a7d/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── default/
+    │   │   │   ├── 3a3496d6-3c1f-4792-9eca-982a71fdfea9/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── index_metadata.pickle
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   ├── 5877c010-4981-414a-9ee5-c6e00b5809aa/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   ├── 7d59aaf9-3241-44ad-bbc6-538f51500981/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── default_user/
+    │   │   │   ├── e5773498-2a59-475e-b504-d11ee9b5b018/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_0ibtqkdusc0mydksxxy01g/
+    │   │   │   ├── 5a010425-0e40-4fa0-b4fb-20c9efd76229/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_3hnuxdmw91ls6oqi55e31r/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_bqptkq1z3ngzab6wtxg8d/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_bu7xw85k3uirqudhvmqty/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_cqpmqhtyoqb00a4f69xoy8yk/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_g670s0skx265dxd8izpa/
+    │   │   │   ├── 09d7d81d-b5f2-41bc-a954-427c4fe32878/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   ├── 8c1e0765-43eb-4d43-a2e4-04e0c5ee441e/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_mp2cwm9462horo086t939/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_mtc2iii535j8v0urlahd9/
+    │   │   │   ├── d94293f8-68a8-493a-9a01-750dde692f7f/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_w2tzrpmn4hn2tu2z3jo7o9/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_x23xgwu9pt4342ilvp14i/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_xd2jgxdz3ofw4iol3fkf3r/
+    │   │   │   ├── 92b94f65-60e6-4ac9-80d7-4df4f93106cd/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   ├── be300323-9229-42df-883d-44c1708a32bc/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── sess_xdskmutf6wgd7oz1kfx1/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test/
+    │   │   │   ├── 6e9b326d-47c9-44b2-b8fe-fb70ce8a886d/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_degradation_user/
+    │   │   │   ├── 3e8d3d9c-4539-4c1c-8dad-28a77f5b807a/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_lifecycle/
+    │   │   │   ├── 2e349569-a388-4c19-b2a7-38315a0ea73d/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_manager/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_permission_boundary/
+    │   │   │   ├── 1339465d-c719-4ebd-8d35-04a12d3aeb24/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_plan/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_user/
+    │   │   │   ├── 0250f7be-24fe-4678-9016-0f0c57ecea10/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   ├── faf25b2e-5ec1-42bb-9771-9698475dee26/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_user_filter/
+    │   │   │   ├── a4beba0d-cc15-47b9-9155-1a2618c462c3/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_user_lifecycle/
+    │   │   │   ├── 5fb53b7e-a472-46ba-aede-c4e1229371a2/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_user_permission/
+    │   │   │   ├── 23a4145e-b8b0-4652-bbb9-5c88d2762bd5/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_user_search/
+    │   │   │   ├── cf6a39e6-1f30-483a-a4c3-6bca0f649752/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_user_stats/
+    │   │   │   ├── 00d13c42-889f-4e84-88a9-00b7694d9070/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_vector/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── test_vector_search/
+    │   │   │   ├── 84b37cd0-9a4c-4967-9423-a73640ca40af/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── user/
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── user_1/
+    │   │   │   ├── 07e3ab0c-ee4e-4b3e-8409-a4e4b3dc8954/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── user_530a4363/
+    │   │   │   ├── 1ea034bb-27cc-44c3-9aae-6a5f2375f832/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   ├── 8038dbef-bc79-4e37-b410-9bcdf9a4885f/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   ├── 855b5e7d-c357-4004-ab6c-18f161118906/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── user_a/
+    │   │   │   ├── a2c2b4c8-dd52-415a-bf4e-7f9eb6c6b8ea/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   ├── user_admin/
+    │   │   │   ├── ae1556e5-7ccd-4a10-9b15-c19b63f7df7a/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   ├── c0205177-49e9-4f55-bac2-202aec69bf6e/
+    │   │   │   │   ├── data_level0.bin
+    │   │   │   │   ├── header.bin
+    │   │   │   │   ├── length.bin
+    │   │   │   │   └── link_lists.bin
+    │   │   │   └── chroma.sqlite3
+    │   │   └── voice/
+    │   │       ├── 787fd272-b85e-49a7-8fdc-417ab0f49ce7/
+    │   │       │   ├── data_level0.bin
+    │   │       │   ├── header.bin
+    │   │       │   ├── length.bin
+    │   │       │   └── link_lists.bin
+    │   │       ├── 9a115f2c-0bf9-4783-99b1-79782582c722/
+    │   │       │   ├── data_level0.bin
+    │   │       │   ├── header.bin
+    │   │       │   ├── length.bin
+    │   │       │   └── link_lists.bin
+    │   │       ├── f8c302cc-f78a-4d79-a935-e366614cfb6e/
+    │   │       │   ├── data_level0.bin
+    │   │       │   ├── header.bin
+    │   │       │   ├── length.bin
+    │   │       │   └── link_lists.bin
+    │   │       └── chroma.sqlite3
+    │   ├── vector_db/
+    │   │   ├── 068e5ea0-8aec-49af-83d2-83022f5a97ea/
+    │   │   │   ├── data_level0.bin
+    │   │   │   ├── header.bin
+    │   │   │   ├── length.bin
+    │   │   │   └── link_lists.bin
+    │   │   ├── 1414ce1e-73c8-424c-b05f-7fe61e83efae/
+    │   │   │   ├── data_level0.bin
+    │   │   │   ├── header.bin
+    │   │   │   ├── length.bin
+    │   │   │   └── link_lists.bin
+    │   │   ├── 1f75f8c4-6dc1-4fc8-9e86-4bfb1f38dbc5/
+    │   │   │   ├── data_level0.bin
+    │   │   │   ├── header.bin
+    │   │   │   ├── length.bin
+    │   │   │   └── link_lists.bin
+    │   │   ├── 73bc31d8-2911-4aa7-8c72-c93df1afc8ad/
+    │   │   │   ├── data_level0.bin
+    │   │   │   ├── header.bin
+    │   │   │   ├── length.bin
+    │   │   │   └── link_lists.bin
+    │   │   └── chroma.sqlite3
+    │   ├── world_model/
+    │   │   ├── dummy_learning.json
+    │   │   ├── dummy_observations.json
+    │   │   ├── dummy_stats.json
+    │   │   ├── experience_buffer.json
+    │   │   ├── experience_buffer.pkl
+    │   │   └── world_model.pth
+    │   ├── cloud_tools.db
+    │   ├── consciousness_state.json
+    │   ├── exchange_configs.json
+    │   ├── gamification.json
+    │   ├── goals.json
+    │   ├── milestones.json
+    │   ├── scheduled_tasks.json
+    │   ├── siliconbase.db
+    │   ├── software_info.db
+    │   ├── subscription.db
+    │   ├── user_profiles.json
+    │   └── users.json
+    ├── docs/
+    │   ├── api_docs/
+    │   ├── architecture_examples/
+    │   │   └── cognition_init.py
+    │   ├── audits/
+    │   ├── design_docs/
+    │   ├── experience_quantification/
+    │   ├── reports/
+    │   │   └── system_reports/
+    │   ├── rewrite/
+    │   │   └── PERFECT_REWRITE_PLAN.md
+    │   ├── verification/
+    │   ├── ARCHITECTURE_CODE_SPEC.md
+    │   ├── memory_system_architecture.mmd
+    │   ├── UNIFIED_THREE_LAYER_TWO_BUS_ARCHITECTURE.md
+    │   └── USER_GUIDE.md
+    ├── examples/
+    │   ├── agent_loop_cost_integration.patch
+    │   ├── ai_adapter_cost_integration.patch
+    │   ├── ai_strategy_evolution_demo.py
+    │   ├── cost_tracking_integration.py
+    │   ├── desktop_monitor_demo.py
+    │   ├── example_integration.py
+    │   ├── example_mcp_usage.py
+    │   ├── example_subagent_usage.py
+    │   ├── layer_10_demo.py
+    │   ├── mode_switch_example.py
+    │   ├── mode_switch_integration_example.tsx
+    │   ├── smart_router_config.yaml
+    │   ├── smart_router_demo.py
+    │   ├── state_coordinator_example.py
+    │   ├── sync_config_example.yaml
+    │   └── sync_service_example.py
+    ├── frontend/
+    │   ├── design/
+    │   ├── logs/
+    │   ├── public/
+    │   │   └── test-login.html
+    │   ├── src/
+    │   │   ├── __tests__/
+    │   │   │   └── components/
+    │   │   │       ├── PhaseAnchorPanel.test.tsx
+    │   │   │       ├── ReflectionPanel.test.tsx
+    │   │   │       └── TonePreferencePanel.test.tsx
+    │   │   ├── components/
+    │   │   │   ├── __tests__/
+    │   │   │   │   ├── AlignmentDialog.test.tsx
+    │   │   │   │   └── PerceptionIndicator.test.tsx
+    │   │   │   ├── AIConfig/
+    │   │   │   │   └── index.tsx
+    │   │   │   ├── life/
+    │   │   │   │   └── LifeStateChart.tsx
+    │   │   │   ├── memory/
+    │   │   │   │   ├── __tests__/
+    │   │   │   │   │   └── MemoryComponents.test.tsx
+    │   │   │   │   ├── ChatAreaIntegration.tsx
+    │   │   │   │   ├── index.ts
+    │   │   │   │   ├── MemoryAwareness.tsx
+    │   │   │   │   ├── MemoryCard.tsx
+    │   │   │   │   ├── MemoryChatIntegration.tsx
+    │   │   │   │   └── MemoryPanel.tsx
+    │   │   │   ├── trading/
+    │   │   │   │   ├── AIInsightPanel.tsx
+    │   │   │   │   ├── AITradingPanel.tsx
+    │   │   │   │   ├── AutoTradingPanel.tsx
+    │   │   │   │   ├── index.ts
+    │   │   │   │   ├── KLineChart.tsx
+    │   │   │   │   ├── ManualTradingPanel.tsx
+    │   │   │   │   ├── TradingModeSelector.tsx
+    │   │   │   │   └── TradingThoughtFlow.tsx
+    │   │   │   ├── AGENT9_COMPATIBILITY_FIXES.tsx
+    │   │   │   ├── AgentAvatar.tsx
+    │   │   │   ├── AgentTreeView.tsx
+    │   │   │   ├── AIChatPanel.tsx
+    │   │   │   ├── AIStatusIndicator.tsx
+    │   │   │   ├── AlignmentDialog.example.tsx
+    │   │   │   ├── AlignmentDialog.tsx
+    │   │   │   ├── AlignmentIntegration.tsx
+    │   │   │   ├── BottomNav.tsx
+    │   │   │   ├── ChatArea.tsx
+    │   │   │   ├── ChildInterventionAlert.tsx
+    │   │   │   ├── DashboardPanel.tsx
+    │   │   │   ├── EditableTitle.tsx
+    │   │   │   ├── EnhancedSlotCard.tsx
+    │   │   │   ├── EnhancedSlotsPanel.tsx
+    │   │   │   ├── ErrorHandler.tsx
+    │   │   │   ├── ExchangeConfigPanel.tsx
+    │   │   │   ├── ExecutionLog.tsx
+    │   │   │   ├── FailureAnalyticsDashboard.tsx
+    │   │   │   ├── FeedbackDialog.tsx
+    │   │   │   ├── GamificationPanel.tsx
+    │   │   │   ├── HighlightText.tsx
+    │   │   │   ├── index.ts
+    │   │   │   ├── InputArea.tsx
+    │   │   │   ├── LazyImage.tsx
+    │   │   │   ├── LearningStatus.tsx
+    │   │   │   ├── LifeStatusPanel.tsx
+    │   │   │   ├── LongTaskSlotsPanel.tsx
+    │   │   │   ├── MainCanvas.tsx
+    │   │   │   ├── MessageFeedback.tsx
+    │   │   │   ├── MessageList.tsx
+    │   │   │   ├── MessageThinkingFlow.tsx
+    │   │   │   ├── ModeSwitch.tsx
+    │   │   │   ├── ModeSwitchIndicator.tsx
+    │   │   │   ├── ModuleComposer.tsx
+    │   │   │   ├── MoralFilterSettings.tsx
+    │   │   │   ├── ObserverIndicator.tsx
+    │   │   │   ├── PerceptionIndicator.example.tsx
+    │   │   │   ├── PerceptionIndicator.tsx
+    │   │   │   ├── PhaseAnchorPanel.tsx
+    │   │   │   ├── PromptLayerNavigator.tsx
+    │   │   │   ├── ProposalBubble.tsx
+    │   │   │   ├── PulseTimeline.tsx
+    │   │   │   ├── ReflectionPanel.tsx
+    │   │   │   ├── SimpleChat.tsx
+    │   │   │   ├── SmartInterventionSuggester.tsx
+    │   │   │   ├── SmartTemplateEditor.tsx
+    │   │   │   ├── StreamEventViewer.tsx
+    │   │   │   ├── SubAgentMonitor.tsx
+    │   │   │   ├── SubAgentPipelinePanel.tsx
+    │   │   │   ├── SystemStatusBar.tsx
+    │   │   │   ├── TaskBreakdown.tsx
+    │   │   │   ├── TaskCard.tsx
+    │   │   │   ├── TaskControlExample.tsx
+    │   │   │   ├── TaskControlPanel.tsx
+    │   │   │   ├── TemplateEditor.tsx
+    │   │   │   ├── TemplateExperimentDashboard.tsx
+    │   │   │   ├── ThinkingFlow.tsx
+    │   │   │   ├── ThinkingPreviewBar.tsx
+    │   │   │   ├── ThreeViewsFlow.tsx
+    │   │   │   ├── TokenBudgetPanel.tsx
+    │   │   │   ├── TonePreferencePanel.tsx
+    │   │   │   ├── ToolChainView.tsx
+    │   │   │   ├── TopBar.tsx
+    │   │   │   ├── UserConfirmation.tsx
+    │   │   │   ├── VariantSelector.tsx
+    │   │   │   ├── VerificationPanel.tsx
+    │   │   │   ├── VirtualMessageList.tsx
+    │   │   │   └── VoiceStateIndicator.tsx
+    │   │   ├── config/
+    │   │   │   ├── api.config.ts
+    │   │   │   ├── api.ts
+    │   │   │   ├── ports.ts
+    │   │   │   └── system.ts
+    │   │   ├── hooks/
+    │   │   │   ├── useAgentIntervention.ts
+    │   │   │   ├── useAlignment.ts
+    │   │   │   ├── useAudioNotifications.tsx
+    │   │   │   ├── useChildInterventions.ts
+    │   │   │   ├── useGamification.tsx
+    │   │   │   ├── useMessagePolling.ts
+    │   │   │   ├── useModeSwitch.tsx
+    │   │   │   ├── useNotifications.tsx
+    │   │   │   ├── usePerception.ts
+    │   │   │   ├── usePerformance.ts
+    │   │   │   ├── useSmartIntervention.ts
+    │   │   │   ├── useSubAgentIntervention.ts
+    │   │   │   ├── useSubAgentStatus.ts
+    │   │   │   ├── useSystemStatus.tsx
+    │   │   │   ├── useVoiceState.tsx
+    │   │   │   ├── useWebSocket.tsx
+    │   │   │   └── useXSSProtection.ts
+    │   │   ├── pages/
+    │   │   │   ├── ExperienceQuantificationPage/
+    │   │   │   │   └── ExperienceQuantificationPage.tsx
+    │   │   │   ├── AdvancedModelsPage.tsx
+    │   │   │   ├── AIConfigPage.tsx
+    │   │   │   ├── ChangePasswordPage.tsx
+    │   │   │   ├── DashboardPage.tsx
+    │   │   │   ├── GlobalViewPage.tsx
+    │   │   │   ├── index.ts
+    │   │   │   ├── LoginPage.tsx
+    │   │   │   ├── MemoryComponentsDemo.tsx
+    │   │   │   ├── MemoryPage.tsx
+    │   │   │   ├── MemoryVisualizationPage.tsx
+    │   │   │   ├── PromptConfigPage.tsx
+    │   │   │   ├── PromptConfigPageV2.tsx
+    │   │   │   ├── SettingsPage.tsx
+    │   │   │   ├── SiliconLifeMonitorPage.tsx
+    │   │   │   ├── TasksPage.tsx
+    │   │   │   ├── ThreeViewsConfig.tsx
+    │   │   │   ├── ToolMarketPage.tsx
+    │   │   │   ├── ToolsPage.tsx
+    │   │   │   ├── TradingDashboardPage.tsx
+    │   │   │   ├── Week5PanelsPage.tsx
+    │   │   │   └── WorldModelPage.tsx
+    │   │   ├── services/
+    │   │   │   ├── aiConfig.ts
+    │   │   │   ├── exchangeConfig.ts
+    │   │   │   └── templateExperiment.ts
+    │   │   ├── stores/
+    │   │   │   ├── modeStore.ts
+    │   │   │   ├── promptStore.ts
+    │   │   │   ├── sessionStore.example.tsx
+    │   │   │   ├── sessionStore.ts
+    │   │   │   └── tradingStore.ts
+    │   │   ├── styles/
+    │   │   │   └── dimension-filter.css
+    │   │   ├── types/
+    │   │   │   ├── dimension.ts
+    │   │   │   ├── index.ts
+    │   │   │   ├── prompt.ts
+    │   │   │   ├── session.ts
+    │   │   │   ├── slot.ts
+    │   │   │   └── subagent.ts
+    │   │   ├── utils/
+    │   │   │   ├── api/
+    │   │   │   │   ├── agent.ts
+    │   │   │   │   ├── config.ts
+    │   │   │   │   ├── core.ts
+    │   │   │   │   ├── globalView.ts
+    │   │   │   │   ├── index.ts
+    │   │   │   │   ├── intervention.ts
+    │   │   │   │   ├── memory.ts
+    │   │   │   │   ├── metrics.ts
+    │   │   │   │   ├── phaseAnchor.ts
+    │   │   │   │   ├── procedureLearning.ts
+    │   │   │   │   ├── prompt.ts
+    │   │   │   │   ├── reflection.ts
+    │   │   │   │   ├── session.ts
+    │   │   │   │   ├── siliconLife.ts
+    │   │   │   │   ├── status.ts
+    │   │   │   │   ├── subagent.ts
+    │   │   │   │   ├── task.ts
+    │   │   │   │   ├── tonePreference.ts
+    │   │   │   │   ├── toolMarket.ts
+    │   │   │   │   ├── tools.ts
+    │   │   │   │   ├── tradingMode.ts
+    │   │   │   │   ├── workflow.ts
+    │   │   │   │   └── worldModel.ts
+    │   │   │   ├── apiClient.ts
+    │   │   │   ├── auth.ts
+    │   │   │   ├── cache.ts
+    │   │   │   ├── debug.ts
+    │   │   │   ├── messageParser.test.ts
+    │   │   │   ├── messageParser.ts
+    │   │   │   ├── xssProtection.test.ts
+    │   │   │   └── xssProtection.ts
+    │   │   ├── App.tsx
+    │   │   ├── index.css
+    │   │   ├── main.tsx
+    │   │   └── vite-env.d.ts
+    │   ├── .env
+    │   ├── .env.development
+    │   ├── .env.example
+    │   ├── .env.template
+    │   ├── _check_lc.mjs
+    │   ├── _check_lc2.mjs
+    │   ├── _check_lc3.mjs
+    │   ├── Dockerfile
+    │   ├── frontend_verify.log
+    │   ├── index.html
+    │   ├── nginx.conf
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── postcss.config.js
+    │   ├── start.bat
+    │   ├── tailwind.config.js
+    │   ├── tsconfig.json
+    │   ├── tsconfig.node.json
+    │   ├── typescript_errors_final.log
+    │   └── vite.config.ts
+    ├── logs/
+    │   ├── multi_tenant/
+    │   │   └── test_user_9da1f8e0/
+    │   │       └── 2026-02-26.jsonl
+    │   ├── backend.log
+    │   ├── backend_test.log
+    │   ├── backend_verify.log
+    │   └── uvicorn.log
+    ├── outputs/
+    ├── plugins/
+    │   ├── backup/
+    │   ├── desktop/
+    │   │   └── crypto/
+    │   │       └── __init__.py
+    │   ├── disabled/
+    │   └── example_plugin.py
+    ├── redis/
+    │   └── redis.conf
+    ├── reports/
+    ├── scripts/
+    │   ├── backups/
+    │   ├── generated/
+    │   ├── add_full_disk_scan.py
+    │   ├── agent4_l5_consistency_verification.py
+    │   ├── analyze_lock_order.py
+    │   ├── api_validation_v2_report.py
+    │   ├── apply_vision_comprehensive_fix.py
+    │   ├── check_architecture.py
+    │   ├── check_dependencies.py
+    │   ├── check_duplicates.py
+    │   ├── check_files.py
+    │   ├── check_memory_db.py
+    │   ├── check_postgres.py
+    │   ├── check_routes_order.py
+    │   ├── check_services.py
+    │   ├── check_viz_api.py
+    │   ├── check_voice_api.py
+    │   ├── cleanup_duplicate_software.py
+    │   ├── cleanup_software_sql.sql
+    │   ├── conncheck_10_global_state_scanner.py
+    │   ├── conncheck_7_report.py
+    │   ├── create_session_tables.sql
+    │   ├── create_tables.py
+    │   ├── cross_validation_ai_architecture.py
+    │   ├── cross_validation_detailed.py
+    │   ├── db_check.py
+    │   ├── demo_ui_tars.py
+    │   ├── deploy-verify.sh
+    │   ├── deploy.sh
+    │   ├── deploy_experience_tracking.sql
+    │   ├── diagnose_connection.py
+    │   ├── diagnose_issues.py
+    │   ├── docker-entrypoint.sh
+    │   ├── docker-quickstart.sh
+    │   ├── event_bus_check.py
+    │   ├── exception_audit.py
+    │   ├── execute_create_session_tables.py
+    │   ├── fix_006_three_views_config.py
+    │   ├── fix_db6_null_source.py
+    │   ├── fix_memory_source.py
+    │   ├── fix_prompt_builder.py
+    │   ├── fix_token_cost_config.py
+    │   ├── generate_source_report.py
+    │   ├── hallucination_monitor.py
+    │   ├── init_cost_tables.py
+    │   ├── init_database.py
+    │   ├── init_mcp_subagent.py
+    │   ├── init_model_bus.py
+    │   ├── init_postgres.py
+    │   ├── list_routes.py
+    │   ├── memory_db_optimization.sql
+    │   ├── memory_performance_test.py
+    │   ├── migrate_add_source_field.py
+    │   ├── migrate_beliefs.py
+    │   ├── migrate_l5_to_postgres.py
+    │   ├── migrate_to_new_architecture.py
+    │   ├── migration_add_indexes.py
+    │   ├── p0_cross_validation_report.py
+    │   ├── qa_validation_b_report.py
+    │   ├── qa_validation_b_report_v2.py
+    │   ├── quick_upgrade.py
+    │   ├── registry.json
+    │   ├── return_value_scanner.py
+    │   ├── review4_l5_check.py
+    │   ├── run_broadcaster.py
+    │   ├── runtime_voice_monitor.py
+    │   ├── security_validation_report.py
+    │   ├── service_manager.py
+    │   ├── setup_hallucination_system.py
+    │   ├── setup_ui_tars.py
+    │   ├── siliconbase_service.py
+    │   ├── start_all.py
+    │   ├── start_postgres.py
+    │   ├── start_services.py
+    │   ├── sync_default_user.py
+    │   ├── test_l5_fix.py
+    │   ├── tool_chain_check.py
+    │   ├── update_config_for_v2.py
+    │   ├── verify_config.py
+    │   ├── verify_l5_consistency.py
+    │   ├── verify_okx_api.py
+    │   ├── verify_port_config.py
+    │   ├── verify_production_deployment.py
+    │   ├── verify_session_tables.py
+    │   ├── verify_vector_store.py
+    │   └── websocket_closed_fix.py
+    ├── sensors/
+    │   ├── system/
+    │   │   ├── __init__.py
+    │   │   ├── bus.py
+    │   │   ├── context_triggers.py
+    │   │   ├── fusion.py
+    │   │   ├── global_view.py
+    │   │   ├── process_monitor.py
+    │   │   ├── resource_monitor.py
+    │   │   ├── restartable.py
+    │   │   └── window_monitor.py
+    │   └── __init__.py
+    ├── skills/
+    │   └── generated/
+    ├── temp/
+    │   └── screenshots/
+    │       ├── screenshot_1772630975.png
+    │       ├── screenshot_1772634866.png
+    │       └── screenshot_1772719523.png
+    ├── templates/
+    ├── test_core/
+    │   ├── __init__.py
+    │   ├── test_data_lifecycle.py
+    │   ├── test_multi_tenant_config.py
+    │   ├── test_multi_tenant_logger.py
+    │   ├── test_tool_call_result_visibility.py
+    │   └── test_user_context_manager.py
+    ├── test_data/
+    │   └── verify_effectiveness.json
+    ├── test_outputs/
+    │   ├── ai_task_creation_test/
+    │   │   ├── 01_initial_page_1772893824.png
+    │   │   ├── 03_chat_page_1772893859.png
+    │   │   ├── 04_no_clear_response_1772893890.png
+    │   │   ├── 05_task_page_1772893903.png
+    │   │   ├── 06_monitor_page_1772893905.png
+    │   │   ├── test_log_20260307_223022.txt
+    │   │   └── test_report_20260307_223146.json
+    │   ├── ab_test_accuracy_report_1772813199.json
+    │   ├── agent10_demo_test_20260307_001301.json
+    │   ├── agent10_demo_test_20260307_001301_charts.png
+    │   ├── reflection_triggers_report_20260307_001056.json
+    │   ├── tool_test_01_home.png
+    │   ├── tool_test_02_tool_page.png
+    │   └── tool_test_03_search.png
+    ├── tests/
+    │   ├── data/
+    │   │   └── template_experiments/
+    │   ├── integration/
+    │   │   ├── test_api_integration.py
+    │   │   └── test_message_types.py
+    │   ├── legacy/
+    │   │   ├── test_ai_models_direct.py
+    │   │   ├── test_ai_models_import.py
+    │   │   ├── test_btc_system_multi_platform.py
+    │   │   ├── test_btc_tools.py
+    │   │   ├── test_cascade_delete.py
+    │   │   ├── test_config_version.py
+    │   │   ├── test_embed_fix.py
+    │   │   ├── test_error_format.py
+    │   │   ├── test_file_system_integration.py
+    │   │   ├── test_fix_verification.py
+    │   │   ├── test_full_disk_scan.py
+    │   │   ├── test_global_view_issue.py
+    │   │   ├── test_intervention.py
+    │   │   ├── test_jwt_fix.py
+    │   │   ├── test_launch_quick.py
+    │   │   ├── test_lifespan.py
+    │   │   ├── test_mhxy_diagnostic.py
+    │   │   ├── test_mhxy_full_flow.py
+    │   │   ├── test_mode_api.py
+    │   │   ├── test_netease_complete.py
+    │   │   ├── test_netease_scan.py
+    │   │   ├── test_options.py
+    │   │   ├── test_p1_fix.py
+    │   │   ├── test_p1_fix_simple.py
+    │   │   ├── test_performance_fixes.py
+    │   │   ├── test_performance_fixes_simple.py
+    │   │   ├── test_phase2_acceptance.py
+    │   │   ├── test_phase4_verification.py
+    │   │   ├── test_platform_direct.py
+    │   │   ├── test_platform_simple.py
+    │   │   ├── test_redis.py
+    │   │   ├── test_resource_leak_fix.py
+    │   │   ├── test_routing_config.py
+    │   │   ├── test_routing_error_logs.py
+    │   │   ├── test_simple_quant.py
+    │   │   ├── test_smart_launch.py
+    │   │   ├── test_task_completion_fix.py
+    │   │   ├── test_task_completion_v2.py
+    │   │   ├── test_thread_safety_fixes.py
+    │   │   ├── test_type_conversion_fix.py
+    │   │   ├── test_voice_priority_fix.py
+    │   │   ├── test_websocket_config_only.py
+    │   │   ├── test_workflow_syntax.py
+    │   │   ├── verify_422_fix.py
+    │   │   ├── verify_check.py
+    │   │   ├── verify_fix.py
+    │   │   ├── verify_fixed_files.py
+    │   │   ├── verify_fixes.py
+    │   │   ├── verify_tool_architecture.py
+    │   │   └── verify_tool_architecture_simple.py
+    │   ├── modelbus/
+    │   │   ├── comprehensive_test.py
+    │   │   ├── integration_test.py
+    │   │   ├── test_llm_providers.py
+    │   │   └── test_vision_providers.py
+    │   ├── security/
+    │   │   └── test_task_permissions.py
+    │   ├── voice/
+    │   │   └── test_modelbus_adapter.py
+    │   ├── __init__.py
+    │   ├── benchmark_report.py
+    │   ├── check_redis_setup.py
+    │   ├── concurrency_test.py
+    │   ├── conftest.py
+    │   ├── cross_validation_test.py
+    │   ├── cross_validator_d_phase2_test.py
+    │   ├── cross_validator_d_report.json
+    │   ├── deadlock_detection.py
+    │   ├── demo_token_budget.py
+    │   ├── demo_token_budget_direct.py
+    │   ├── final_validation_test_v3.py
+    │   ├── generate_stability_report.py
+    │   ├── generate_vision_report.py
+    │   ├── integration_deployment_test.py
+    │   ├── integration_tests.py
+    │   ├── long_term_stability_test.py
+    │   ├── memory_graph_standalone_report.json
+    │   ├── memory_leak_test.py
+    │   ├── moral_module_review_test.py
+    │   ├── moral_system_comprehensive_test.py
+    │   ├── performance_evaluation.py
+    │   ├── performance_optimization_test.py
+    │   ├── performance_test.py
+    │   ├── phase1_validation.py
+    │   ├── phase1_validation_standalone.py
+    │   ├── phase3_complete_e2e_test.py
+    │   ├── phase3_e2e_check.py
+    │   ├── quick_verify.py
+    │   ├── regression_core_test.py
+    │   ├── regression_test_20rounds.py
+    │   ├── regression_test_5fixes.py
+    │   ├── review3_permission_boundary_test.py
+    │   ├── review3_permission_report_20260307_002809.json
+    │   ├── review3_permission_report_20260307_002818.json
+    │   ├── run_long_term_test.py
+    │   ├── run_perf_test_simple.py
+    │   ├── run_tests.py
+    │   ├── runtime_test_phases_6_9.py
+    │   ├── show_report.py
+    │   ├── stability_monitor.py
+    │   ├── stress_test_72h.py
+    │   ├── stress_test_demo.py
+    │   ├── stress_test_experience_injector_v3.py
+    │   ├── test_ab_data_accuracy.py
+    │   ├── test_adapters.py
+    │   ├── test_agent_loop_session_storage.py
+    │   ├── test_ai_client_refactor.py
+    │   ├── test_ai_providers.py
+    │   ├── test_ai_task_creation.py
+    │   ├── test_api.py
+    │   ├── test_api_endpoints.py
+    │   ├── test_async_checkpoint_fix.py
+    │   ├── test_async_event_bus.py
+    │   ├── test_async_memory_basic.py
+    │   ├── test_belief_strategy.py
+    │   ├── test_btc_integration.py
+    │   ├── test_cache_refresh.py
+    │   ├── test_cascade_delete.py
+    │   ├── test_cascade_delete_simple.py
+    │   ├── test_chain.py
+    │   ├── test_circular_import.py
+    │   ├── test_cloud_api_ai.py
+    │   ├── test_cloud_api_http.py
+    │   ├── test_concurrency_race.py
+    │   ├── test_config.py
+    │   ├── test_config_fixes.py
+    │   ├── test_config_hot_reload.py
+    │   ├── test_config_hot_reload_simple.py
+    │   ├── test_config_system.py
+    │   ├── test_confirmation_fix.py
+    │   ├── test_connections.py
+    │   ├── test_consciousness.py
+    │   ├── test_consciousness_refactor.py
+    │   ├── test_consciousness_structure.py
+    │   ├── test_context_assembler.py
+    │   ├── test_core_modules.py
+    │   ├── test_dashboard_page.py
+    │   ├── test_deduplication.py
+    │   ├── test_dependency_normalization.py
+    │   ├── test_dialogue_manager_storage.py
+    │   ├── test_drive_ai_integration.py
+    │   ├── test_e2e_api.py
+    │   ├── test_event_bus.py
+    │   ├── test_experience_injector_v3.py
+    │   ├── test_experience_injector_v3_standalone.py
+    │   ├── test_factory_simple.py
+    │   ├── test_fallback_search_fix.py
+    │   ├── test_fixes.py
+    │   ├── test_fixes_quick.py
+    │   ├── test_fixes_simple.py
+    │   ├── test_focus_mode_redesign.py
+    │   ├── test_full_e2e.py
+    │   ├── test_full_tool_chain.py
+    │   ├── test_full_tool_chain_fix.py
+    │   ├── test_goal_alignment_engine.py
+    │   ├── test_graceful_exit.py
+    │   ├── test_hallucination_detector.py
+    │   ├── test_hallucination_standalone.py
+    │   ├── test_import_trace.py
+    │   ├── test_integration_call_chain.py
+    │   ├── test_intent_handler.py
+    │   ├── test_interception_analysis.py
+    │   ├── test_interface_contracts.py
+    │   ├── test_json_voice_fix.py
+    │   ├── test_jwt_fix.py
+    │   ├── test_l5_storage_performance.py
+    │   ├── test_layer_10_quick.py
+    │   ├── test_life_injection.py
+    │   ├── test_life_prompt_injection.py
+    │   ├── test_login.py
+    │   ├── test_main.py
+    │   ├── test_main_interactive.py
+    │   ├── test_mcp.py
+    │   ├── test_memory_auto_trigger_integration.py
+    │   ├── test_memory_close_fix.py
+    │   ├── test_memory_graph.py
+    │   ├── test_memory_graph_bigdata.py
+    │   ├── test_memory_graph_bigdata_report_20260307_001025.json
+    │   ├── test_memory_graph_report.json
+    │   ├── test_memory_graph_simple.py
+    │   ├── test_memory_graph_standalone.py
+    │   ├── test_memory_permission.py
+    │   ├── test_memory_query_fix.py
+    │   ├── test_memory_retrieval_optimizer.py
+    │   ├── test_memory_session_association.py
+    │   ├── test_memory_session_association_config.py
+    │   ├── test_memory_session_association_simple.py
+    │   ├── test_memory_sharding.py
+    │   ├── test_memory_source.py
+    │   ├── test_memory_sync_websocket.py
+    │   ├── test_memory_system.py
+    │   ├── test_memory_trigger.py
+    │   ├── test_memory_trigger_simple.py
+    │   ├── test_message_parser.js
+    │   ├── test_migration_indexes.py
+    │   ├── test_mode_switch_coordinator.py
+    │   ├── test_mode_switch_coordinator_simple.py
+    │   ├── test_mode_switch_coordinator_standalone.py
+    │   ├── test_mode_switch_sync.py
+    │   ├── test_model_router.py
+    │   ├── test_model_upgrade.py
+    │   ├── test_moral_check_integration.py
+    │   ├── test_moral_enhancement.py
+    │   ├── test_moral_module.py
+    │   ├── test_moral_module_fix.py
+    │   ├── test_moral_module_standalone.py
+    │   ├── test_multi_user_isolation.py
+    │   ├── test_multi_user_session.py
+    │   ├── test_new_features.py
+    │   ├── test_new_features_simple.py
+    │   ├── test_ollama_fix.py
+    │   ├── test_p0_001_fix.py
+    │   ├── test_p0_010_fix.py
+    │   ├── test_p0_012_fix.py
+    │   ├── test_p0_013_014_fix.py
+    │   ├── test_p0_015_dependency_status_fix.py
+    │   ├── test_p0_018_fix.py
+    │   ├── test_p1_003_fix.py
+    │   ├── test_p1_breakpoint4_fix.py
+    │   ├── test_p1_coordinator.py
+    │   ├── test_p2_memory_enhancement.py
+    │   ├── test_p4_long_task_slots.py
+    │   ├── test_pause_checkpoint_fix.py
+    │   ├── test_pause_confirmation.py
+    │   ├── test_pause_fix_standalone.py
+    │   ├── test_pause_interrupt_fix.py
+    │   ├── test_pause_task_sync.py
+    │   ├── test_pause_task_sync_standalone.py
+    │   ├── test_perception_integration.py
+    │   ├── test_perception_manager_basic.py
+    │   ├── test_performance_benchmark.py
+    │   ├── test_permission_boundary_agent3.py
+    │   ├── test_permission_boundary_report_20260307_000700.json
+    │   ├── test_permission_boundary_report_20260307_002639.json
+    │   ├── test_permission_utils.py
+    │   ├── test_phase_anchor_fix.py
+    │   ├── test_pool_config.py
+    │   ├── test_postgresql_security_fix.py
+    │   ├── test_precise_capture.py
+    │   ├── test_procedure_learning_integration.py
+    │   ├── test_prompt.py
+    │   ├── test_prompt_api.py
+    │   ├── test_prompt_api_fix.py
+    │   ├── test_prompt_api_unit.py
+    │   ├── test_prompt_builder.py
+    │   ├── test_prompt_navigator.py
+    │   ├── test_protected_speak_queue.py
+    │   ├── test_provider_unification.py
+    │   ├── test_providers.py
+    │   ├── test_providers_simple.py
+    │   ├── test_real_e2e_automation.py
+    │   ├── test_recursion_limit.py
+    │   ├── test_redis_persistence.py
+    │   ├── test_reflection_evolution.py
+    │   ├── test_reflection_triggers_agent7.py
+    │   ├── test_reflector_v3.py
+    │   ├── test_runtime_issue.py
+    │   ├── test_scene_config.py
+    │   ├── test_security_core.py
+    │   ├── test_security_layer.py
+    │   ├── test_session_association_demo.py
+    │   ├── test_simple.py
+    │   ├── test_simple.txt
+    │   ├── test_singleton_thread_safety.py
+    │   ├── test_singleton_to_factory.py
+    │   ├── test_smoke.py
+    │   ├── test_stability_fixes.py
+    │   ├── test_state_coordinator.py
+    │   ├── test_state_coordinator_standalone.py
+    │   ├── test_state_snapshot.py
+    │   ├── test_sync_service.py
+    │   ├── test_system.py
+    │   ├── test_task_api_auth_fix.py
+    │   ├── test_task_system.py
+    │   ├── test_thread_health.py
+    │   ├── test_thread_stress.py
+    │   ├── test_token_budget_direct.py
+    │   ├── test_token_budget_integration.py
+    │   ├── test_token_budget_integration_standalone.py
+    │   ├── test_token_budget_manager.py
+    │   ├── test_token_budget_simple.py
+    │   ├── test_token_budget_standalone.py
+    │   ├── test_token_cost_config.py
+    │   ├── test_token_cost_fix.py
+    │   ├── test_token_cost_fix_simple.py
+    │   ├── test_tool_call.py
+    │   ├── test_tool_fix.py
+    │   ├── test_tool_hook.py
+    │   ├── test_tool_manager.py
+    │   ├── test_tool_manager_new.py
+    │   ├── test_tool_registration.py
+    │   ├── test_tool_system.py
+    │   ├── test_tools_auth.py
+    │   ├── test_tools_stability.py
+    │   ├── test_torch_proxy.py
+    │   ├── test_torch_proxy_standalone.py
+    │   ├── test_ui_tars.py
+    │   ├── test_user_workflow.py
+    │   ├── test_v6_delivery.py
+    │   ├── test_v6_static.py
+    │   ├── test_vector_search_api.py
+    │   ├── test_verify.py
+    │   ├── test_vision_agent_refactor.py
+    │   ├── test_vision_agent_refactored.py
+    │   ├── test_vision_comprehensive_fix.py
+    │   ├── test_vision_fixes.py
+    │   ├── test_vision_hook.py
+    │   ├── test_vision_system.py
+    │   ├── test_vision_unified.py
+    │   ├── test_visual_analysis_cache.py
+    │   ├── test_voice_and_tools.py
+    │   ├── test_voice_fix.py
+    │   ├── test_voice_frequency.py
+    │   ├── test_voice_intent_fix.py
+    │   ├── test_voice_state_sync.py
+    │   ├── test_wake_word_fix.py
+    │   ├── test_wake_word_live.py
+    │   ├── test_weak_connection.py
+    │   ├── test_web_fetch_ssrf.py
+    │   ├── test_web_search_real.py
+    │   ├── test_websocket_auth_fix.py
+    │   ├── test_websocket_fix.py
+    │   ├── test_week4_integration.py
+    │   ├── test_week4_standalone.py
+    │   ├── test_working_memory.py
+    │   ├── val5_ai_config_verification.py
+    │   ├── verify_10_performance_test.py
+    │   ├── verify_8_memory_graph_test.py
+    │   ├── verify_circular_import_fix.py
+    │   ├── verify_critical_issues.py
+    │   ├── verify_db6_fix.py
+    │   ├── verify_db6_postgres.py
+    │   ├── verify_deploy.py
+    │   ├── verify_e2e_alignment_scenarios.py
+    │   ├── verify_experience_injector_v3.py
+    │   ├── verify_fix.py
+    │   ├── verify_focus_mode.py
+    │   ├── verify_focus_mode_simple.py
+    │   ├── verify_goal_alignment_engine.py
+    │   ├── verify_integration.py
+    │   ├── verify_loop001_fix.py
+    │   ├── verify_memory_autotrigger_integration.py
+    │   ├── verify_memory_source_fix.py
+    │   ├── verify_moral_analysis.py
+    │   ├── verify_moral_module.py
+    │   ├── verify_p0_003_fix.py
+    │   ├── verify_protected_queue.py
+    │   ├── verify_provider_unification.py
+    │   ├── verify_sec001_fix.py
+    │   ├── verify_sec002_fix.py
+    │   ├── verify_security_fixes.py
+    │   ├── verify_self_validation_system.py
+    │   ├── verify_token_budget.py
+    │   ├── verify_tool_execute_fix.py
+    │   ├── verify_tool_system.py
+    │   ├── verify_voice_fixes_standalone.py
+    │   ├── verify_voice_wake.py
+    │   └── verify_voice_wake_v2.py
+    ├── tmp_whl/
+    │   └── D3DShot-0.1.5-py3-none-any.whl
+    ├── tools/
+    │   ├── # tools/
+    │   │   └── pixel_color.py # !/
+    │   │       └── usr/
+    │   │           └── bin/
+    │   ├── auto_generated/
+    │   ├── btc_trading/
+    │   │   ├── __init__.py
+    │   │   ├── adapter.py
+    │   │   ├── base_tools.py
+    │   │   ├── risk_tools.py
+    │   │   ├── strategy_tools.py
+    │   │   └── trading_tools.py
+    │   ├── data/
+    │   │   └── template_experiments/
+    │   ├── generated/
+    │   ├── installed/
+    │   ├── __init__.py
+    │   ├── app_search.py
+    │   ├── apply_pixel_capture_fix.py
+    │   ├── browse_dir.py
+    │   ├── call_user.py
+    │   ├── click_text.py
+    │   ├── clipboard.py
+    │   ├── clipboard_core.py
+    │   ├── code_generate.py
+    │   ├── current_time.py
+    │   ├── delete_user_data.py
+    │   ├── export_data.py
+    │   ├── file_manager.py
+    │   ├── find_file.py
+    │   ├── find_screen_element.py
+    │   ├── get_perception.py
+    │   ├── keyboard_input.py
+    │   ├── launch_app.py
+    │   ├── launch_app_simple.py
+    │   ├── launch_app_v2.py
+    │   ├── list_installed_apps.py
+    │   ├── long_task_tools.py
+    │   ├── manage_admin.py
+    │   ├── memory_add.py
+    │   ├── memory_delete.py
+    │   ├── memory_list.py
+    │   ├── memory_search.py
+    │   ├── memory_update.py
+    │   ├── mouse_click.py
+    │   ├── ocr_text.py
+    │   ├── open_and_focus.py
+    │   ├── pixel_capture.py
+    │   ├── pixel_click.py
+    │   ├── pixel_color.py
+    │   ├── pixel_monitor.py
+    │   ├── process_kill.py
+    │   ├── process_start.py
+    │   ├── read_file.py
+    │   ├── screen_ocr.py
+    │   ├── shell_execute.py
+    │   ├── subagent_tools.py
+    │   ├── system_info.py
+    │   ├── task_tools.py
+    │   ├── template_match.py
+    │   ├── template_record.py
+    │   ├── test_memory_six_dimensions.py
+    │   ├── test_memory_six_dimensions_simple.py
+    │   ├── test_process_start_secure.py
+    │   ├── tool_manual.py
+    │   ├── TOOLS_INVENTORY.json
+    │   ├── tron_balance_updater.py
+    │   ├── ui_element_detect.py
+    │   ├── ui_tars.py
+    │   ├── vision_agent.py
+    │   ├── visual_element_detect.py
+    │   ├── visual_understand.py
+    │   ├── vpn_check.py
+    │   ├── vpn_connect.py
+    │   ├── wait_for_window.py
+    │   ├── web_automation.py
+    │   ├── web_content_extractor.py
+    │   ├── web_fetch.py
+    │   ├── web_open.py
+    │   ├── web_parse.py
+    │   ├── web_search.py
+    │   ├── window_action.py
+    │   ├── window_focus.py
+    │   ├── window_get.py
+    │   ├── window_ocr.py
+    │   └── window_rect.py
+    ├── ui/
+    │   ├── __init__.py
+    │   └── confirm_dialog.py
+    ├── voice/
+    │   ├── __init__.py
+    │   ├── interface.py
+    │   ├── interface_audio_fix.py
+    │   ├── interface_thread_fix.py
+    │   ├── model_bus_adapter.py
+    │   ├── protected_speak_queue.py
+    │   ├── rollback_interface.py
+    │   ├── state_sync.py
+    │   ├── test_audio_fix.py
+    │   ├── test_p0_006_ptt_wake_conflict.py
+    │   ├── test_wake_word_handler.py
+    │   ├── voice_assistant.py
+    │   ├── voice_interface_modelbus.py
+    │   ├── voice_prompts.py
+    │   └── wake_word_handler.py
+    ├── 备份/
+    │   ├── agent_loop.py.bak
+    │   ├── cloud_api.py.backup.20260313
+    │   ├── evolution_service.py.bak2
+    │   ├── interface.py.bak.20260311
+    │   ├── memory.py.backup_20260311
+    │   ├── prompt_builder.py.bak
+    │   ├── reflector.py.before_fix
+    │   ├── silicon_life_consciousness.py.bak2
+    │   └── tool_manager.py.backup_20260311
+    ├── 资产报告/
+    │   ├── 01-项目白皮书.md
+    │   ├── 02-vs-03-功能数量差异对比.md
+    │   ├── 02-全面资产盘点报告.md
+    │   ├── 03-全面资产盘点报告-v2-核实修正.md
+    │   ├── 03-全面资产盘点报告-v2.md
+    │   ├── 03-功能盘点与优化分析报告.md
+    │   ├── 04-工具系统精读报告-20260511.md
+    │   ├── 04-项目技术债务与缺陷全景报告.md
+    │   ├── 05-强智能架构差距分析.md
+    │   ├── 06-复核意见书.md
+    │   ├── 07-SiliconBase_V5_V6融合重构实施方案.md
+    │   ├── 08-融合重构与缺陷修复执行地图.md
+    │   ├── 09-记忆层真异步化实施方案.md
+    │   ├── 10-Phase 7 悬空模块异步化接入方案.md
+    │   ├── 11-异步化完成度报表.md
+    │   ├── 11-文档与代码真实状态差距审计.md
+    │   ├── 12-认知四模块松耦合交互设计方案.md
+    │   ├── 13-提示词计划.md
+    │   ├── 13-提示词计划_真实修复版.md
+    │   ├── 14-调度器与任务执行现状审计.md
+    │   ├── 15-代码现状全景 + 断裂连接方案.md
+    │   ├── 16-TokenBudget语义压缩改造方案.md
+    │   ├── 16-代码BUG.md
+    │   ├── 17-代码BUG修复进展审计.md
+    │   ├── 18-止血验证阶段执行计划.md
+    │   ├── 19-孤儿功能考古式评估报告.md
+    │   ├── AGENTS.md
+    │   ├── README.md
+    │   ├── USE_VENV.md
+    │   ├── U盘交付-Redis配置说明.md
+    │   ├── 方案C_Electron桌面化实现草案.md
+    │   └── 方案C_场景化区分实施报告.md
+    ├── .dockerignore
+    ├── .env
+    ├── .env.enterprise.template
+    ├── .env.example
+    ├── .env.redis.example
+    ├── 123.py
+    ├── AGENTS.md
+    ├── ai_client.py
+    ├── API_AUTH_FIX_REPORT.txt
+    ├── backend_log.txt
+    ├── backend_log2.txt
+    ├── backend_log3.txt
+    ├── backend_log4.txt
+    ├── backend_stderr.log
+    ├── backend_stdout.log
+    ├── cli.py
+    ├── docker-compose.override.yml
+    ├── docker-compose.redis.yml
+    ├── docker-compose.yml
+    ├── Dockerfile
+    ├── Dockerfile.api
+    ├── install.bat
+    ├── install.sh
+    ├── main.py.README
+    ├── PROJECT_HEALTH_REPORT_20260511.md
+    ├── PROJECT_TREE.txt
+    ├── protocol.py
+    ├── pytest.ini
+    ├── redis.conf
+    ├── requirements-core.txt
+    ├── requirements-core.txt.tmp
+    ├── requirements-full.txt
+    ├── requirements-ml.txt
+    ├── requirements-ocr.txt
+    ├── requirements-vision.txt
+    ├── requirements.docker.txt
+    ├── requirements.txt
+    ├── siliconbase_client.py
+    ├── start_all.bat
+    ├── start_all.sh
+    ├── start_backend.py
+    ├── start_frontend.bat
+    ├── start_frontend.py
+    ├── start_unified.py
+    ├── stop_all.bat
+    ├── stop_all.sh
+    ├── tmp_audit_open.py
+    ├── tmp_audit_path2.py
+    ├── tmp_bad_files.txt
+    ├── tmp_check_report.txt
+    ├── tmp_final_check.txt
+    ├── tmp_imports.txt
+    ├── tmp_init_extract.py
+    ├── tmp_test_final.py
+    ├── tmp_test_find_model.py
+    ├── tmp_test_fix.py
+    ├── tmp_test_launch_app.py
+    ├── tmp_test_offline.py
+    ├── tmp_test_patch.py
+    ├── VOICE_AUDIT_REPORT.md
+    ├── 二次排查报告_已有代码未使用.md
+    └── 代码审计报告_用户使用角度.md

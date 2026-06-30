@@ -1,0 +1,115 @@
+# Ollama 本地模型配置
+# 离线可用，完全免费
+
+provider: ollama
+name: Ollama Local
+enabled: true
+priority: 10  # 最低优先级（作为fallback）
+
+# API 配置
+base_url: http://localhost:11434  # Ollama默认地址
+
+# 模型配置
+models:
+  qwen3:8b:
+    name: Qwen3 8B
+    description: 通义千问3，综合能力强的本地模型
+    enabled: true
+    context_length: 32768
+    max_tokens: 4096
+    temperature: 0.7
+    cost_per_1k_input: 0.0  # 免费
+    cost_per_1k_output: 0.0
+    quality_score: 7.5
+    supports_tools: true
+    supports_vision: false
+    supports_json: true
+    
+  qwen3-vl:2b:
+    name: Qwen3-VL 2B
+    description: 通义千问3视觉版
+    enabled: true
+    context_length: 32768
+    max_tokens: 4096
+    temperature: 0.7
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    quality_score: 7.8
+    supports_tools: true
+    supports_vision: true
+    supports_json: true
+    
+  llama3.2:3b:
+    name: Llama 3.2 3B
+    description: 轻量级模型，速度快
+    enabled: true
+    context_length: 128000
+    max_tokens: 4096
+    temperature: 0.7
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    quality_score: 6.5
+    supports_tools: false
+    supports_vision: false
+    supports_json: true
+    
+  llama3.2-vision:11b:
+    name: Llama 3.2 Vision 11B
+    description: 本地视觉模型
+    enabled: true
+    context_length: 128000
+    max_tokens: 4096
+    temperature: 0.7
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    quality_score: 7.0
+    supports_tools: false
+    supports_vision: true
+    supports_json: true
+    
+  deepseek-coder:6.7b:
+    name: DeepSeek Coder 6.7B
+    description: 代码专用本地模型
+    enabled: true
+    context_length: 16384
+    max_tokens: 4096
+    temperature: 0.7
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    quality_score: 8.0
+    supports_tools: false
+    supports_vision: false
+    supports_json: true
+    
+  phi4:14b:
+    name: Phi-4 14B
+    description: 微软Phi-4，推理能力强
+    enabled: true
+    context_length: 16384
+    max_tokens: 4096
+    temperature: 0.7
+    cost_per_1k_input: 0.0
+    cost_per_1k_output: 0.0
+    quality_score: 7.8
+    supports_tools: false
+    supports_vision: false
+    supports_json: true
+
+# 路由规则
+routing:
+  task_mapping:
+    chat: qwen3:8b
+    vision: qwen3-vl:2b
+    code: deepseek-coder:6.7b
+    fast: llama3.2:3b
+    default: qwen3:8b
+
+# 限制配置
+limits:
+  timeout_seconds: 120  # 本地模型可能需要更长时间
+  max_retries: 1
+
+# 成本告警（本地模型无成本，主要监控使用情况）
+usage_alerts:
+  daily_request_limit: 1000  # 每日请求数限制
+  warning_threshold: 80

@@ -1,0 +1,25 @@
+.venv/
+.venv.old/
+.venv.broken*/
+.python/
+node_modules/
+package.json
+package-lock.json
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.idea/
+*.db
+*.db-shm
+*.db-wal
+.DS_Store
+data/prompt_dumps/
+
+# 大模型文件（打包时另外处理，不要提交到 Git）
+checkpoints/
+
+# 环境变量文件（含敏感信息与本地端口配置，禁止提交）
+.env
+.env.*
+!.env.example

@@ -1,0 +1,188 @@
+# 模型升级与接入配置
+# SiliconBase V5 - Model Upgrade Configuration
+
+# ============================================================
+# 1. 全局配置
+# ============================================================
+model_upgrade:
+  enabled: true
+  version: "1.0.0"
+  
+  # 默认路由策略
+  # - adaptive: 智能自适应
+  # - quality_first: 质量优先
+  # - cost_first: 成本优先
+  # - speed_first: 速度优先
+  # - balanced: 平衡策略
+  default_strategy: adaptive
+  
+  # 部署模式
+  # - hybrid: 混合模式（云端+本地）
+  # - cloud_only: 仅云端
+  # - local_only: 仅本地
+  # - auto: 自动选择
+  deploy_mode: hybrid
+
+# ============================================================
+# 2. 成本管理配置
+# ============================================================
+cost_management:
+  enabled: true
+  
+  # 预算限制（美元）
+  budget:
+    daily: 10.0       # 日预算
+    weekly: 50.0      # 周预算
+    monthly: 200.0    # 月预算
+    per_request: 0.05 # 单次请求上限
+  
+  # 告警阈值
+  alerts:
+    warning_threshold: 80    # 警告阈值（%）
+    critical_threshold: 95   # 严重阈值（%）
+    
+  # 成本优化
+  optimization:
+    prefer_local_for_simple_tasks: true  # 简单任务优先本地
+    auto_switch_to_cheaper: true         # 自动切换到更便宜的模型
+    cache_similar_requests: true         # 缓存相似请求
+
+# ============================================================
+# 3. 降级策略配置
+# ============================================================
+fallback:
+  enabled: true
+  
+  # 降级链配置
+  chains:
+    complex_reasoning:
+      - openai/o1-preview
+      - anthropic/claude-3-opus
+      - openai/gpt-4
+      - deepseek/deepseek-reasoner
+      - ollama/qwen3:8b
+      
+    coding:
+      - openai/gpt-4
+      - anthropic/claude-3-sonnet
+      - deepseek/deepseek-chat
+      - ollama/deepseek-coder:6.7b
+      - ollama/qwen3:8b
+      
+    vision:
+      - openai/gpt-4o
+      - anthropic/claude-3-sonnet
+      - openai/gpt-4o-mini
+      - ollama/qwen3-vl:8b
+      
+    chat:
+      - openai/gpt-4o
+      - anthropic/claude-3-haiku
+      - openai/gpt-4o-mini
+      - deepseek/deepseek-chat
+      - ollama/llama3.2:3b
+      - ollama/qwen3:8b
+  
+  # 降级触发条件
+  triggers:
+    timeout_seconds: 30          # 超时触发降级
+    max_failures: 2              # 最大失败次数
+    failure_window_seconds: 300  # 失败检查窗口
+
+# ============================================================
+# 4. 提供商配置
+# ============================================================
+providers:
+  # OpenAI - 最强模型
+  openai:
+    enabled: true
+    priority: 1
+    config_file: config/providers/openai.yaml
+    
+  # Anthropic - 超长上下文
+  anthropic:
+    enabled: true
+    priority: 2
+    config_file: config/providers/anthropic.yaml
+    
+  # DeepSeek - 性价比之选
+  deepseek:
+    enabled: true
+    priority: 3
+    config_file: config/providers/deepseek.yaml
+    
+  # Ollama - 本地模型
+  ollama:
+    enabled: true
+    priority: 10
+    config_file: config/providers/ollama.yaml
+
+# ============================================================
+# 5. 任务路由映射
+# ============================================================
+task_routing:
+  # 任务类型 -> 推荐模型
+  mapping:
+    complex_reasoning: openai/o1-preview
+    mathematical_proof: openai/o1-preview
+    code_generation: openai/gpt-4
+    code_review: anthropic/claude-3-sonnet
+    document_analysis: anthropic/claude-3-opus
+    vision_analysis: openai/gpt-4o
+    casual_chat: openai/gpt-4o-mini
+    summarization: deepseek/deepseek-chat
+    translation: deepseek/deepseek-chat
+    creative_writing: anthropic/claude-3-opus
+    
+  # 复杂度评估
+  complexity:
+    # 简单任务（使用便宜模型）
+    simple:
+      max_length: 200
+      keywords: ["你好", "谢谢", "再见", "hi", "hello", "thanks"]
+      
+    # 中等任务
+    medium:
+      max_length: 1000
+      keywords: ["解释", "说明", "介绍", "什么是"]
+      
+    # 复杂任务（使用最强模型）
+    complex:
+      min_length: 500
+      keywords: ["分析", "设计", "优化", "架构", "算法", "证明"]
+
+# ============================================================
+# 6. 监控和报告
+# ============================================================
+monitoring:
+  enabled: true
+  
+  # 性能监控
+  performance:
+    track_latency: true
+    track_success_rate: true
+    track_cost: true
+    
+  # 报告配置
+  reports:
+    daily_summary: true
+    weekly_report: true
+    save_directory: data/reports
+    
+  # 健康检查
+  health_check:
+    interval_seconds: 300
+    timeout_seconds: 10
+
+# ============================================================
+# 7. 环境变量要求
+# ============================================================
+# 请确保设置以下环境变量：
+# - OPENAI_API_KEY: OpenAI API密钥
+# - ANTHROPIC_API_KEY: Anthropic API密钥
+# - DEEPSEEK_API_KEY: DeepSeek API密钥
+#
+# 可选环境变量：
+# - OPENAI_BASE_URL: OpenAI代理地址
+# - ANTHROPIC_BASE_URL: Anthropic代理地址
+# - MODEL_UPGRADE_LOG_LEVEL: 日志级别

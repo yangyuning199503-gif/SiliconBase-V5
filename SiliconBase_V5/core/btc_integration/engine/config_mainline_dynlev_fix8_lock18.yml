@@ -1,0 +1,175 @@
+system:
+  name: btc_system_v1
+  version: r255_chatgpt_rebuild_mainline_dynlev_fix8_lock18
+  strategy: explosion_v1
+  note: '主线 Demo 回切 mainline_live_base；修复研究基准漂移：回测/双窗口/WF 不再跟随当前 Demo 配置污染。6年总样本仅作软约束，判断以近2年
+    + WF 为主；消息面/FOMC 继续只做 risk layer / overlay，不升 alpha。 | ChatGPT rebuild: promote
+    non-broken structural mainline candidate mainline_live_dynlev_fix8_lock18 as temporary
+    working baseline.'
+data:
+  base_timeframe: 15m
+  tz: UTC
+  symbols:
+  - btc
+  - bnb
+  weights:
+    btc: 0.015
+    bnb: 0.985
+  csv_template: data/raw/{symbol}_15m.csv
+  start: '2020-01-01'
+  end: '2026-03-25'
+costs:
+  fee_bps: 2
+  slippage_bps: 2
+  mark_to_market: close
+portfolio:
+  initial_equity: 100000
+  leverage: 120.0
+  exposure_fraction: 1.0
+  dynamic_leverage:
+    enabled: true
+    min: 4.0
+    max: 8.0
+    adx_low: 18.0
+    adx_high: 36.0
+risk:
+  risk_per_trade: 0.1
+  max_drawdown_halt: 0.99
+  dd_risk_scaling:
+    enabled: true
+    start: 0.1
+    end: 0.25
+    min_scale: 0.1
+  dd_guard:
+    enabled: false
+    buffer: 0.01
+    cooldown_bars: 1920
+    recovery_scale: 0.15
+    recovery_exit_pct: 0.05
+    recovery_exit_dd: 0.22
+    hard_kill: 0.45
+strategy_params:
+  breakout_lookback: 28
+  breakout_atr_buffer: 0.5
+  atr_period: 56
+  atr_stop_mult: 6.0
+  atr_trail_mult: 6.0
+  cooldown_bars: 24
+  allow_short: true
+  short_symbols:
+  - btc
+  pyramiding_max_adds: 2
+  add_step_atr: 2.5
+  add_risk_fraction: 0.25
+  breakeven_atr: 2.5
+  pyramiding_symbols:
+  - bnb
+filters:
+  timeframe: 4h
+  adx_period: 14
+  adx_floor: 30
+  use_rise_and_di: true
+  expand_filter:
+    enabled: true
+    atr_period_4h: 14
+    window_4h: 540
+    expand_pctl: 0.35
+    compress_pctl: 0.25
+  btc_adx_floor: 30
+  btc_breakout_atr_buffer: 1.0
+  macro_gate_symbols:
+  - btc
+  - bnb
+  btc_short_entry_mode: pullback
+  btc_short_pullback_atr: 0.6
+  btc_short_adx_floor: 30
+  btc_short_require_di: false
+  btc_short_sr_lookback_4h: 30
+  btc_short_macro_tf: 1d
+  macro_gate_tf_by_symbol:
+    bnb: 1d
+    btc: 1d
+  macro_gate_reference_symbol: btc
+mean_reversion:
+  enabled: false
+outputs:
+  reports_dir: reports
+  copy_to_downloads: false
+  locale: zh_CN
+money_management:
+  mode: fixed
+  capital_slices: 8
+  stake_usd: 10000
+  stop_loss_pct: 0.18
+  take_profit_pct: 1.5
+  trailing_profit:
+    enabled: true
+    activation_pnl_pct: 0.7
+    giveback_ratio: 0.35
+    min_lock_pnl_pct: 0.18
+  stake_scale:
+    btc_short: 5.0
+    btc_long: 0.3
+    bnb_long: 1.0
+  stake_mode: dynamic_equity
+  stake_min_usd: 9000
+  stake_max_usd: 14000
+  risk_on:
+    enabled: true
+    symbols:
+    - bnb
+    sides:
+    - LONG
+    mult: 1.5
+    adx_min: 40
+    require_expand_ok: true
+    require_adx_rise: true
+    adx_hi: 40
+    mult_hi: 4.0
+    dd_hi_disable: 0.18
+    pyramiding_hi_only: true
+sr_entries:
+  enabled: false
+  symbols:
+  - btc
+  - bnb
+  lookback_4h: 30
+  zone_atr_mult: 0.6
+  take_profit_pct: 0.0
+  require_di: false
+  use_adx_filter: true
+  adx_min: 0.0
+  adx_max: 25.0
+  stake_scale: 0.1
+  cooldown_bars: 96
+  require_compress_ok: true
+execution_guard:
+  enabled: true
+  symbols:
+  - btc
+  - bnb
+  pause_bars: 8
+  range_atr: 3.0
+  wick_frac_min: 0.6
+  body_atr_max: 0.8
+funding:
+  enabled: true
+  mode: fixed_bps_per_event
+  charge_mode: adverse_only
+  interval_hours: 8
+  event_hours_utc:
+  - 0
+  - 8
+  - 16
+  csv_template: data/funding/{symbol}_funding.csv
+  csv_time_col: time
+  csv_rate_col: fundingRate
+  csv_rate_unit: fraction
+  fixed_bps_per_event:
+    default: 0.0
+    btc: 0.0
+    bnb: 0.0
+live_bridge:
+  exchange: okx
+  mode: demo
+  submit_orders: false

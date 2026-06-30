@@ -1,0 +1,16 @@
+# SiliconBase V5 视觉扩展依赖
+# 安装: pip install -r requirements-vision.txt
+#
+# 提供图像处理和模板匹配功能
+# 前置依赖: requirements-core.txt
+
+# ========== 图像处理 ==========
+# 用于模板匹配、图像识别等功能
+opencv-python>=4.8.0
+
+# ========== 视觉推理 ==========
+# core/vision/realtime_detector.py 直接使用 onnxruntime 进行目标检测
+onnxruntime>=1.16.0
+
+# 注意: scipy已从视觉扩展中移除
+# 颜色分析功能现在使用内置实现，无需额外依赖

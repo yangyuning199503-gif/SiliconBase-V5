@@ -1,0 +1,252 @@
+system:
+  name: btc_system_v1
+  version: r248_main_demo_pnl_split_live_base
+  strategy: explosion_v1
+  note: '组合模式：TREND breakout + SR 支撑阻力（预算/冷却）+ 动态分仓（stake_mode=dynamic_equity） | r132:
+    解耦波动扩张/压缩阈值 + SR仅在压缩期交易（提高信息密度与减少手续费） | r133: 回退 TREND expand_pctl 0.65->0.35（保留
+    compress_pctl=0.25 + SR仅压缩期） | r134: BNB 宏观门控改为 1D（减少 2022-23 噪音），并增强 deepseek_brief（分段+最大拖累）
+    | r135: 关闭 SR（当前负期望）+ 禁用 BNB SHORT（最大拖累桶），先把 PF 拉上去再做 risk-on 放大。 | r136: BNB
+    long macro gate uses BTC reference + add run_sweep to test sizing quickly. | r137:
+    fixed_tranche entries apply dd_risk_scaling to stake_used + raise stake_max_usd
+    for true compounding. | r138: set baseline capital_slices=10 (bear-positive preference)
+    + btc macro gate tf=1d for longs. | r139: risk_on stake multiplier for BNB long
+    + pyramiding for BNB only + reduce BTC size. | r140: 分层 risk_on（ADX>=40 用 mult_hi），并在
+    deepseek_brief 增加月度分布(均值/P90/P95/Max/>=20/30)。 | r157: anti-overfit mainline restore
+    -> revert to simpler robust baseline (btc,bnb only, no BNB loss cooldown cluster/fixed
+    cooldown, no TRX dilution). Historical segments used as guardrail; recency remains
+    decision lens. | r158: 单因子试探，只改 breakout_lookback 24->28；依据 overfit_check 表，此改动在近24月与全样本上优于
+    base，先验证是否可复现。 | r159: 单因子试探，只改 filters.btc_breakout_atr_buffer 0.7->0.9；目的：压缩
+    BTC 假突破拖累，不动 BNB alpha 主腿。 | r160: 单因子试探，只改 money_management.risk_on.adx_hi 42->41；目的：更早进入
+    BNB 高档 risk_on，优先提升近24个月月度爆发频次，同时尽量不增加回撤。 | r161: 单因子试探，只改 money_management.risk_on.dd_hi_disable
+    0.18->0.15；目的：在组合回撤进入 15% 时更早关闭 BNB 高档 risk_on，优先压缩 2025 drawdown cluster，不动 BTC
+    / SR / 资产池。 | r162: 回滚 r161 过早降仓（dd_hi_disable 0.15->0.18），并继续单因子试探 money_management.risk_on.adx_hi
+    41->40；目的：在维持主结构不变前提下，提升 BNB risk_on 触发质量与近端收益。 | r163: 单因子试探，只改 filters.adx_floor
+    25->30（仅影响非BTC主线资产，当前即 BNB）；目的：过滤 BNB 低 ADX 趋势假突破，优先提升近24个月与 2025 段表现，同时保持结构简洁。
+    | r164: aggressive recency branch for 24M monthly target 20%-30%; leverage 120
+    + slices 4 + weights btc/bnb=0.2/0.8 + scaled stop/tp/trail + stronger dd_risk_scaling.
+    Branch only, not robust mainline. | r165: target branch refinement from r164:
+    shift weights btc/bnb 0.2/0.8 -> 0.1/0.9 to keep BTC hedge leg but let BNB alpha
+    dominate; chosen after 10-probe batch as best balance of 24M monthly target, PF,
+    and drawdown. | r166: from r165 rebalance weights btc/bnb 0.10/0.90 -> 0.07/0.93
+    after 16 internal probes; slight recent-monthly and PF improvement at unchanged
+    MaxDD. | r172: from r166 reduce btc/bnb weights 0.07/0.93 -> 0.03/0.97 and tighten
+    filters.btc_breakout_atr_buffer 0.9 -> 1.0; aim: further compress BTC dilution
+    / false-break noise while keeping BTC hedge leg. | r189: from r172 reduce btc/bnb
+    weights 0.03/0.97 -> 0.02/0.98 and raise money_management.stake_scale.btc_short
+    0.50 -> 0.65; aim: keep recent-monthly >23% while marginally improving PF and
+    MaxDD without giving up BTC hedge utility. | r222: from r216 reduce btc/bnb weights
+    0.02/0.98 -> 0.015/0.985 and raise money_management.stake_scale.btc_short 0.75
+    -> 1.05; aim: keep BTC short hedge notional while cutting BTC long dilution, using
+    recency as primary lens. | r226: from r225 reduce money_management.risk_on.mult
+    1.8 -> 1.6; goal: keep recent24 compounded annual net return inside 240%-360%
+    band while compressing MaxDD. Early 2020-2021 segment used as soft guardrail.
+    | r227: fine search around risk_on.mult found 1.575 as cleaner keep-band point;
+    objective remains recent24 compounded annual net return inside 240%-360% while
+    improving PF and MaxDD. Existing wick_guard toggle proved inert in backtest, so
+    wick defense will move to stronger execution/regime rules next batch. | r228:
+    add execution_guard abnormal-wick pause (range/ATR + wick fraction + body/ATR),
+    pause new entries for 8 bars after shock wick, and fine-tune money_management.risk_on.mult
+    1.575->1.50 to keep recent24 compounded annual net return inside 240%-360% band
+    while compressing MaxDD. | r232: Binance testnet bridge only; strategy parameters
+    unchanged, add /market + /private websocket routing, entry order.test smoke, and
+    algo-order-aware protective preview. | r233: keep strategy unchanged; fix websocket
+    TLS trust by pinning CA bundle for websocket-client, add REST mark-price fallback
+    for order.test, and enrich probe diagnostics. | r234: keep strategy unchanged;
+    switch private probe from WebSocket API session.logon to listenKey /private for
+    regular HMAC testnet keys, auto-retry order.test on exchange-enforced min notional,
+    and redact signatures/listenKeys in diagnostics. | r235: keep strategy unchanged;
+    fix Binance testnet order.test quantity rounding so exchange-enforced min notional
+    retries round up to a valid MARKET_LOT_SIZE instead of flooring below threshold;
+    future bridge iterations prefer patch bundles when the base version matches. |
+    r236: keep strategy unchanged; add a separate Binance Futures Demo smoke-submit
+    tool that places a tiny demo MARKET order, waits for private user-data callbacks,
+    and auto-flattens the position; probe now refreshes shadow plan files and support
+    bundles include smoke diagnostics. | r237: switch simulated-trading bridge from
+    Binance Demo/Testnet to OKX Demo Trading; strategy parameters unchanged, add OKX
+    shadow plan/probe/smoke submit, and require OKX passphrase + x-simulated-trading
+    header. | r238: keep strategy unchanged; fix OKX websocket subscribe request id
+    handling to match the documented alphanumeric rule so public/private WS subscriptions
+    ack normally in probe and smoke diagnostics. | r239: keep strategy unchanged;
+    add OKX demo shadow execution step that syncs recent 15m candles from OKX, re-computes
+    current strategy state locally, and mirrors only the latest signal direction/flat
+    state with tiny demo market orders while leaving protective orders in preview-only
+    mode. | r242: keep strategy unchanged; add 15m OKX demo runner, periodic check-in
+    files, and manual risk override scaffold for macro/news shocks. | r243: keep strategy
+    unchanged; replace manual runner with one-command OKX demo autopilot (start/pause),
+    single overwritten report in Downloads, terminal trade prints, and initial CoinGlass
+    news/economic pause-new-entries guard. | r244: keep strategy unchanged; keep CoinGlass
+    in shadow-only mode until its veto value is validated, simplify daily use to start/pause
+    only, and continue writing exactly one public report file in Downloads while preserving
+    hidden runtime diagnostics. | r245: keep strategy unchanged; change terminal/public-report
+    display timezone to UTC+8 and upgrade the single Downloads report into a richer
+    detailed snapshot (summary + CoinGlass + symbol execution detail) while still
+    overwriting one file only. | r246: fix macOS start/pause launcher compatibility
+    (BSD date + Terminal launch), keep UTC+8 terminal/report and single Downloads
+    report.'
+data:
+  base_timeframe: 15m
+  tz: UTC
+  symbols:
+  - btc
+  - bnb
+  weights:
+    btc: 0.015
+    bnb: 0.985
+  csv_template: data/raw/{symbol}_15m.csv
+  start: '2020-01-01'
+  end: '2026-01-31'
+costs:
+  fee_bps: 2
+  slippage_bps: 2
+  mark_to_market: close
+portfolio:
+  initial_equity: 100000
+  leverage: 120.0
+  exposure_fraction: 1.0
+  dynamic_leverage:
+    enabled: true
+    min: 72.0
+    max: 120.0
+    adx_low: 20
+    adx_high: 40
+risk:
+  risk_per_trade: 0.1
+  max_drawdown_halt: 0.99
+  dd_risk_scaling:
+    enabled: true
+    start: 0.1
+    end: 0.25
+    min_scale: 0.1
+  dd_guard:
+    enabled: false
+    buffer: 0.01
+    cooldown_bars: 1920
+    recovery_scale: 0.15
+    recovery_exit_pct: 0.05
+    recovery_exit_dd: 0.22
+    hard_kill: 0.45
+strategy_params:
+  breakout_lookback: 28
+  breakout_atr_buffer: 0.5
+  atr_period: 56
+  atr_stop_mult: 6.0
+  atr_trail_mult: 6.0
+  cooldown_bars: 24
+  allow_short: true
+  short_symbols:
+  - btc
+  pyramiding_max_adds: 2
+  add_step_atr: 2.5
+  add_risk_fraction: 0.25
+  breakeven_atr: 2.5
+  pyramiding_symbols:
+  - bnb
+filters:
+  timeframe: 4h
+  adx_period: 14
+  adx_floor: 30
+  use_rise_and_di: true
+  expand_filter:
+    enabled: true
+    atr_period_4h: 14
+    window_4h: 540
+    expand_pctl: 0.35
+    compress_pctl: 0.25
+  btc_adx_floor: 30
+  btc_breakout_atr_buffer: 1.0
+  macro_gate_symbols:
+  - btc
+  - bnb
+  btc_short_entry_mode: pullback
+  btc_short_pullback_atr: 0.6
+  btc_short_adx_floor: 30
+  btc_short_require_di: false
+  btc_short_sr_lookback_4h: 30
+  btc_short_macro_tf: 1d
+  macro_gate_tf_by_symbol:
+    bnb: 1d
+    btc: 1d
+  macro_gate_reference_symbol: btc
+mean_reversion:
+  enabled: false
+outputs:
+  reports_dir: reports
+  copy_to_downloads: false
+  locale: zh_CN
+money_management:
+  mode: fixed_tranche
+  capital_slices: 4
+  stake_usd: 10000
+  stop_loss_pct: 1.0
+  take_profit_pct: 2.1333
+  trailing_profit:
+    enabled: true
+    activation_pnl_pct: 1.2
+    giveback_ratio: 0.3
+    min_lock_pnl_pct: 0.5333
+  stake_scale:
+    btc_short: 5.0
+    btc_long: 0.3
+    bnb_long: 1.0
+  stake_mode: dynamic_equity
+  stake_min_usd: 2000
+  stake_max_usd: 120000
+  risk_on:
+    enabled: true
+    symbols:
+    - bnb
+    sides:
+    - LONG
+    mult: 1.5
+    adx_min: 40
+    require_expand_ok: true
+    require_adx_rise: true
+    adx_hi: 40
+    mult_hi: 4.0
+    dd_hi_disable: 0.18
+    pyramiding_hi_only: true
+sr_entries:
+  enabled: false
+  symbols:
+  - btc
+  - bnb
+  lookback_4h: 30
+  zone_atr_mult: 0.6
+  take_profit_pct: 0.0
+  require_di: false
+  use_adx_filter: true
+  adx_min: 0.0
+  adx_max: 25.0
+  stake_scale: 0.1
+  cooldown_bars: 96
+  require_compress_ok: true
+execution_guard:
+  enabled: true
+  symbols:
+  - btc
+  - bnb
+  pause_bars: 8
+  range_atr: 3.0
+  wick_frac_min: 0.6
+  body_atr_max: 0.8
+funding:
+  enabled: true
+  mode: fixed_bps_per_event
+  charge_mode: adverse_only
+  interval_hours: 8
+  event_hours_utc:
+  - 0
+  - 8
+  - 16
+  csv_template: data/funding/{symbol}_funding.csv
+  csv_time_col: time
+  csv_rate_col: fundingRate
+  csv_rate_unit: fraction
+  fixed_bps_per_event:
+    default: 0.0
+    btc: 0.0
+    bnb: 0.0
+live_bridge:
+  exchange: okx
+  mode: demo
+  submit_orders: false
