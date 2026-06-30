@@ -1,0 +1,244 @@
+# =====================================================
+# 环境变量与敏感配置
+# =====================================================
+.env
+.env.*
+!.env.example
+data/exchange_configs.json
+SiliconBase_V5/data/exchange_configs.json
+
+# =====================================================
+# 根目录：只保留核心文档，排除审计/报告/临时文件
+# =====================================================
+/*AUDIT*.md
+/*_REPORT*.md
+/*_REPORT*.txt
+/*scan_report*.md
+/*scan_report*.txt
+/*scan_output*.md
+/*scan_output*.txt
+/*verification_report*.md
+/*verification_report*.txt
+/audit_report_async_verification.md
+/SiliconBase_V5_STATUS_AUDIT_REPORT_UNIFIED.md
+/SiliconBase_V5现状审计报告.md
+/core_py_summary.md
+
+# 根目录临时脚本与输出
+/_write_plan*.py
+/analyze_*.py
+/check_*.py
+/extract_*.py
+/full_scan*.py
+/global_scan*.py
+/global_scan*.ps1
+/run_analysis*.py
+/tmp_*.py
+/*.bat
+/all_dirs.txt
+/check_result.txt
+/cmdtest*.txt
+/core_all_files.csv
+/create_silicon_repo.txt
+/dir_*.txt
+/git_*.txt
+/hi.txt
+/import_trace.txt
+/lsremote.txt
+/project_tree.txt
+/push_*.txt
+/repo_*.txt
+/review_*.txt
+/rev.txt
+/query
+
+# 根目录测试/临时输出
+crash_log*.txt
+pytest_*.txt
+round2_analysis*.txt
+scan_results*.txt
+terminal_*.txt
+test_*.py
+test_*.txt
+tmp_*.txt
+tmp_*.json
+tmp_*.py
+trace_special.py
+verify_push*.txt
+version*.txt
+where_git*.txt
+
+# 需要保留的根目录文档
+!README.md
+!07-doc.md
+!08-doc.md
+!PROJECT_FUNCTIONS_INDEX.md
+!PROMPT_SYSTEM_OPTIMIZATION_PLAN.md
+!REFACTOR_PLAN_V2.md
+!NEXT_AGENT_PROMPT.md
+!kimi_handover_report.md
+
+# 编辑器/IDE 与本地工具数据
+/.idea/
+/.codegraph/
+
+# 外部工具二进制文件
+/tools/redis/
+
+# =====================================================
+# 顶层目录排除
+# =====================================================
+/data/
+/docs/archive/
+/test_outputs/
+/tmp_test/
+
+# =====================================================
+# SiliconBase_V5 内部排除
+# =====================================================
+SiliconBase_V5/.idea/
+SiliconBase_V5/.mypy_cache/
+SiliconBase_V5/.pytest_cache/
+SiliconBase_V5/.python/
+SiliconBase_V5/.ruff_cache/
+SiliconBase_V5/.runtime/
+SiliconBase_V5/.security_backup/
+SiliconBase_V5/.venv/
+SiliconBase_V5/__pycache__/
+SiliconBase_V5/checkpoints/
+SiliconBase_V5/core/checkpoints/
+SiliconBase_V5/logs/
+SiliconBase_V5/node_modules/
+SiliconBase_V5/outputs/
+SiliconBase_V5/screenshots/
+SiliconBase_V5/temp/
+SiliconBase_V5/test_core/
+SiliconBase_V5/test_data/
+SiliconBase_V5/test_outputs/
+SiliconBase_V5/tests/
+SiliconBase_V5/tmp/
+SiliconBase_V5/tmp_test/
+SiliconBase_V5/tmp_whl/
+SiliconBase_V5/training_data/
+SiliconBase_V5/yolo_dataset/
+SiliconBase_V5/资产报告/
+SiliconBase_V5/archive/
+SiliconBase_V5/AGENT04_REPORTS/
+
+# SiliconBase_V5 文档：排除审计报告，保留关键文档
+SiliconBase_V5/*AUDIT*.md
+SiliconBase_V5/*REPORT*.md
+SiliconBase_V5/*REPORT*.txt
+SiliconBase_V5/*report*.md
+SiliconBase_V5/*report*.txt
+SiliconBase_V5/tmp_*.txt
+SiliconBase_V5/b904_files.txt
+SiliconBase_V5/backend_log*.txt
+!SiliconBase_V5/AGENTS.md
+!SiliconBase_V5/PYTHON_ENV.md
+!SiliconBase_V5/PROJECT_TREE.txt
+
+# SiliconBase_V5 数据：排除运行时数据库/状态
+SiliconBase_V5/data/*.db
+SiliconBase_V5/data/*.db-*
+SiliconBase_V5/data/chroma_db/
+SiliconBase_V5/data/memory_db/
+SiliconBase_V5/data/consciousness_state*.json
+SiliconBase_V5/data/consciousness_states/
+SiliconBase_V5/data/action_preference_model.pt
+SiliconBase_V5/data/gamification.json
+SiliconBase_V5/data/goals.json
+SiliconBase_V5/data/milestones.json
+SiliconBase_V5/data/notifications/
+SiliconBase_V5/data/phase_anchors/
+SiliconBase_V5/data/prompt_dumps/
+SiliconBase_V5/data/user_preferences/
+SiliconBase_V5/data/template_experiments/
+
+# BTC engine 运行时数据、研究报告与验证笔记
+SiliconBase_V5/core/btc_integration/engine/data/
+SiliconBase_V5/core/btc_integration/engine/reports/
+SiliconBase_V5/core/btc_integration/engine/patch_notes/
+SiliconBase_V5/core/btc_integration/engine/logs/
+SiliconBase_V5/core/btc_integration/engine/.runtime/
+SiliconBase_V5/core/btc_integration/engine/PATCH_NOTE_*.txt
+SiliconBase_V5/core/btc_integration/engine/PATCH_README_*.txt
+SiliconBase_V5/core/btc_integration/engine/REBUILD_NOTE_*.txt
+SiliconBase_V5/core/btc_integration/engine/STAGE*.txt
+SiliconBase_V5/core/btc_integration/engine/SYSTEM_STABILITY_SCAN_*.txt
+SiliconBase_V5/core/btc_integration/engine/STRATEGY_FRAMEWORK_*.txt
+SiliconBase_V5/core/btc_integration/engine/TRADER_EVENT_PLAYBOOK_*.txt
+SiliconBase_V5/core/btc_integration/engine/VERIFICATION_SUMMARY_*.txt
+SiliconBase_V5/core/btc_integration/engine/stage*.txt
+SiliconBase_V5/core/btc_integration/engine/stage113/*.txt
+SiliconBase_V5/core/btc_integration/engine/FIX_PERMISSIONS_README.txt
+SiliconBase_V5/core/btc_integration/engine/LOCAL_VALIDATION_NOTE_*.txt
+SiliconBase_V5/core/btc_integration/engine/OPENAI_REBUILD_NOTE_*.txt
+SiliconBase_V5/core/btc_integration/engine/scripts/universe_scan.sh
+
+# 示例 demo（非生产代码）
+SiliconBase_V5/examples/
+
+# 前端生成代码与测试
+SiliconBase_V5/frontend/src/generated/
+SiliconBase_V5/frontend/src/test-setup.ts
+SiliconBase_V5/frontend/vitest.config.ts
+SiliconBase_V5/frontend/public/test-login.html
+SiliconBase_V5/frontend/_check_lc*.mjs
+SiliconBase_V5/frontend/src/**/*.test.ts
+SiliconBase_V5/frontend/src/**/*.test.tsx
+
+# 临时/导出脚本
+/export_yolo.py
+
+# scripts 目录：只保留核心部署/启动/初始化脚本
+SiliconBase_V5/scripts/
+!SiliconBase_V5/scripts/deploy.sh
+!SiliconBase_V5/scripts/docker-entrypoint.sh
+!SiliconBase_V5/scripts/docker-quickstart.sh
+!SiliconBase_V5/scripts/service_manager.py
+!SiliconBase_V5/scripts/siliconbase_service.py
+!SiliconBase_V5/scripts/start_all.py
+!SiliconBase_V5/scripts/start_postgres.py
+!SiliconBase_V5/scripts/start_services.py
+!SiliconBase_V5/scripts/init_database.py
+!SiliconBase_V5/scripts/init_postgres.py
+!SiliconBase_V5/scripts/init_cost_tables.py
+!SiliconBase_V5/scripts/init_model_bus.py
+!SiliconBase_V5/scripts/init_mcp_subagent.py
+!SiliconBase_V5/scripts/create_tables.py
+!SiliconBase_V5/scripts/execute_create_session_tables.py
+!SiliconBase_V5/scripts/registry.json
+!SiliconBase_V5/scripts/create_session_tables.sql
+!SiliconBase_V5/scripts/deploy_experience_tracking.sql
+!SiliconBase_V5/scripts/memory_db_optimization.sql
+
+# 运行时数据目录
+SiliconBase_V5/data/
+SiliconBase_V5/core/data/
+SiliconBase_V5/core/consciousness/data/
+SiliconBase_V5/exception_audit_raw.json
+
+# 前端构建产物与测试
+SiliconBase_V5/frontend/dist/
+SiliconBase_V5/frontend/lint_output*.txt
+SiliconBase_V5/frontend/src/**/__tests__/
+
+# patch 文件
+*.patch
+
+# docs reports 中的非设计文档
+SiliconBase_V5/docs/reports/UI_UNCONNECTED_ROUTES.md
+SiliconBase_V5/docs/reports/core_orphans_investigation.md
+
+# 模型文件
+SiliconBase_V5/assets/models/
+
+# =====================================================
+# 通用模式
+# =====================================================
+*.log
+__pycache__/
+*.pyc
+.DS_Store
+/test_ignore_file.txt

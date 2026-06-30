@@ -1,0 +1,8 @@
+# 统一文本文件使用 LF 行尾，避免 CRLF 噪音淹没 diff
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.sh text eol=lf
