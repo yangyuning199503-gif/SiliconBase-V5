@@ -268,4 +268,5 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 ---
 
 **项目版本**: v5.0  
-**维护者**: SiliconBase Team
+**维护者**: SiliconBase Team  
+**联系邮箱**: xiaoyuzueiqiang@foxmail.com
