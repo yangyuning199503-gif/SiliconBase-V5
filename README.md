@@ -109,6 +109,14 @@ SiliconBase V5 内置了一套完整的 AI 交易框架：
 
 ---
 
+## 📸 界面预览
+
+| 登录页 | 主界面 | 交易报告 |
+|---|---|---|
+| ![登录页](docs/images/login.png) | ![主界面](docs/images/home.png) | ![交易报告](docs/images/trading.png) |
+
+---
+
 ## 🚀 快速开始
 
 ### 前置要求
@@ -127,12 +135,6 @@ SiliconBase V5 内置了一套完整的 AI 交易框架：
 # 完整启动（启用所有功能）
 双击: 启动V5-标准版.bat
 ```
-
-### 界面预览
-
-| 登录页 | 主界面 | 交易报告 |
-|---|---|---|
-| ![登录页](docs/images/login.png) | ![主界面](docs/images/home.png) | ![交易报告](docs/images/trading.png) |
 
 ### 命令行启动
 
