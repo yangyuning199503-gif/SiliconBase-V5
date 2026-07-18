@@ -1,105 +1,107 @@
 # SiliconBase V5
 
-> 一个具备**主权架构、多级记忆、视觉感知与自主意识**的本地 AI Agent 平台。
+一个具备**主权架构、自主感知和多级记忆**的本地 AI Agent 平台。
 
-SiliconBase V5 不只是大语言模型的封装，而是一个以**思维线程（Consciousness）**为核心的数字生命体框架。它持续感知桌面环境、管理长期记忆、调用工具、执行交易，并通过语音与 Web 界面与用户交互。
+SiliconBase V5 不是又一个 LLM 工具链。它是一个能**持续感知环境、管理长期记忆、并在需要时主动行动**的数字生命体框架。
+
+现在主流的 AI Agent 框架（LangChain、AutoGPT、CrewAI 等），本质上都是在大模型外面做工具编排。SiliconBase V5 走了另一条路：**从操作系统层重新设计 AI 的运行环境**。
 
 ---
 
-## 🌟 核心设计亮点
+## 🧠 为什么是"主权架构"？
 
-### 1. 四层主权-翻译-执行-记忆架构
+现在的 AI Agent 有个通病：**什么事都丢给 LLM 决定**。
 
-突破传统 "LLM 直接决定一切" 的设计，将系统拆分为四层职责：
+LLM 调用工具、LLM 管理记忆、LLM 做决策。听起来很智能，实际上有三个硬伤：
 
-| 层级 | 职责 | 核心文件 |
+1. **LLM 记不住那么多东西** — 上下文窗口有限，不可能把完整记忆和系统状态全塞进去
+2. **LLM 太贵、太慢** — 每次点个按钮都要调用大模型，延迟和成本都扛不住
+3. **LLM 没有连续性** — 每次对话都像第一次见， yesterday 的经验今天 reset 了
+
+SiliconBase V5 的解法很简单：**让系统自己当家，LLM 只是它调用的工具之一**。
+
+- **思维线程（Consciousness）** 才是真正的决策者
+- **记忆系统** 独立于 LLM，有自己的存储、检索、价值评估和晋升机制
+- **视觉感知系统** 先用规则快速扫描，只在遇到不认识的东西时才请大模型出山
+
+### 四层主权架构
+
+| 层级 | 职责 | 类比 |
 |---|---|---|
-| L1 主权层 | 输入裁决与自我状态更新 | `core/consciousness/Consciousness.py` |
-| L2 翻译层 | 自然语言压缩为结构化意图 | `core/consciousness/intent_translator.py` |
-| L3 执行层 | Agent 循环与工具调用 | `core/agent/agent_loop.py`, `core/dialog/dialogue_manager.py` |
-| L4 记忆层 | 自我叙事与状态持久化 | `core/consciousness/self_state.py`, `core/consciousness/self_narrative.py` |
+| **L1 主权层** | 判断这条输入该不该处理、怎么处理，并更新自我状态 | 大脑前额叶 |
+| **L2 翻译层** | 把人类的自然语言压缩成机器能看懂的结构化意图 | 翻译官 |
+| **L3 执行层** | 跑 Agent 主循环、调用工具、把结果返回来 | 手和脚 |
+| **L4 记忆层** | 记录"我是谁、我在哪、我经历了什么"，并反向影响下一次决策 | 自传体记忆 |
 
-层间通过 `Intent / RoutingDecision / ActionResult` 等标准化数据契约通信，降低模块耦合。
+这套架构让系统有了**真正的连续性**：它记得你昨天教过它什么，记得自己之前犯过什么错，甚至会基于这些记忆调整自己的行为。
 
-### 2. 单核异步统一化的 AgentLoop
+---
 
-已完成 Phase 8 全链路异步化改造：
+## 🧩 为什么记忆要分五层？
 
-- 唯一生产入口为 `run_agent_loop_async()`，统一使用 `async/await`
-- `AgentLoopHooks` 注册 `SafetyHook / VisionHook / ToolHook / VoiceHook / CoreLogicHooks`
-- 事件总线 `EventBus` + 21 板块注册表 `PlateRegistry` 提供模块化扩展机制
-- `PhasePilot` 阶段注册机制支持可插拔的上下文组装 / Prompt 组装 / 工具执行
+如果只有"短期记忆"和"长期记忆"，很多场景会卡住：
 
-### 3. L1-L5 五层记忆系统
+- **昨天的经验** 今天还需要，但已经过了短期记忆窗口
+- **某次工具调用为什么成功/失败** 必须单独记录，不能和聊天内容混在一起
 
-| 层级 | 名称 | 用途 |
-|---|---|---|
-| L1 | 工作记忆 | 当前会话上下文 |
-| L2 | 短期记忆 | 1 天过期的原始记录 |
-| L3 | 中期记忆 | 7 天过期的高价值经验 |
-| L4 | 长期/进化记忆 | 永久存储的进化知识 |
-| L5 | 执行记忆 | 每次工具执行的完整记录 |
+所以 SiliconBase V5 把记忆拆成了五层：
 
-- 统一入口：`MemoryManager` 单例
-- 自动触发：`MemoryAutoTrigger` 覆盖用户输入、AI 回复、工具执行、任务事件
-- 向量语义检索：基于 `ChromaDB` + `all-MiniLM-L6-v2`
-- 价值评估与晋升：`memory_promotion.py` 支持多维评分与自动淘汰
-- 容量保障：单条 8192 字符上限，单用户 50MB 总上限
+| 层级 | 名称 | 用途 | 类比 |
+|---|---|---|---|
+| **L1** | 工作记忆 | 当前会话的上下文 | 注意力 |
+| **L2** | 短期记忆 | 1 天内过期的原始记录 | 今天发生的事 |
+| **L3** | 中期记忆 | 7 天内过期的高价值经验 | 最近一周学会的东西 |
+| **L4** | 长期记忆 | 永久保存的进化知识 | 人生经验 |
+| **L5** | 执行记忆 | 每次工具调用的完整记录 | 肌肉记忆 |
 
-### 4. 类人视觉感知与未知元素学习
+这套系统会**自动决定什么值得记住、什么该忘掉**：
 
-- **轮廓感知引擎**：Canny 边缘检测 + 轮廓提取 + 形态过滤，识别纯图形元素
-- **四源融合检测器 `RealtimeDetector`**：融合 ONNX 通用检测、EasyOCR、UIAutomation、轮廓提取
-- **未知元素学习闭环**：发现未知 UI 元素 → 大视觉模型打标签 → 存入向量记忆库 → 四层召回复用
-  - ⚠️ 该功能默认关闭，需手动 `enable_vision_discovery()` 开启
-- **结构化视觉快照**：将检测结果渲染为场景分层的自然语言描述，让 LLM 直接理解界面
-- **资源自适应降级**：CPU/内存紧张时自动降低感知频率、关闭 OCR
-- **全局视野 `Global View`**：维护本地软件/文件库并同步到向量记忆，支持语义搜索
+- 统一入口 `MemoryManager`，用户输入、AI 回复、工具执行都会自动触发记忆存储
+- 基于 `ChromaDB` 的向量语义检索，能搜到"意思相近但措辞不同"的历史经验
+- 自动评估记忆价值，低价值的过期淘汰，高价值的自动晋升到更长期层级
+- 单用户 50MB 总上限，防止记忆无限膨胀
 
-### 5. AI 驱动的加密货币交易子系统
+---
 
-- **执行器抽象**：`TradeExecutor` ABC + `SimulationExecutor` / `OKXExecutor` / `BinanceExecutor`
-- **AI 交易子代理**：`TradingSubAgent._trading_cycle()` 异步循环决策
-- **MCP 指挥官**：`AITradingCommander` 标准化角色 Prompt，支持量化模式
-- **实时行情推送**：独立 8602 端口 WebSocket，推送价格、持仓、信号、风险
+## 👁️ 视觉感知：它不认识的东西，会自己学
+
+传统桌面 AI 靠固定模型识别 UI，换一个软件版本、换一个操作系统可能就废了。
+
+SiliconBase V5 的视觉系统走的是**"发现 → 理解 → 记住 → 越用越快"**的闭环：
+
+1. **发现**：用 Canny 边缘检测 + 轮廓提取 + 形态过滤，先找出画面里"像个东西"的区域。这一步**纯规则，不调用 AI**，所以很快。
+2. **融合**：把四个来源的结果拼起来 — ONNX 通用物体检测、EasyOCR 文字识别、UIAutomation 控件检测、轮廓提取
+3. **学习**：遇到不认识的元素，自动裁剪子图，调用大视觉模型（如 qwen3-vl:8b）打标签
+4. **记忆**：标签和特征存入向量记忆库
+5. **复用**：下次再见到同类元素，通过感知哈希 / md5 / LabelCache / 向量相似度四层召回，**瞬间识别**
+
+简单说：**它越用你的电脑，越熟悉你的软件**。
+
+> ⚠️ 未知元素学习默认是关闭的。开启后会调用大视觉模型（单次约 20-30 秒），建议在确认模型可用后再打开。
+
+---
+
+## 📈 AI 驱动的加密货币交易子系统
+
+SiliconBase V5 内置了一套完整的 AI 交易框架：
+
+- **执行器抽象**：抽象基类 `TradeExecutor`，下面有模拟盘 `SimulationExecutor`、OKX 实盘 `OKXExecutor`、币安 `BinanceExecutor`
+- **AI 交易子代理**：`TradingSubAgent` 跑异步决策循环，自己决定什么时候买、什么时候卖
+- **MCP 指挥官**：`AITradingCommander` 负责策略分析和任务分发
+- **实时行情推送**：独立 8602 端口 WebSocket，把价格、持仓、信号、风险实时推送到前端
 - **OKX 异步客户端**：`aiohttp` + HMAC 签名，5 秒缓存
-  - ⚠️ OKX 实盘执行器的平仓、持仓、账户、余额接口仍为 TODO；Binance 执行器为基本骨架
 
-### 6. Rust / PyO3 硬壳层
-
-- `rust_core/` 通过 `maturin` 构建为 `siliconbase_core`
-- 暴露条件求值、EventBus 等核心能力
-- 在关键路径用编译时安全补足 Python 的灵活性
-
-### 7. 配置与 Prompt 热重载
-
-- `core/config.py` 支持配置文件热加载，并对核心命名空间做写保护
-- `core/prompt/prompt_builder_v2.py` 通过 `watchdog` 监听 `config/roles.yaml`，修改后自动生效
-- `TokenBudgetManager` 提供成本预算与智能截断
-- `PromptDebugger` 保存每次 AI 调用的完整 Prompt，便于调试
-
-### 8. 背景任务统一治理
-
-- `BackgroundTaskRegistry` 统一管理异步任务生命周期
-- 交易执行器、子代理、指挥官均使用注册表，避免裸 `asyncio.create_task`
+> ⚠️ 目前 OKX 实盘的平仓、持仓、账户、余额接口还在 TODO；Binance 执行器也还只是个骨架。建议先用模拟盘体验。
 
 ---
 
-## 🏗️ 架构概览
+## 🔧 其他值得说的工程细节
 
-```
-用户交互层 (React + TypeScript + Vite)
-        ↓
-核心调度层 (FastAPI + Uvicorn)
-        ↓
-认知决策层 (Consciousness / AgentLoop / DialogueManager)
-        ↓
-工具执行层 (ToolManager / SubAgent / TradingSubAgent)
-        ↓
-感知监控层 (Vision / WindowMonitor / ResourceMonitor / Global View)
-        ↓
-基础设施层 (PostgreSQL / ChromaDB / Redis / Rust Core)
-```
+- **全异步 AgentLoop**：Phase 8 已完成单核异步统一化，所有高频路径都是原生 `async/await`
+- **Rust / PyO3 硬壳层**：核心协议、事件总线、条件求值用 Rust 实现，Python 负责灵活迭代
+- **配置和 Prompt 热重载**：改 `roles.yaml` 不用重启服务，改完自动生效
+- **背景任务统一治理**：用 `BackgroundTaskRegistry` 管生命周期，避免野任务泄漏
+- **Token 预算管理**：控制 AI 调用成本，自动做智能截断
 
 ---
 
@@ -110,9 +112,9 @@ SiliconBase V5 不只是大语言模型的封装，而是一个以**思维线程
 - Python 3.11+
 - Node.js 18+
 - PostgreSQL 14+
-- ChromaDB（可选，用于向量记忆）
+- ChromaDB（可选，向量记忆用）
 
-### 一键启动（Windows）
+### Windows 一键启动
 
 ```bash
 # 快速启动（禁用 MCP，10 秒内启动）
@@ -154,9 +156,9 @@ npm run dev
 
 ## 🛡️ 安全说明
 
-- `.env`、数据库密码、API Key 等敏感信息已通过 `.gitignore` 排除，不会提交到 GitHub。
-- 请勿将 `data/.initial_password.txt` 提交到版本控制。
-- OKX 实盘交易相关接口仍在完善中，当前默认走模拟盘模式。
+- `.env`、数据库密码、API Key 等敏感信息已通过 `.gitignore` 排除，不会提交到 GitHub
+- 请勿把 `data/.initial_password.txt` 提交到版本控制
+- 实盘交易接口仍在完善，当前默认使用模拟盘
 
 ---
 
@@ -187,16 +189,16 @@ SiliconBase_V5/
 
 ---
 
-## 🔧 开发
+## 🛠️ 开发
 
 ### 技术栈
 
-- **后端**：Python 3.11+, FastAPI, SQLAlchemy, Uvicorn, asyncpg
-- **前端**：React 18, TypeScript, Vite, Tailwind CSS, Ant Design
+- **后端**：Python 3.11+, FastAPI, Uvicorn, asyncpg
+- **前端**：React 18, TypeScript, Vite, Tailwind CSS
 - **数据库**：PostgreSQL, ChromaDB
 - **AI 后端**：OpenAI, Anthropic, DeepSeek, Ollama
 - **语音**：Vosk（识别）, Piper / pyttsx3（合成）
-- **构建**：maturin（Rust 扩展）
+- **Rust 扩展**：maturin
 
 ### 安装依赖
 
@@ -222,31 +224,15 @@ copy .env.example .env
 - OPENAI_API_KEY=sk-...
 ```
 
-### 常用命令
-
-```bash
-# 语法校验
-python -m py_compile <文件路径>
-
-# 运行测试
-python -m pytest tests/ -v
-
-# Lint
-ruff check .
-
-# Rust 硬壳层构建
-maturin develop --release
-```
-
 ---
 
 ## ⚠️ 已知限制
 
-- **8601 端口已废弃**：WebSocket 已统一走 8600 端口。
-- **SQLite 已废弃**：记忆层强制使用 PostgreSQL。
-- **未知元素学习默认关闭**：需手动开启，避免启动即大量调用视觉模型。
-- **OKX 实盘接口待完善**：平仓、持仓、账户、余额接口为 TODO；Binance 执行器为基本骨架。
-- **交易 WS K 线当前为合成数据**：真实 K 线接入仍在开发中。
+- **8601 端口已废弃**：WebSocket 已统一走 8600 端口
+- **SQLite 已废弃**：记忆层强制使用 PostgreSQL
+- **未知元素学习默认关闭**：需手动开启，开启后会调用大视觉模型
+- **OKX 实盘接口待完善**：平仓、持仓、账户、余额为 TODO；Binance 执行器为基本骨架
+- **交易 WS K 线当前为合成数据**：真实 K 线接入仍在开发中
 
 ---
 
