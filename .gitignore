@@ -35,6 +35,7 @@ SiliconBase_V5/data/exchange_configs.json
 /run_analysis*.py
 /tmp_*.py
 /*.bat
+!一键部署启动.bat
 /all_dirs.txt
 /check_result.txt
 /cmdtest*.txt
