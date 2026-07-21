@@ -18,9 +18,7 @@
 
 Unlike typical LLM toolchains that let the model decide everything, SiliconBase treats the LLM as just one tool inside a persistent, stateful runtime. It actively perceives the Windows desktop, manages long-term memory across five tiers, controls desktop applications, and can even run an autonomous crypto-trading sub-agent.
 
-> **Keywords:** AI Agent · Computer-Use Agent · Windows Desktop Automation · Persistent Memory · GUI Automation · Local AI · FastAPI · React · Rust · PyO3
-
-**Suggested GitHub Topics:** `ai-agent`, `computer-use`, `gui-automation`, `windows-automation`, `persistent-memory`, `local-ai`, `llm-agent`, `mcp`, `fastapi`, `react`, `rust`, `pyo3`, `chromadb`, `ollama`
+> **Keywords:** `ai-agent`, `computer-use`, `gui-automation`, `windows-automation`, `persistent-memory`, `local-ai`, `llm-agent`, `mcp`, `fastapi`, `react`, `rust`, `pyo3`, `chromadb`, `ollama`
 
 ---
 
