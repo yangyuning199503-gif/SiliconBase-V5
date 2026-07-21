@@ -1,5 +1,7 @@
 # SiliconBase V5 源码分享
 
+> [🌐 English README → README_EN.md](README_EN.md)
+
 一个具备**主权架构、自主感知和多级记忆**的本地 AI Agent 平台——**完整源码开源**。
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
@@ -9,18 +11,6 @@
 ![Repo Size](https://img.shields.io/github/repo-size/yangyuning199503-gif/SiliconBase-V5)
 
 ![SiliconBase V5 主界面](docs/images/home.png)
-
----
-
-## 🌐 English Overview
-
-**SiliconBase V5** is an open-source, local-first AI Agent platform featuring a **sovereignty architecture**, **continuous consciousness loop**, and **multi-tier memory system**.
-
-Unlike typical LLM toolchains that let the model decide everything, SiliconBase treats the LLM as just one tool inside a persistent, stateful runtime. It actively perceives the Windows desktop, manages long-term memory across five tiers, controls desktop applications, and can even run an autonomous crypto-trading sub-agent.
-
-> **Keywords:** `ai-agent`, `computer-use`, `gui-automation`, `windows-automation`, `persistent-memory`, `local-ai`, `llm-agent`, `mcp`, `fastapi`, `react`, `rust`, `pyo3`, `chromadb`, `ollama`
-
----
 
 SiliconBase V5 不是又一个 LLM 工具链。它是一个能**持续感知环境、管理长期记忆、并在需要时主动行动**的数字生命体框架。
 
