@@ -56,7 +56,7 @@ This architecture gives the system **true continuity**: it remembers what you ta
 
 **Current limitation**: Observer mode is enabled by default (`observer_mode=True`), proactive proposals are off by default (`observer_can_propose=False`), and self-drive is off by default (`self_drive=False`). Therefore, the consciousness thread currently runs mainly as a **background state maintainer and input arbiter**, with minimal proactive intervention in user tasks. This is intentional — stability first, then gradually expand autonomy.
 
-Full details in [`docs/CONSCIOUSNESS.md`](docs/CONSCIOUSNESS.md).
+Full details in [`docs/CONSCIOUSNESS_EN.md`](docs/CONSCIOUSNESS_EN.md).
 
 ---
 
@@ -139,7 +139,7 @@ Additional designs to make the AI "make fewer mistakes":
 - **Gamified Classification**: Tools have levels, rarity, and experience points, laying the data structure for "user level unlocks advanced tools".
 - **116 tools loaded at runtime** (including BTC trading tools), with approximately 91 core non-BTC tools.
 
-Full details in [`docs/TOOLS.md`](docs/TOOLS.md).
+Full details in [`docs/TOOLS_EN.md`](docs/TOOLS_EN.md).
 
 ---
 
